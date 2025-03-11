@@ -1,0 +1,162 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures left and right elements are properly spaced */
+}
+
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Express delivery May 1 text */
+.delivery-bar {
+    font-family: 'Julius Sans One', sans-serif;
+    background-color: #E6F0E6;
+    text-align: center;
+    padding: 1%;
+    font-size: 18px;
+}
+
+/* Green Top Bar */
+.top-bar {
+    background-color: #d0dfd0;  /* Light Green */
+    padding: 2% 1%;
+    display: flex;
+    justify-content: center;  /* Centers everything in the bar */
+    align-items: center;
+    width: 100%;
+    position: relative;  /* Allow absolute positioning */
+}
+
+/*To je toto že contact us.. EN .. services..*/
+.left-links {
+    position: absolute;
+    left: 3%;  /* Adjust as necessary to position it more to the left */
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 16px;
+    color: black;
+}
+
+/*doslova len Jewelerry Store napis*/
+.store-name {
+    font-family: 'Ponomar', serif;
+    font-size: 32px;
+    text-align: center;
+    position: absolute;  /* Center the store name */
+    left: 50%;
+    transform: translateX(-50%);  /* This will center the text */
+}
+
+.icons {
+    position: absolute;
+    right: 5%;
+    font-size: 16px;
+}
+
+.navbar {
+    font-family: 'Julius Sans One', sans-serif;
+    background-color: white;
+    padding: 1% 0;
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+/* Underline */
+.nav-underline {
+    width: 55%;               /* Set the width of the underline */
+    height: 2px;              /* Define the thickness */
+    background-color: #ccc;   /* Set the color */
+    margin: 0 auto;           /* Center it horizontally */
+}
+
+
+
+/* Register Form */
+.register-container {
+    width: 35%;
+    margin: 5% auto;
+    text-align: left;
+}
+
+.register-container h2 {
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 25px;
+    margin-bottom: 15px;
+    text-align: left;
+    font-weight: normal;
+}
+
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-container input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.register-container button {
+    margin-top: 30px;
+    background-color: #003d21; /* Tmavozelená */
+    font-family: 'Julius Sans One', sans-serif;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    width: 52%;
+    height: 15%;
+    border-radius: 0; /* No rounded edges */
+    cursor: pointer;
+    min-height: 45px;
+}
+
+
+.register-container button:hover {
+    background-color: #002815;
+}
+
+.footer-bar {
+    background-color: #9DA59D;
+    padding: 2.5% 5%;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 14px;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    align-items: center;
+}
+
+.left-text {
+    position: absolute;
+    left: 5%; /
+}
+
+
+.right-text {
+    position: absolute;
+    right: 15%;
+}
