@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/registerpage', function () {
     return view('registerpage');
@@ -20,7 +20,7 @@ Route::get('/contactpage', function () {
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/engagement', function () {
     return view('engagement');

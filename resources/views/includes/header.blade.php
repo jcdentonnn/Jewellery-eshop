@@ -22,9 +22,12 @@
     <div class="left-links">
         <span>EN</span> | <span>Contact Us</span> | <span>Services</span>
     </div>
-    <div class="store-name">Jewellery store</div>
+    <a class="store-name" href="{{ route('home') }}">Jewellery store</a></div>
     <div class="icons">
-        <span>ikonky</span>
+        <img class="icons-img" src="/images/user.png" alt="User">
+        <img class="icons-img" src="/images/fav.png"  alt="favourites">
+        <img class="icons-img" src="/images/pin.png"  alt="location">
+        <img class="icons-img" src="/images/shopCart.png"  alt="shopping-cart">
     </div>
 </div>
 
@@ -41,3 +44,4 @@
 </nav>
 
 <div class="nav-underline"></div>
+</body>
