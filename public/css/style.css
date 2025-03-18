@@ -114,11 +114,19 @@ body {
     margin: 0 auto;           /* Center it horizontally */
 }
 
-/* Register Form */
+
 .register-container {
     width: 35%;
     margin: 5% auto;
     text-align: left;
+}
+
+.register-container p {
+
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    font-family: 'Julius Sans One', sans-serif;
 }
 
 .register-container h2 {
@@ -171,13 +179,13 @@ body {
     font-family: 'Julius Sans One', sans-serif;
     font-size: 14px;
     color: white;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    position: relative;  /* Changed from 'absolute' to 'relative' */
     width: 100%;
     z-index: 1000;
     align-items: center;
+    margin-top: auto;  /* Ensure the footer moves to the bottom when content is shorter */
 }
+
 
 .left-text {
     position: absolute;
@@ -301,4 +309,3 @@ body {
     opacity: 1;
     visibility: visible;
 }
-

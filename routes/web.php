@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/registerpage', function () {
     return view('registerpage');
+});
+
+Route::get('/loginpage', function () {
+    return view('loginpage');
 });
 
 Route::get('/home', function () {
