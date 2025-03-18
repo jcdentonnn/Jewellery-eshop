@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<!-- Free Delivery Bar -->
+<!--Nadpis 'Free Delivery'-->
 <div class="delivery-bar">
     EXPRESS DELIVERY ON EVERY ORDER UNTIL MAY 1ST
 </div>
@@ -31,12 +31,12 @@
 <!-- Navigation Bar -->
 <nav class="navbar">
     <ul>
-        <li>Engagement</li>
-        <li>Diamonds</li>
-        <li>Precious Stone</li>
-        <li>Watches</li>
-        <li>Accessories</li>
-        <li>Art of Gift</li>
+        <li><a href="{{ route('engagement') }}">Engagement</a></li>
+        <li><a href="{{ route('diamonds') }}">Diamonds</a></li>
+        <li><a href="{{ route('precious_stone') }}">Precious Stone</a></li>
+        <li><a href="{{ route('watches') }}">Watches</a></li>
+        <li><a href="{{ route('accessories') }}">Accessories</a></li>
+        <li><a href="{{ route('art_of_gift') }}">Art of Gift</a></li>
     </ul>
 </nav>
 

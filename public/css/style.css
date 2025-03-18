@@ -300,6 +300,10 @@ body {
     visibility: hidden;
 }
 
+a {
+    text-decoration: none;
+}
+
 .prod-button:hover {
     background-color: #333;
     transform: translateX(-50%) scale(1.05);

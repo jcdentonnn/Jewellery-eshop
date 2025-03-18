@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Dariia Drobna">
-    <title>Jewellery Store | Home</title>
+    <title>Jewellery Store | Engagement</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -11,35 +11,12 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div class="delivery-bar">EXPRESS DELIVERY ON EVERY ORDER UNTIL MAY 1ST</div>
 
-<div class="header">
-    <ul>
-        <li><a href="#">EN</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Services</a></li>
-    </ul>
-    <h2>Jewellery Store</h2>
-    <ul>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Wishlist</a></li>
-        <li><a href="#">Location</a></li>
-        <li><a href="#">Cart</a></li>
-    </ul>
-</div>
+<!--Header-->
+@include('includes.header')
 
-<div class="navbar">
-    <ul>
-        <li><a href="#">Engagement</a></li>
-        <li><a href="#">Diamonds</a></li>
-        <li><a href="#">Precious Stones</a></li>
-        <li><a href="#">Watches</a></li>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Art of Gift</a></li>
-    </ul>
-</div>
 
-<!--Hlavny container pre ukazku produktov-->
+        <!--Hlavny container pre ukazku produktov-->
 <div class="main-container">
     <!--Product showcase-->
     <div class="product-showcase">
@@ -58,25 +35,25 @@
             <p><input type="radio" name="sort"> Price: High to Low</p>
             <p><input type="radio" name="sort"> Price: Low to High</p>
             <h3>Filter By</h3>
-            <p><input type="radio" name="sort"> Available Online</p>
-            <p><input type="radio" name="sort"> New</p>
+            <p><input type="radio" name="filter"> Available Online</p>
+            <p><input type="radio" name="filter"> New</p>
             <h3>Category</h3>
-            <p><input type="radio" name="sort"> Engagement Rings</p>
-            <p><input type="radio" name="sort"> Rings</p>
-            <p><input type="radio" name="sort"> Earrings</p>
-            <p><input type="radio" name="sort"> Necklaces</p>
-            <p><input type="radio" name="sort"> Bracelets</p>
-            <p><input type="radio" name="sort"> Cufflinks</p>
+            <p><input type="checkbox" name="category"> Engagement Rings</p>
+            <p><input type="checkbox" name="category"> Rings</p>
+            <p><input type="checkbox" name="category"> Earrings</p>
+            <p><input type="checkbox" name="category"> Necklaces</p>
+            <p><input type="checkbox" name="category"> Bracelets</p>
+            <p><input type="checkbox" name="category"> Cufflinks</p>
             <h3>Metal</h3>
-            <p><input type="radio" name="sort"> Yellow Gold</p>
-            <p><input type="radio" name="sort"> White Gold</p>
-            <p><input type="radio" name="sort"> Rose Gold</p>
-            <p><input type="radio" name="sort"> Platinum</p>
-            <p><input type="radio" name="sort"> Silver</p>
+            <p><input type="checkbox" name="metal"> Yellow Gold</p>
+            <p><input type="checkbox" name="metal"> White Gold</p>
+            <p><input type="checkbox" name="metal"> Rose Gold</p>
+            <p><input type="checkbox" name="metal"> Platinum</p>
+            <p><input type="checkbox" name="metal"> Silver</p>
             <h3>Paving</h3>
-            <p><input type="radio" name="sort"> Non-paved</p>
-            <p><input type="radio" name="sort"> Paved</p>
-            <p><input type="radio" name="sort"> Semi-Paved</p>
+            <p><input type="checkbox" name="paving"> Non-paved</p>
+            <p><input type="checkbox" name="paving"> Paved</p>
+            <p><input type="checkbox" name="paving"> Semi-Paved</p>
         </div>
 
         <!--Zoznam produktov-->
@@ -112,9 +89,9 @@
         </script>
     </div>
 </div>
-
-<div class="footer">
-    <p>Shop in: Slovakia | COPYRIGHT © 2025 Jewellery Store</p>
-</div>
 </body>
+
+<!--Footer-->
+@include('includes.footer')
+
 </html>

@@ -14,3 +14,27 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/engagement', function () {
+    return view('engagement');
+})->name('engagement');
+
+Route::get('/watches', function () {
+    return view('watches');
+})->name('watches');
+
+Route::get('/diamonds', function () {
+    return view('diamonds');
+})->name('diamonds');
+
+Route::get('/precious_stone', function () {
+    return view('precious_stone');
+})->name('precious_stone');
+
+Route::get('/accessories', function () {
+    return view('accessories');
+})->name('accessories');
+
+Route::get('/art_of_gift', function () {
+    return view('art_of_gift');
+})->name('art_of_gift');
+
