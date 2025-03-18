@@ -171,6 +171,68 @@ body {
     background-color: #002815;
 }
 
+/*--------------------------contact page ---------------------------------------------*/
+/*----------------------------------------------------------------------------------*/
+
+.contact-container h2 {
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 23px;
+    margin-bottom: 15px;
+    font-size: 23px;
+    font-weight: normal;
+}
+
+.contact-container {
+    font-family: 'Julius Sans One', sans-serif;
+    text-align: center;
+    margin: 5% auto;
+}
+
+.contact-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+    margin-top: 25px;
+}
+
+.contact-column {
+    background-color: #E6F0E6;  /* Light Green */
+    padding: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 20%;  /* Adjusted width to make columns even narrower */
+    height: 350px;  /* Increased height to make columns taller */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* Distribute content evenly */
+}
+
+.contact-column h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.contact-column p {
+    font-size: 14px;
+    margin: 5px 0;
+    line-height: 1.5;  /* Added line height for better text flow */
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.contact-column img {
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+/*----------------------------------------------------------------------------------*/
+
 .footer-bar {
     background-color: #9DA59D;
     padding: 2.5% 5%;

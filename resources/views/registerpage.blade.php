@@ -1,4 +1,4 @@
-<?php include 'includes/header.blade.php'; ?>
+@include('includes.header')
 
 <div class="register-container">
     <h2>Register</h2>
@@ -15,6 +15,6 @@
 
 </body>
 
-<?php include 'includes/footer.php';?>
+@include('includes.footer')
 
 </html>

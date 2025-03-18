@@ -10,6 +10,10 @@ Route::get('/loginpage', function () {
     return view('loginpage');
 });
 
+Route::get('/contactpage', function () {
+    return view('contactpage');
+});
+
 Route::get('/home', function () {
     return view('home');
 });
