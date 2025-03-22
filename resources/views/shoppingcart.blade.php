@@ -38,13 +38,12 @@
         <div class="product-total">1270€</div>
     </div>
 
-    <!-- Total Section -->
     <div class="total">
         <strong>Total: 2750€</strong>
     </div>
 
-    <!-- Checkout Button -->
-    <button class="checkout-btn">CHECK OUT</button>
+    <a href="{{ url('/shippingmethod') }}"> <button class="checkout-btn">CHECK OUT</button> </a>
+
 </div>
 
 @include('includes.footer')

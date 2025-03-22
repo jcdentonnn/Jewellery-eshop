@@ -22,6 +22,14 @@ Route::get('/shoppingcart', function () {
     return view('shoppingcart');
 });
 
+Route::get('/shippingmethod', function () {
+    return view('shippingmethod');
+});
+
+Route::get('/inputaddress', function () {
+    return view('inputaddress');
+});
+
 Route::get('/home', function () {
     return view('home');
 })->name('home');
