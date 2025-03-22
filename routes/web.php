@@ -18,6 +18,10 @@ Route::get('/contactpage', function () {
     return view('contactpage');
 });
 
+Route::get('/shoppingcart', function () {
+    return view('shoppingcart');
+});
+
 Route::get('/home', function () {
     return view('home');
 })->name('home');

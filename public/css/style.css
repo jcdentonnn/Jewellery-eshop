@@ -171,7 +171,6 @@ body {
 
 /*--------------------------contact page ---------------------------------------------*/
 /*----------------------------------------------------------------------------------*/
-
 .contact-container h2 {
     font-family: 'Julius Sans One', sans-serif;
     font-size: 23px;
@@ -230,6 +229,138 @@ body {
 }
 
 /*----------------------------------------------------------------------------------*/
+
+
+
+/*---------------------------------Shopping Cart -----------------------------------*/
+/*----------------------------------------------------------------------------------*/
+/* Shopping Cart Container */
+.cart-container {
+    padding: 20px;
+    font-family: 'Julius Sans One', sans-serif;
+    max-width: 1200px; /* Set a maximum width to keep some margins */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+
+.cart-header {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.cart-header-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    padding: 10px 0;
+    border-bottom: 2px solid #ddd;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.cart-item-info {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-info .product-name {
+    font-weight: normal;
+    font-size: 1.3rem;
+    text-align: left;
+    margin-left: 11%;
+}
+
+.product-price{
+    font-size: 1.4rem;
+    text-align: right;
+    margin-right: 67.5%;
+}
+.product-total {
+    font-size: 1.4rem;
+    text-align: right;
+    margin-right: 90%;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  /* Ensure alignment to the left */
+    margin-right: 0; /* Remove margin-right */
+}
+
+.cart-item-quantity button {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.cart-item-quantity input {
+    width: 30px;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+}
+
+
+.checkout-btn {
+    background-color: #014034;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: 10%;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.checkout-btn:hover {
+    background-color: #014040;
+}
+
+
+.total {
+    display: flex;
+    justify-content: flex-end; /* Align total text and value to the right */
+    font-size: 1.5rem;
+    margin-top: 50px; /* Increased space between total and products */
+    margin-right: 10%;
+    margin-bottom: 15px; /* Adjust space between total and button */
+}
+
+.total strong {
+    text-align: right;
+    font-weight: bold;
+}
+
+/*------------------------------------------------------------------------------------*/
+
+
 
 .footer-bar {
     background-color: #9DA59D;
