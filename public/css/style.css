@@ -112,7 +112,7 @@ body {
     margin: 0 auto;
 }
 
-
+/* Register Form */
 .register-container {
     width: 35%;
     margin: 5% auto;
@@ -392,7 +392,7 @@ h2 {
     justify-content: space-between;
     padding: 20px;
     border: 1px solid #000;
-    border-radius: 0; /* Removed rounded edges */
+    border-radius: 0;
     cursor: pointer;
     min-height: 40px;
 }
@@ -404,7 +404,7 @@ input[type="radio"] {
 .option-content {
     display: flex;
     flex-direction: column;
-    gap: 5px; /* Added space between title and subtitle */
+    gap: 5px;
 }
 
 .option-title {
@@ -591,21 +591,21 @@ input[type="radio"] {
 }
 
 hr {
-    margin: 30px 0;
+    margin: 0.8rem 0;
     border: 0;
     border-top: 1px solid #ddd;
 }
 
 .purchases {
-    border: 2px solid #ddd; /* Border around the "Your Purchases" section */
-    border-radius: 10px; /* Rounded corners */
+    border: 2px solid #ddd;
+    border-radius: 10px;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .purchases h3 {
-    font-size: 20px; /* Increased heading size */
+    font-size: 20px;
     margin-bottom: 20px;
 }
 
@@ -623,6 +623,22 @@ hr {
 
 .purchase-info {
     flex: 1;
+    padding-right: 5rem;
+}
+
+.purchase-info-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-grow: 1;
+}
+
+.purchase-right, .purchase-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .purchase-date {
@@ -666,7 +682,6 @@ hr {
     align-items: center;
     margin-top: auto;
 }
-
 
 .left-text {
     position: absolute;
@@ -805,9 +820,10 @@ a {
     font-family: 'Julius Sans One', sans-serif;
 }
 
+
 .user-header {
-    max-width: 80%;
-    margin: 2rem auto;
+    max-width: 90%;
+    margin: 2rem 1rem auto;
     padding: 1rem;
     font-family: 'Julius Sans One', sans-serif;
 }
@@ -824,6 +840,13 @@ a {
 .user-name h1 {
     font-size: 2.3rem;
     margin: 0;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.user-name p {
+    font-size: 1.1rem;
+    font-style: italic;
+    font-family: 'Julius Sans One', sans-serif;
 }
 
 .user-header {
@@ -853,6 +876,24 @@ a {
     flex-wrap: wrap;
 }
 
+#purchase-card {
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+    h2 {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 0.4rem;
+    }
+}
+
+.elements-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 2rem;
+}
+
 .purchase-info {
     display: flex;
     flex-direction: column;
@@ -861,17 +902,31 @@ a {
 
 .purchase-text h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.4rem;
 }
 
-.purchase-number {
-    font-size: 0.85rem;
-    color: #777;
-    margin-top: 0.25rem;
+.purchase-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: black;
+}
+
+.purchase-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
 }
 
 .purchase-meta {
-    margin-top: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .price {
@@ -897,18 +952,61 @@ a {
 
 .more-button {
     background-color: #000;
-    color: white;
+    color: #fff;
     border: none;
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: 'Julius Sans One', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
 }
 
 .more-button:hover {
     background-color: #444;
+}
+
+.purchase-img {
+    width: 13%;
+    height: 13%;
+    object-fit: cover;
+    background-color: #ccc;
+    flex-shrink: 0;
+}
+
+.purchase-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.purchase-title {
+    align-items: center;
+}
+
+.purchase-title h3 {
+    font-size: 1.3rem;
+    padding-bottom: 1.2rem;
+    margin: 0;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.purchase-checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: black;
+    cursor: pointer;
+}
+
+.purchase-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Julius Sans One', sans-serif;
+    margin-top: 0.5rem;
 }
 
 /* responzivita */
@@ -921,6 +1019,7 @@ a {
     .more-button {
         margin-top: 1rem;
         width: 100%;
+
     }
 
     .purchase-meta {

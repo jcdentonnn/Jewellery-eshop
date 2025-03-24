@@ -22,6 +22,10 @@ Route::get('/shoppingcart', function () {
     return view('shoppingcart');
 });
 
+Route::get('/purchasedetails', function () {
+    return view('purchasedetails');
+});
+
 Route::get('/shippingmethod', function () {
     return view('shippingmethod');
 });
@@ -65,4 +69,8 @@ Route::get('/art_of_gift', function () {
 Route::get('/user', function () {
     return view('user');
 })->name('user');
+
+Route::get('/more-purchase-info', function () {
+    return view('more-purchase-info');
+})->name('more-purchase-info');
 

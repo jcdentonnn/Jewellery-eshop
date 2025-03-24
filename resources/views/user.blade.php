@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Dariia Drobna">
-    <title>Jewellery Store | Home</title>
+    <title>Jewellery Store | User Profile </title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -30,19 +30,20 @@
 
     <!--Objednavky Usera-->
     <div class="purchases-container">
-        <h1>Your purchases</h1>
+        <div class="purchase-card" id="purchase-card"><h2>Your purchases</h2></div>
         <div class="purchase-card">
             <div class="purchase-info">
                 <div class="purchase-text">
                     <h3>Purchase 21/02/2025</h3>
                     <p class="purchase-number">NO. XYZ12345</p>
                 </div>
+                <hr>
                 <div class="purchase-meta">
                     <span class="price">950,56 €</span>
                     <span class="status finished">FINISHED</span>
                 </div>
             </div>
-            <button class="more-button">MORE</button>
+            <a href="{{ route('more-purchase-info') }}"> <button class="more-button">MORE</button> </a>
         </div>
         <div class="purchase-card">
             <div class="purchase-info">
@@ -50,12 +51,13 @@
                     <h3>Purchase 12/03/2025</h3>
                     <p class="purchase-number">NO. ABC6789</p>
                 </div>
+                <hr>
                 <div class="purchase-meta">
                     <span class="price">550,99 €</span>
                     <span class="status processed">PROCESSED</span>
                 </div>
             </div>
-            <button class="more-button">MORE</button>
+            <a href="{{ route('more-purchase-info') }}"> <button class="more-button">MORE</button> </a>
         </div>
     </div>
 </div>
