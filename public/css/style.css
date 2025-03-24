@@ -1,8 +1,8 @@
-/* General Reset */
+
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Ensures left and right elements are properly spaced */
 }
 
 /* Icons style in header */
@@ -30,7 +30,7 @@ body {
 
 /* Green Top Bar */
 .top-bar {
-    background-color: #d0dfd0;  /* Light Green */
+    background-color: #d0dfd0;
     padding: 2% 1%;
     display: flex;
     justify-content: center;
@@ -104,7 +104,7 @@ body {
     color: black;
 }
 
-/* Underline */
+
 .nav-underline {
     width: 55%;
     height: 2px;
@@ -171,7 +171,6 @@ body {
 
 /*--------------------------contact page ---------------------------------------------*/
 /*----------------------------------------------------------------------------------*/
-
 .contact-container h2 {
     font-family: 'Julius Sans One', sans-serif;
     font-size: 23px;
@@ -194,7 +193,7 @@ body {
 }
 
 .contact-column {
-    background-color: #E6F0E6;  /* Light Green */
+    background-color: #E6F0E6;
     padding: 30px;
     margin-left: 5%;
     margin-right: 5%;
@@ -228,8 +227,426 @@ body {
     display: block;
     margin: 0 auto 15px auto;
 }
-
 /*----------------------------------------------------------------------------------*/
+
+
+
+/*---------------------------------Shopping Cart -----------------------------------*/
+/*----------------------------------------------------------------------------------*/
+
+.cart-container {
+    padding: 20px;
+    font-family: 'Julius Sans One', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cart-header, .cart-header-row, .cart-item {
+    margin-bottom: 1rem;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.cart-header-row {
+    border-bottom: 1px solid #ddd;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    font-size: 1.1rem;
+}
+
+.cart-item {
+    border-bottom: 1px solid #ddd;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    font-size: 1.1rem;
+    align-items: center;
+}
+
+.cart-header {
+    font-size: 1.8rem;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cart-item-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-name {
+    text-align: left;
+    white-space: nowrap;
+}
+
+.product-price, .product-total {
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.cart-item-quantity button, .cart-item-quantity input {
+    border: 1px solid #ddd;
+    padding: 5px;
+    width: 30px;
+    text-align: center;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.checkout-btn {
+    border-radius: 0;
+    background-color: #003d21;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -10px;
+    display: block;
+    border: none;
+}
+
+.checkout-btn:hover {
+    background-color: #014040;
+}
+
+.total {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 40px auto 15px;
+}
+/*------------------------------------------------------------------------------------*/
+
+
+
+/*---------------------------------Shopping Method ---------------------------------*/
+/*----------------------------------------------------------------------------------*/
+.checkout-container {
+    font-family: 'Julius Sans One', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.checkout-section {
+    width: 45%;
+}
+
+h2 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.shipping-options, .payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/*Tie štvorčeky v ktorych su typy dopravy (a zaklikuju sa)*/
+.shipping-option{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 0; /* Removed rounded edges */
+    cursor: pointer;
+    min-height: 60px;
+}
+
+/*Tie štvorčeky v ktorych su typy platby (a zaklikuju sa)*/
+.payment-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 0; /* Removed rounded edges */
+    cursor: pointer;
+    min-height: 40px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+.option-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Added space between title and subtitle */
+}
+
+.option-title {
+    font-weight: bold;
+}
+
+.option-subtitle {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.option-price {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.proceed-btn {
+    display: block;
+    margin-bottom: 20px;
+    margin-left: 62%;
+    padding: 15px 40px;
+    width: 280px;
+    font-size: 1.2rem;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0;
+    background-color: #003d21;
+}
+
+.proceed-btn:hover {
+    background-color: #012a24;
+}
+
+
+/* Responzivnost, spravi z 2 stlpcekov len 1 */
+@media (max-width: 800px) {
+    .checkout-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .checkout-section {
+        width: 80%;
+        max-width: 400px;
+        margin-top: 40px;
+    }
+
+    .proceed-btn {
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/*------------------------------------------------------------------------------------*/
+
+
+/*--------------------------billing address page -----------------------------------*/
+/*----------------------------------------------------------------------------------*/
+.address-billing-container {
+    width: 50%;
+    margin: 25px auto;
+    text-align: left;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.address-billing-container h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+    text-align: left;
+    font-weight: normal;
+}
+
+.address-billing-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.form-row input {
+    width: 50%;
+    flex: 1;
+}
+
+.address-billing-container input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    border-radius: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.address-billing-container button {
+    margin-top: 30px;
+    background-color: #003d21;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    width: 60%;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.address-billing-container button:hover {
+    background-color: #002815;
+}
+
+@media (max-width: 800px) {
+    .address-billing-container {
+        width: 80%;
+    }
+    .form-row {
+        flex-direction: column;
+    }
+    .form-row input {
+        width: 100%;
+    }
+}
+/*------------------------------------------------------------------------------------*/
+
+
+
+
+/*--------------------------------user account--------------------------------------*/
+/*----------------------------------------------------------------------------------*/
+
+.content-container {
+    width: 70%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Julius Sans One', sans-serif;
+    padding: 30px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-right: 25px;
+}
+
+.user-text {
+    display: block; /* To aby username a email neboli v jednom riadku */
+}
+
+.user-name {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.user-email {
+    margin: 0;
+    font-size: 15px;
+    color: #555;
+}
+
+.logout {
+    margin-left: auto;
+    font-size: 16px;
+    text-decoration: none;
+    color: #333;
+}
+
+.logout:hover {
+    color: #007bff;
+}
+
+hr {
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.purchases {
+    border: 2px solid #ddd; /* Border around the "Your Purchases" section */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.purchases h3 {
+    font-size: 20px; /* Increased heading size */
+    margin-bottom: 20px;
+}
+
+.purchase-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+}
+
+.purchase-info {
+    flex: 1;
+}
+
+.purchase-date {
+    font-weight: bold;
+}
+
+.purchase-amount {
+    font-size: 22px;
+    color: black;
+    font-weight: bold;
+}
+
+
+.more-info-btn {
+    background-color: #333;
+    color: white;
+    padding: 11px 60px;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.more-info-btn:hover {
+    background-color: #007bff;
+}
+
+
+/*-------------------------------------------------------------------------*/
 
 .footer-bar {
     background-color: #9DA59D;
@@ -243,7 +660,7 @@ body {
     width: 100%;
     z-index: 1000;
     align-items: center;
-    margin-top: auto;
+    margin-top: 30px;
 }
 
 
@@ -301,9 +718,9 @@ body {
     width: 85%;
     flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /*responzivita*/
-    gap: 1rem;
-    padding-left: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding-left: 20px;
 }
 
 .product-card {
@@ -373,136 +790,4 @@ a {
 .product-card:hover .prod-button {
     opacity: 1;
     visibility: visible;
-}
-
-
-/* ---User profile--- */
-.purchases-container {
-    max-width: 80%;
-    margin: 2rem auto;
-    padding: 1rem;
-    font-family: 'Julius Sans One', sans-serif;
-}
-
-.user-header {
-    max-width: 80%;
-    margin: 2rem auto;
-    padding: 1rem;
-    font-family: 'Julius Sans One', sans-serif;
-}
-
-/* logout button */
-#logout {
-    cursor: pointer;
-    border: none;
-    font-family: 'Julius Sans One', sans-serif;
-    font-size: 1.1rem;
-    background: none;
-}
-
-.user-name h1 {
-    font-size: 2.3rem;
-    margin: 0;
-}
-
-.user-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.section-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: 1px solid #ccc;
-    padding: 0.75rem 1rem;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    display: inline-block;
-}
-
-.purchase-card {
-    border: 1px solid #ccc;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f9f9f9;
-    flex-wrap: wrap;
-}
-
-.purchase-info {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.purchase-text h3 {
-    margin: 0;
-    font-size: 1rem;
-}
-
-.purchase-number {
-    font-size: 0.85rem;
-    color: #777;
-    margin-top: 0.25rem;
-}
-
-.purchase-meta {
-    margin-top: 0.75rem;
-}
-
-.price {
-    font-size: 1.1rem;
-    font-weight: bold;
-    display: inline-block;
-    margin-right: 1rem;
-}
-
-.status {
-    font-size: 0.85rem;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.status.finished {
-    color: #333;
-}
-
-.status.processed {
-    color: #777;
-}
-
-.more-button {
-    background-color: #000;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-family: 'Julius Sans One', sans-serif;
-}
-
-.more-button:hover {
-    background-color: #444;
-}
-
-/* responzivita */
-@media (max-width: 600px) {
-    .purchase-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .more-button {
-        margin-top: 1rem;
-        width: 100%;
-    }
-
-    .purchase-meta {
-        margin-top: 0.5rem;
-    }
 }
