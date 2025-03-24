@@ -46,3 +46,7 @@ Route::get('/art_of_gift', function () {
     return view('art_of_gift');
 })->name('art_of_gift');
 
+Route::get('/user', function () {
+    return view('user');
+})->name('user');
+
