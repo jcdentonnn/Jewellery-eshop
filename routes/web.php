@@ -18,6 +18,22 @@ Route::get('/contactpage', function () {
     return view('contactpage');
 });
 
+Route::get('/shoppingcart', function () {
+    return view('shoppingcart');
+});
+
+Route::get('/shippingmethod', function () {
+    return view('shippingmethod');
+});
+
+Route::get('/inputaddress', function () {
+    return view('inputaddress');
+});
+
+Route::get('/accountpage', function () {
+    return view('accountpage');
+});
+
 Route::get('/home', function () {
     return view('home');
 })->name('home');

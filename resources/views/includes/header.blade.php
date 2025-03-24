@@ -22,9 +22,9 @@
     <div class="left-links">
         <span>EN</span> | <span>Contact Us</span> | <span>Services</span>
     </div>
-    <a class="store-name" href="{{ route('home') }}">Jewellery store</a>
+    <a class="store-name" href="{{ route('home') }}">Jewellery store</a></div>
     <div class="icons">
-        <a href="{{ route('user') }}"><img class="icons-img" src="/images/user.png" alt="User"></a>
+        <img class="icons-img" src="/images/user.png" alt="User">
         <img class="icons-img" src="/images/fav.png"  alt="favourites">
         <img class="icons-img" src="/images/pin.png"  alt="location">
         <img class="icons-img" src="/images/shopCart.png"  alt="shopping-cart">
