@@ -34,10 +34,6 @@ Route::get('/accountpage', function () {
     return view('accountpage');
 });
 
-Route::get('/purchasedetails', function () {
-    return view('purchasedetails');
-});
-
 Route::get('/home', function () {
     return view('home');
 })->name('home');

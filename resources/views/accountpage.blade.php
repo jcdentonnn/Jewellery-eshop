@@ -16,12 +16,10 @@
         <h3>Your Purchases</h3>
         <div class="purchase-item">
             <div class="purchase-info">
-                <p class="purchase-date">
-                    Purchase 21/02/2025 <span class="order-code">NO. ABC12345</span>
-                </p>
+                <p class="purchase-date">Purchase 21/02/2025</p>
                 <p class="purchase-amount">950,56 €</p>
             </div>
-            <a href="{{ url('/purchasedetails') }}"> <button class="more-info-btn">MORE</button> </a>
+            <button class="more-info-btn">MORE</button>
         </div>
     </div>
 </div>
