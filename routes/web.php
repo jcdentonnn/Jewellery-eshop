@@ -30,6 +30,10 @@ Route::get('/inputaddress', function () {
     return view('inputaddress');
 });
 
+Route::get('/accountpage', function () {
+    return view('accountpage');
+});
+
 Route::get('/home', function () {
     return view('home');
 })->name('home');

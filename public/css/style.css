@@ -1,4 +1,4 @@
-/* General Reset */
+
 .header {
     display: flex;
     align-items: center;
@@ -461,7 +461,7 @@ input[type="radio"] {
 /*--------------------------billing address page -----------------------------------*/
 /*----------------------------------------------------------------------------------*/
 .address-billing-container {
-    width: 50%; /* Increased width to make it less narrow */
+    width: 50%;
     margin: 25px auto;
     text-align: left;
     font-family: 'Julius Sans One', sans-serif;
@@ -487,8 +487,8 @@ input[type="radio"] {
 }
 
 .form-row input {
-    width: 50%; /* Ensures both columns take equal space */
-    flex: 1; /* Allows flexibility for equal distribution */
+    width: 50%;
+    flex: 1;
 }
 
 .address-billing-container input {
@@ -496,9 +496,9 @@ input[type="radio"] {
     margin: 5px 0;
     border: 1px solid #ccc;
     font-size: 16px;
-    border-radius: 0; /* Square inputs */
+    border-radius: 0;
     width: 100%;
-    box-sizing: border-box; /* Prevents padding from affecting width */
+    box-sizing: border-box;
 }
 
 .address-billing-container button {
@@ -519,19 +519,134 @@ input[type="radio"] {
 
 @media (max-width: 800px) {
     .address-billing-container {
-        width: 80%; /* Keeps previous responsive behavior */
+        width: 80%;
     }
     .form-row {
         flex-direction: column;
     }
     .form-row input {
-        width: 100%; /* Makes inputs full width in mobile view */
+        width: 100%;
     }
+}
+/*------------------------------------------------------------------------------------*/
+
+
+
+
+/*--------------------------------user account--------------------------------------*/
+/*----------------------------------------------------------------------------------*/
+
+.content-container {
+    width: 70%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Julius Sans One', sans-serif;
+    padding: 30px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-right: 25px;
+}
+
+.user-text {
+    display: block; /* To aby username a email neboli v jednom riadku */
+}
+
+.user-name {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.user-email {
+    margin: 0;
+    font-size: 15px;
+    color: #555;
+}
+
+.logout {
+    margin-left: auto;
+    font-size: 16px;
+    text-decoration: none;
+    color: #333;
+}
+
+.logout:hover {
+    color: #007bff;
+}
+
+hr {
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.purchases {
+    border: 2px solid #ddd; /* Border around the "Your Purchases" section */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.purchases h3 {
+    font-size: 20px; /* Increased heading size */
+    margin-bottom: 20px;
+}
+
+.purchase-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+}
+
+.purchase-info {
+    flex: 1;
+}
+
+.purchase-date {
+    font-weight: bold;
+}
+
+.purchase-amount {
+    font-size: 22px;
+    color: black;
+    font-weight: bold;
 }
 
 
-/*------------------------------------------------------------------------------------*/
+.more-info-btn {
+    background-color: #333;
+    color: white;
+    padding: 11px 60px;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+}
 
+.more-info-btn:hover {
+    background-color: #007bff;
+}
+
+
+/*-------------------------------------------------------------------------*/
 
 .footer-bar {
     background-color: #9DA59D;
