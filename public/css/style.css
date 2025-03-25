@@ -30,7 +30,8 @@ body {
 
 /* Green Top Bar */
 .top-bar {
-    background-color: #d0dfd0;  /* Light Green */
+    background-color: #d0dfd0;
+    max-width: 98%;
     padding: 2% 1%;
     display: flex;
     justify-content: center;
@@ -60,7 +61,7 @@ body {
 
 .icons {
     position: absolute;
-    right: 5%;
+    right: 2%;
     font-size: 16px;
 }
 
@@ -671,6 +672,7 @@ hr {
 .footer-bar {
     background-color: #9DA59D;
     padding: 2.5% 5%;
+    max-width: 90%;
     display: flex;
     justify-content: space-between;
     font-family: 'Julius Sans One', sans-serif;
@@ -685,13 +687,27 @@ hr {
 
 .left-text {
     position: absolute;
-    left: 5%; /
+    left: 4%;
 }
-
 
 .right-text {
     position: absolute;
-    right: 15%;
+    right: 5%;
+}
+
+@media (max-width: 768px) {
+    .footer-bar {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        position: static;
+    }
+    .left-text, .right-text {
+        position: static;
+        width: 100%;
+        margin-bottom: 5px;
+        text-align: center;
+    }
 }
 
 

@@ -16,7 +16,7 @@ Route::get('/loginpage', function () {
 
 Route::get('/contactpage', function () {
     return view('contactpage');
-});
+})->name('contactpage');
 
 Route::get('/shoppingcart', function () {
     return view('shoppingcart');
@@ -25,6 +25,7 @@ Route::get('/shoppingcart', function () {
 Route::get('/purchasedetails', function () {
     return view('purchasedetails');
 });
+
 
 Route::get('/shippingmethod', function () {
     return view('shippingmethod');
@@ -37,6 +38,10 @@ Route::get('/inputaddress', function () {
 Route::get('/accountpage', function () {
     return view('accountpage');
 });
+
+Route::get('/productinfo', function () {
+    return view('productinfo');
+})->name('productinfo');
 
 Route::get('/home', function () {
     return view('home');
