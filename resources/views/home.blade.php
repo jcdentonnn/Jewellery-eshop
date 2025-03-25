@@ -73,12 +73,14 @@
                 for (let i = 0; i < maxProducts; i++) {
                     const product = baseProducts[i % baseProducts.length];
                     productHTML += `
+                    <a href="/productinfo" class="product-card-link">
                     <div class="product-card">
                         <img src="/images/${product.img}" alt="${product.name}">
                         <h4 class="prod-name-card">${product.name} ${i + 1}</h4>
                         <p class="prod-info-card">${product.info}</p>
                         <button class="prod-button" type="button">Add to Bag</button>
                     </div>
+                </a>
                 `;
                 }
 
