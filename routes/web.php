@@ -74,3 +74,6 @@ Route::get('/more-purchase-info', function () {
     return view('more-purchase-info');
 })->name('more-purchase-info');
 
+Route::get('/shoppingcart', function () {
+    return view('shoppingcart');
+})->name('shoppingcart');

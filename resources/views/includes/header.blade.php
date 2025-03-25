@@ -27,7 +27,7 @@
         <a href="{{ route('user') }}"><img class="icons-img" src="/images/user.png" alt="User"></a>
         <img class="icons-img" src="/images/fav.png"  alt="favourites">
         <img class="icons-img" src="/images/pin.png"  alt="location">
-        <img class="icons-img" src="/images/shopCart.png"  alt="shopping-cart">
+        <a href="{{ route('shoppingcart') }}"><img class="icons-img" src="/images/shopCart.png"  alt="shopping-cart"></a>
     </div>
 </div>
 
