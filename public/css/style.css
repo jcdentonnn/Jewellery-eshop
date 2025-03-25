@@ -364,8 +364,6 @@ h2 {
     text-align: center;
     font-weight: normal;
     font-size: 1.5rem;
-    margin-top: 10px;
-    margin-bottom: 25px;
 }
 
 .shipping-options, .payment-options {
@@ -883,7 +881,8 @@ a {
 
 .purchase-card {
     border: 1px solid #ccc;
-    padding: 1.5rem;
+    font-family: 'Julius Sans One', sans-serif;
+    padding: 1.1rem;
     margin-bottom: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -898,7 +897,7 @@ a {
     h2 {
         font-size: 1.3rem;
         font-weight: bold;
-        margin-bottom: 0.4rem;
+        margin: 0;
     }
 }
 
@@ -995,7 +994,6 @@ a {
 .purchase-details {
     flex-grow: 1;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -1005,8 +1003,7 @@ a {
 
 .purchase-title h3 {
     font-size: 1.3rem;
-    padding-bottom: 1.2rem;
-    margin: 0;
+    margin-top: 2.7rem;
     font-family: 'Julius Sans One', sans-serif;
 }
 
@@ -1023,6 +1020,10 @@ a {
     align-items: center;
     font-family: 'Julius Sans One', sans-serif;
     margin-top: 0.5rem;
+}
+
+.purchase-number {
+    margin-right: 1rem;
 }
 
 /* responzivita */

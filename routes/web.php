@@ -82,3 +82,7 @@ Route::get('/more-purchase-info', function () {
 Route::get('/shoppingcart', function () {
     return view('shoppingcart');
 })->name('shoppingcart');
+
+Route::get('/wishlist', function () {
+    return view('wishlist');
+})->name('wishlist');
