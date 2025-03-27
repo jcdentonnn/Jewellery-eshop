@@ -20,7 +20,9 @@
 
 <div class="top-bar">
     <div class="left-links">
-        <span>EN</span> | <a href="{{ route('contactpage') }}">Contact Us</a> | <span>Services</span>
+        <span>EN</span>
+        <a href="{{ route('contactpage') }}">Contact Us</a>
+        <span>Services</span>
     </div>
     <a class="store-name" href="{{ route('home') }}">Jewellery store</a>
     <div class="icons">
