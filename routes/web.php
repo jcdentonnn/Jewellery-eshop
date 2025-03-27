@@ -35,8 +35,8 @@ Route::get('/inputaddress', function () {
     return view('inputaddress');
 });
 
-Route::get('/accountpage', function () {
-    return view('accountpage');
+Route::get('/adminpage', function () {
+    return view('adminpage');
 });
 
 Route::get('/productinfo', function () {
