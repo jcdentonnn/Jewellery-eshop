@@ -19,10 +19,10 @@
 <div class="main-container">
     <!--Product showcase-->
     <div class="product-showcase">
-        <img id="product-image-big" src="/images/img.png" alt="Diamonds">
+        <img id="product-image-big" src="/images/titleDiamond.png" alt="Diamonds">
         <div class="product-info">
             <h2>Diamonds</h2>
-            <p>Some text about diamonds</p>
+            <p>The hardest naturally occurring substance known, suitable for expressing everlasting love and affection</p>
         </div>
     </div>
 

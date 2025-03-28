@@ -21,8 +21,8 @@
     <div class="product-showcase">
         <img id="product-image-big" src="/images/img.png" alt="Diamonds">
         <div class="product-info">
-            <h2>Diamonds</h2>
-            <p>Some text about diamonds</p>
+            <h2>Precious Stone Jewellery</h2>
+            <p>Discover pieces with extraordinary stones which will express your identity</p>
         </div>
     </div>
 

@@ -21,8 +21,8 @@
     <div class="product-showcase">
         <img id="product-image-big" src="/images/img.png" alt="Diamonds">
         <div class="product-info">
-            <h2>Diamonds</h2>
-            <p>Some text about diamonds</p>
+            <h2>Watches</h2>
+            <p>Durable, modern or classic. All with water and dust protection</p>
         </div>
     </div>
 

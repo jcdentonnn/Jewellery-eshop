@@ -20,10 +20,10 @@
 <div class="main-container">
     <!--Product showcase-->
     <div class="product-showcase">
-        <img id="product-image-big" src="/images/img.png" alt="Diamonds">
+            <img id="product-image-big" src="/images/titleRings.png" alt="Engagement rings. AI generated.">
         <div class="product-info">
-            <h2>Diamonds</h2>
-            <p>Some text about diamonds</p>
+            <h2>Engagement</h2>
+            <p>The most important gift before stepping into a new chapter of your life</p>
         </div>
     </div>
 
