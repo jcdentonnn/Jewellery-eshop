@@ -1,11 +1,11 @@
-
+/* General Reset */
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-
+/* Icons style in header */
 .icons-img {
     width: 20px;
     height: 20px;
@@ -17,11 +17,38 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f8f8f8;
+    padding-top: 150px; /*temp pridane pre hiding header */
 }
-/*-----------------------HEADER THINGS ----------------------------------------------*/
-/*-----------------------------------------------------------------------------------*/
 
-/* Express del. ten text*/
+
+
+
+/*--------------------------------------------------------------*/
+/*---------------------------HEADER-----------------------------*/
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Wrapper pre header */
+.header-wr {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.header-wr.hide {
+    transform: translateY(-100%);
+}
+
+/* Express delivery May 1 text */
 .delivery-bar {
     font-family: 'Julius Sans One', sans-serif;
     background-color: #E6F0E6;
@@ -30,7 +57,7 @@ body {
     font-size: 18px;
 }
 
-
+/* Green Top Bar */
 .top-bar {
     background-color: #d0dfd0;
     padding: 10px 1.5%;
@@ -41,6 +68,13 @@ body {
     height: 60px;
     position: relative;
     box-sizing: border-box;
+}
+
+/* Icons style in header */
+.icons-img {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
 }
 
 /*To je toto že contact us.. EN .. services..*/
@@ -132,7 +166,7 @@ body {
     color: black;
 }
 
-
+/* Underline */
 .nav-underline {
     width: 55%;
     height: 2px;
@@ -171,6 +205,9 @@ body {
 /*-------------------------------------------------------------------------*/
 
 
+
+/*----------------------------------------------------------------*/
+/*---------------------------REGISTER-----------------------------*/
 /* Register Form */
 .register-container {
     width: 35%;
@@ -228,7 +265,7 @@ body {
     background-color: #002815;
 }
 
-/*--------------------------contact page ---------------------------------------------*/
+/*--------------------------CONTACT PAGE---------------------------------------------*/
 /*----------------------------------------------------------------------------------*/
 
 .contact-container h2 {
@@ -419,7 +456,6 @@ body {
 }
 
 h2 {
-    text-align: center;
     font-weight: normal;
     font-size: 1.5rem;
 }
@@ -720,6 +756,13 @@ hr {
     padding: 20px;
     max-width: 90%;
     margin: auto;
+    font-family: "Poppins", sans-serif;
+}
+
+.main-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-family: "Julius Sans One", sans-serif;
 }
 
 .product-showcase {
@@ -729,8 +772,8 @@ hr {
 }
 
 #product-image-big {
-    width: 75%;
-    height: 200px;
+    height: 55vh;
+    padding-top: 3vh;
 }
 
 .product-info {
@@ -741,6 +784,8 @@ hr {
 .products {
     width: 100%;
     display: flex;
+    justify-content: space-between;
+    font-family: "Julius Sans One", sans-serif;
 }
 
 .product-filter {
@@ -750,6 +795,12 @@ hr {
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     height: fit-content;
+}
+
+.product-filter h3 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-family: "Poppins", sans-serif;
 }
 
 .product-container {
@@ -1096,4 +1147,164 @@ a {
     }
 }
 
+
+
+/*---------------------------CAROUSEL-----------------------------*/
 /*----------------------------------------------------------------*/
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.slide-images-carousel {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+.img-slider {
+    aspect-ratio: 3 / 4;
+    flex: 0 0 450px;
+    border-radius: 12px;
+    opacity: 0.5;
+    transform: scale(0.9);
+    transition: 0.5s;
+}
+
+.img-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.img-slider.active{
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* responzivita */
+@media (max-width: 768px) {
+    .img-slider {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .img-slider {
+        max-width: 180px;
+    }
+}
+
+/* Button pod carousel */
+.carousel-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5vh;
+}
+
+#carousel-continue {
+    background-color: #8FA293;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+#carousel-continue:hover {
+    background-color: #6D7A6E;
+    letter-spacing: 0.3em;
+    transition: 0.3s;
+}
+
+
+/*--------------------------------------------------------------------*/
+/*---------------------------LANDING PAGE-----------------------------*/
+.landing-page-img {
+    width: 100%;
+    padding-top: 3vh;
+}
+
+#landing-page-img {
+    width: 100%;
+    height: 75vh;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+#product-info-landing {
+    width: 100%;
+    display: block;
+    padding: 3vh 5%;
+    h1 {
+        font-size: 2.2rem;
+        font-family: 'Julius Sans One', sans-serif;
+        margin: 0;
+    }
+    p {
+        font-size: 1.2rem;
+        font-family: 'Julius Sans One', sans-serif;
+        margin: 1rem 0;
+        padding-bottom: 0.7rem;
+    }
+}
+
+.various-prod {
+    gap: 2%;
+    padding: 3vh 5%;
+}
+
+.various-prod h1{
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 2.2rem;
+}
+
+.product {
+    display: block;
+    padding: 4rem;
+    text-align: left;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        display: block;
+        padding-bottom: 1rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+        font-family: 'Julius Sans One', sans-serif;
+        margin: 0;
+    }
+    p {
+        font-size: 1.1rem;
+        font-family: 'Julius Sans One', sans-serif;
+        margin: 0.6rem 0;
+    }
+}
+
+.product p, h3 {
+    margin: 0.5rem 0;
+}
+
+.product h3:hover {
+    color: #0a3622;
+}
+
+.product img:hover {
+    opacity: 0.85;
+    transition: 0.3s;
+    transform: translate3d(0, -5px, 0);
+}

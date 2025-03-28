@@ -56,7 +56,6 @@
         </div>
     </div>
 
-    <button class="more-button">Confirm purchase</button>
 </div>
 </body>
 

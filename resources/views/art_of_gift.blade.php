@@ -21,8 +21,9 @@
     <div class="product-showcase">
         <img id="product-image-big" src="/images/img.png" alt="Diamonds">
         <div class="product-info">
-            <h2>Diamonds</h2>
-            <p>Some text about diamonds</p>
+            <h2>Art of Gift</h2>
+            <p>To give a perfect gift is to know the receiver.
+                It is easier to master the art of picking such a gift with options available here</p>
         </div>
     </div>
 
