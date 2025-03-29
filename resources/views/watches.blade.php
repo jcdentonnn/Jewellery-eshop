@@ -18,12 +18,15 @@
     <div class="main-container">
         <!--Product showcase-->
         <div class="product-showcase">
-            <img id="product-image-big" src="/images/titleWatches.png" alt="Watches. AI generated.">
+            <img class="product-image-big" src="/images/titleWatches.png" alt="Watches. AI generated.">
             <div class="product-info">
                 <h2>Watches</h2>
                 <p>Durable, modern or classic. All with water and dust protection</p>
             </div>
         </div>
+
+        <!--Tlacitko pre zobrazenie/skrytie filtra-->
+        <button id="turnFilterBtn" class="turn-filter-btn">Show Filter</button>
 
         <div class="products">
             <!--Filter-->
@@ -58,10 +61,12 @@
             <div class="product-container" id="productList"></div>
             <script>
                 const baseProducts = [
-                    { img: "img.png", name: "EARRINGS", info: "Info about the earrings" },
-                    { img: "img.png", name: "RING", info: "Info about the ring" },
-                    { img: "img.png", name: "NECKLACE", info: "Info about the necklace" },
-                    { img: "img.png", name: "CUFFLINKS", info: "Info about the necklace" }
+                    { img: "watch1.png", name: "YELLOW GOLD WATCH", info: "18ct gold alloy unisex watch" },
+                    { img: "watch2.png", name: "YELLOW GOLD AND STAINLESS STEEL WATCH", info: "18ct gold alloy stainless steel mix unisex watch" },
+                    { img: "watch3.png", name: "PURE DIAMOND WATCH", info: "Pure diamond watch in platinum and stainless steel. Special order for special clients" },
+                    { img: "watch4.png", name: "DIAMOND WATCH", info: "Diamond watch in stainless steel" },
+                    { img: "watch5.png", name: "STAINLESS STEEL WATCH", info: "Stainless steel watch in a modern design" },
+                    { img: "watch6.png", name: "STAINLESS STEEL WATCH", info: "Stainless steel watch in a classical design" }
                 ];
 
                 function prodListGenerate(maxProducts = 20) {
@@ -72,17 +77,31 @@
                         const product = baseProducts[i % baseProducts.length];
                         productHTML += `
                         <div class="product-card">
-                            <img src="/images/${product.img}" alt="${product.name}">
-                            <h4 class="prod-name-card">${product.name} ${i + 1}</h4>
-                            <p class="prod-info-card">${product.info}</p>
-                            <button class="prod-button" type="button">Add to Bag</button>
+                            <div class="product-img">
+                                <img src="/images/${product.img}" alt="${product.name}">
+                                <h4 class="prod-name-card">${product.name}</h4>
+                                <p class="prod-info-card">${product.info}</p>
+                            </div>
+                            <div class="purchase">
+                                <span class="prod-price-card">999.99€</span>
+                                <button class="prod-button" type="button">Add to Bag</button>
+                            </div>
                         </div>
                     `;
                     }
 
                     container.innerHTML = productHTML;
                 }
-                prodListGenerate(20);
+                prodListGenerate(7);
+
+                //schovanie a ukazanie filtru pri @media
+                const toggleBtn = document.getElementById('turnFilterBtn');
+                const filter = document.querySelector('.product-filter');
+
+                toggleBtn.addEventListener('click', () => {
+                    filter.classList.toggle('show');
+                    toggleBtn.textContent = filter.classList.contains('show') ? 'Hide Filter' : 'Show Filter';
+                });
             </script>
         </div>
     </div>

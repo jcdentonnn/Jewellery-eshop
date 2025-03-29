@@ -37,11 +37,11 @@
 
         <div class="purchase-card">
             <div class="elements-row">
-                <img class="purchase-img" src="/images/img.png" alt="purchase-img">
+                <img class="purchase-img" src="/images/ring12.png" alt="White Gold Topaz Ring.AI generated.">
 
                 <div class="purchase-details">
                     <div class="purchase-title">
-                        <h3>Yellow gold topaz ring</h3>
+                        <h3>White gold topaz ring</h3>
                         <input type="checkbox" class="purchase-checkbox" />
                     </div>
                     <div class="purchase-meta-row">
@@ -58,7 +58,9 @@
             </div>
         </div>
 
-        <a href="{{route('return-confirmation')}}"><button class="more-button">CONFIRM RETURNING</button></a>
+        <div class="return-confirm">
+            <a href="{{route('return-confirmation')}}"><button class="more-button">CONFIRM RETURNING</button></a>
+        </div>
 
     </div>
 

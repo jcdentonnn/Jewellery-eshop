@@ -20,12 +20,15 @@
     <div class="main-container">
         <!--Product showcase-->
         <div class="product-showcase">
-            <img id="product-image-big" src="/images/titleDiamond.png" alt="Diamonds">
+            <img class="product-image-big" src="/images/titleDiamond.png" alt="Diamonds">
             <div class="product-info">
                 <h2>Diamonds</h2>
                 <p>The hardest naturally occurring substance known, suitable for expressing everlasting love and affection</p>
             </div>
         </div>
+
+        <!--Tlacitko pre zobrazenie/skrytie filtra-->
+        <button id="turnFilterBtn" class="turn-filter-btn">Show Filter</button>
 
         <div class="products">
             <!--Filter-->
@@ -60,10 +63,14 @@
             <div class="product-container" id="productList"></div>
             <script>
                 const baseProducts = [
-                    { img: "img.png", name: "EARRINGS", info: "Info about the earrings" },
-                    { img: "img.png", name: "RING", info: "Info about the ring" },
-                    { img: "img.png", name: "NECKLACE", info: "Info about the necklace" },
-                    { img: "img.png", name: "CUFFLINKS", info: "Info about the necklace" }
+                    { img: "diamondring1.png", name: "DIAMOND RING", info: "2-carat diamond ring with 10 0.5-carat diamonds in white gold" },
+                    { img: "diamondring2.png", name: "DIAMOND RING", info: "2.5-carat diamond ring in platinum" },
+                    { img: "earing3.png", name: "DIAMOND EARRINGS", info: "Diamond earrings in white gold" },
+                    { img: "ring7.png", name: "SAPPHIRE WHITE GOLD RING WITH DIAMONDS", info: "4-carat sapphire ring with 20 0.5-carat diamonds in white gold with engraving" },
+                    { img: "earringsG-w1.png", name: "SAPPHIRE WHITE GOLD EARRINGS WITH DIAMONDS", info: "5-carat sapphite earrings with 15 0.5-carat diamonds in white gold" },
+                    { img: "ring8.png", name: "DIAMOND RING", info: "1-carat diamond ring in platinum" },
+                    { img: "diamondring3.png", name: "DIAMOND RING", info: "3-carat diamond ring with in white gold" },
+                    { img: "diamondring4.png", name: "DIAMOND RING", info: "3-carat diamond ring with in platinum" }
                 ];
 
                 function prodListGenerate(maxProducts = 20) {
@@ -74,10 +81,15 @@
                         const product = baseProducts[i % baseProducts.length];
                         productHTML += `
                         <div class="product-card">
-                            <img src="/images/${product.img}" alt="${product.name}">
-                            <h4 class="prod-name-card">${product.name} ${i + 1}</h4>
-                            <p class="prod-info-card">${product.info}</p>
-                            <button class="prod-button" type="button">Add to Bag</button>
+                            <div class="product-img">
+                                <img src="/images/${product.img}" alt="${product.name}">
+                                <h4 class="prod-name-card">${product.name}</h4>
+                                <p class="prod-info-card">${product.info}</p>
+                            </div>
+                            <div class="purchase">
+                                <span class="prod-price-card">999.99€</span>
+                                <button class="prod-button" type="button">Add to Bag</button>
+                            </div>
                         </div>
                     `;
                     }
@@ -85,6 +97,15 @@
                     container.innerHTML = productHTML;
                 }
                 prodListGenerate(20);
+
+                //schovanie a ukazanie filtru pri @media
+                const toggleBtn = document.getElementById('turnFilterBtn');
+                const filter = document.querySelector('.product-filter');
+
+                toggleBtn.addEventListener('click', () => {
+                    filter.classList.toggle('show');
+                    toggleBtn.textContent = filter.classList.contains('show') ? 'Hide Filter' : 'Show Filter';
+                });
             </script>
         </div>
     </div>

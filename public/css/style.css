@@ -346,6 +346,10 @@ html, body {
 /*---------------------------------Shopping Cart -----------------------------------*/
 /*----------------------------------------------------------------------------------*/
 
+.checkout-container {
+    font-family: 'Julius Sans One', sans-serif;
+}
+
 .cart-container {
     padding: 20px;
     font-family: 'Julius Sans One', sans-serif;
@@ -426,13 +430,13 @@ html, body {
     background-color: #003d21;
     color: white;
     padding: 10px 20px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
     width: 200px;
-    margin-top: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: -10px;
+    margin: 25px auto -10px;
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 200;
+    letter-spacing: 0.3em;
     display: block;
     border: none;
 }
@@ -779,6 +783,8 @@ input[type="radio"] {
     border-radius: 0;
     width: 100%;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
 }
 
 .address-billing-container button {
@@ -791,6 +797,8 @@ input[type="radio"] {
     width: 60%;
     cursor: pointer;
     border-radius: 0;
+    font-family: 'Julius Sans One', sans-serif;
+    letter-spacing: 0.2rem;
 }
 
 .address-billing-container button:hover {
@@ -813,7 +821,7 @@ input[type="radio"] {
 
 
 
-/*--------------------------------user account--------------------------------------*/
+/*--------------------------------USER ACCOUNT--------------------------------------*/
 /*----------------------------------------------------------------------------------*/
 
 .content-container {
@@ -924,21 +932,11 @@ hr {
 /*--------------------------------------------------------------------*/
 
 
-
-/*-------------------------------------------------------------------------*/
-
-
-
-
-
-
-
 /* Main Content */
 .main-container {
     display: block;
-    padding: 20px;
-    max-width: 90%;
-    margin: auto;
+    max-width: 100%;
+    margin: 3vh 5vh 5vh 5vh;
     font-family: "Poppins", sans-serif;
 }
 
@@ -951,17 +949,17 @@ hr {
 .product-showcase {
     width: 100%;
     display: flex;
-    padding-bottom: 25px;
+    padding: 0 0 1rem 0;
 }
 
-#product-image-big {
+.product-image-big {
     width: 50%;
     padding-top: 3vh;
 }
 
 .product-info {
     width: 50%;
-    padding: 50px;
+    padding: 10vw 0 0 3vh;
     font-family: "Poppins", sans-serif;
     font-weight: 200;
 }
@@ -1008,12 +1006,31 @@ hr {
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-card img {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
+}
+
+.product-img {
+    flex-grow: 1;
+    p {
+        min-height: 4rem;
+        margin:0;
+    }
+    h4 {
+        min-height: 2rem;
+    }
+}
+
+.purchase span {
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
 
@@ -1065,20 +1082,101 @@ a {
     visibility: visible;
 }
 
-
-/* ---User profile--- */
-.purchases-container {
-    max-width: 80%;
-    margin: 2rem auto;
-    padding: 1rem;
+.turn-filter-btn {
+    visibility: hidden;
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background-color: #8fa293;
+    color: white;
+    border: none;
+    cursor: pointer;
     font-family: 'Julius Sans One', sans-serif;
 }
 
+@media (max-width: 800px) {
+    .product-showcase{
+        flex-direction: column;
+
+        img {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .product-info {
+        padding: 0;
+
+        h2 {
+            font-size: 1.5rem;
+        }
+        p {
+            font-size: 0.9rem;
+        }
+    }
+
+    .product-filter {
+        display: none;
+    }
+
+    .turn-filter-btn {
+        visibility: visible;
+    }
+
+    .product-filter.show {
+        display: block;
+        width: fit-content;
+        margin-bottom: 4vh;
+        p {
+            font-size: 0.8rem;
+        }
+    }
+
+    .product-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .product-card {
+        padding: 4vh 0 9vh 0;
+        img {
+            width: 50vw;
+        }
+    }
+
+    .product-img {
+        flex-grow: 1;
+        p {
+            min-height: 1.5rem;
+            margin:5vh;
+            font-size: 0.9rem;
+        }
+        h4 {
+            min-height: 1.5rem;
+            margin:5vh;
+            font-size: 1.1rem;
+        }
+    }
+
+    .prod-button {
+        padding: 1.5vh 1.5vh;
+        width: 70%;
+        font-size: 1rem;
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*---------------------------USER PAGE---------------------------------*/
+.purchases-container {
+    max-width: 90%;
+    margin: 3rem 5rem 0 5rem;
+    font-family: 'Julius Sans One', sans-serif;
+}
 
 .user-header {
     max-width: 90%;
-    margin: 2rem 1rem auto;
-    padding: 1rem;
+    margin: 3rem 5rem 0 5rem;
     font-family: 'Julius Sans One', sans-serif;
 }
 
@@ -1129,15 +1227,15 @@ a {
     align-items: center;
     background-color: #f9f9f9;
     flex-wrap: wrap;
-}
-
-#purchase-card {
-    padding: 1rem;
-    margin-bottom: 2.5rem;
     h2 {
         font-size: 1.3rem;
         font-weight: bold;
+        letter-spacing: 0.2em;
         margin: 0;
+    }
+    label {
+        font-size: 0.8rem;
+        font-style: italic;
     }
 }
 
@@ -1217,12 +1315,16 @@ a {
     font-family: 'Julius Sans One', sans-serif;
     font-weight: 400;
     letter-spacing: 0.05em;
+    margin-left: 2.5rem;
 }
 
 .more-button:hover {
     background-color: #444;
 }
 
+
+/*-----------------------------------------------------------------------------------------*/
+/*------------------------------- WISHLIST + MORE-PURCHASE-INFO ---------------------------*/
 .purchase-img {
     width: 13%;
     height: 13%;
@@ -1243,7 +1345,6 @@ a {
 
 .purchase-title h3 {
     font-size: 1.3rem;
-    margin-top: 2.7rem;
     font-family: 'Julius Sans One', sans-serif;
 }
 
@@ -1259,30 +1360,83 @@ a {
     justify-content: space-between;
     align-items: center;
     font-family: 'Julius Sans One', sans-serif;
-    margin-top: 0.5rem;
 }
 
 .purchase-number {
-    margin-right: 1rem;
+    margin-right: 1.5rem;
 }
 
 /* responzivita */
 @media (max-width: 800px) {
+    .purchases-container, .user-header{
+        margin: 1rem 0 0 0;
+        width: 100%;
+    }
+
     .purchase-card {
         flex-direction: column;
         align-items: flex-start;
+
+        h3 {
+            font-size: 1rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+        }
+
+        p, span {
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        img {
+            width: 30%;
+            height: auto;
+        }
+
+        .purchase-text h3{
+            margin: 0;
+        }
+    }
+
+    .user-name{
+        h1 {
+            font-size: 1.5rem;
+        }
+        p {
+            font-size: 0.9rem;
+        }
+    }
+
+    .purchase-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 0 0 1rem;
+    }
+
+    .purchase-actions{
+        justify-content: center;
     }
 
     .more-button {
-        margin-top: 1rem;
-        width: 100%;
+        width: 70%;
+        margin: 1rem 0 0 1rem;
 
     }
 
-    .purchase-meta {
-        margin-top: 0.5rem;
+    #logout {
+        font-size: 0.8rem;
     }
-    /*test*/
+
+    .return-confirm {
+        display: flex;
+        justify-content: center;
+        button {
+            width: 100%;
+        }
+    }
 }
 
 
@@ -1339,6 +1493,8 @@ a {
 
 
 
+
+
 /*---------------------------CAROUSEL-----------------------------*/
 /*----------------------------------------------------------------*/
 
@@ -1346,7 +1502,7 @@ a {
     padding-top: 5vh;
     width: 95%;
     overflow: hidden;
-    height: 60vh;
+    height: 35vw;
     margin: 0 auto;
     position: relative;
 }
@@ -1386,7 +1542,7 @@ a {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 3.5vh;
+    margin: 2vw 0 2vw 0;
 }
 
 #carousel-continue {
@@ -1411,7 +1567,7 @@ a {
 
 
 /*--------------------------------------------------------------------*/
-/*---------------------------LANDING PAGE-----------------------------*/
+/*---------------------------LANDING PAGE - HOMEPAGE-----------------------------*/
 .landing-page-img {
     width: 95%;
     margin: 0 auto;
@@ -1570,4 +1726,18 @@ a {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+/* responzivita */
+@media (max-width: 800px) {
+    .return-container {
+        flex: 0;
+        margin: 3rem;
+        h2 {
+            font-size: 1.2rem;
+        }
+        p {
+            font-size: 0.9rem;
+        }
+    }
 }
