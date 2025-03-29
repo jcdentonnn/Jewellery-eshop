@@ -15,13 +15,24 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
     background-color: #f8f8f8;
-    padding-top: 150px; /*temp pridane pre hiding header */
+    padding: 150px 0 0; /* 150px pre hiding header */
 }
 
+html, body {
+    height: 100%;
+    margin:0;
+    padding: 0;
+    scroll-behavior: smooth; /* Pri onClick - smooth scroll*/
+}
 
-
+/* Wrapper pre content body */
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 130px;
+}
 
 /*--------------------------------------------------------------*/
 /*---------------------------HEADER-----------------------------*/
@@ -42,6 +53,7 @@ body {
     background: white;
     transition: transform 0.3s ease;
     z-index: 1000;
+    max-height: 155px;
 }
 
 .header-wr.hide {
@@ -174,7 +186,7 @@ body {
     margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .left-links {
         display: flex;
         flex-direction: column;
@@ -772,13 +784,15 @@ hr {
 }
 
 #product-image-big {
-    height: 55vh;
+    width: 50%;
     padding-top: 3vh;
 }
 
 .product-info {
     width: 50%;
     padding: 50px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
 }
 
 .products {
@@ -799,8 +813,13 @@ hr {
 
 .product-filter h3 {
     font-size: 1rem;
-    margin-bottom: 20px;
-    font-family: "Poppins", sans-serif;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.product-filter p {
+    font-size: 0.75rem;
+    margin-bottom: 10px;
 }
 
 .product-container {
@@ -1077,7 +1096,7 @@ a {
 }
 
 /* responzivita */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     .purchase-card {
         flex-direction: column;
         align-items: flex-start;
@@ -1131,7 +1150,7 @@ a {
     right: 5%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .footer-bar {
         flex-direction: column;
         text-align: center;
@@ -1153,27 +1172,29 @@ a {
 /*----------------------------------------------------------------*/
 
 .carousel {
-    width: 100%;
+    padding-top: 5vh;
+    width: 95%;
     overflow: hidden;
-    max-width: 1200px;
+    height: 60vh;
     margin: 0 auto;
     position: relative;
 }
 
 .slide-images-carousel {
     display: flex;
-    gap: 20px;
+    gap: 15px;
+    height: 60vh;
     transition: transform 0.5s ease-in-out;
     will-change: transform;
 }
 
 .img-slider {
-    aspect-ratio: 3 / 4;
-    flex: 0 0 450px;
+    aspect-ratio: 16 / 9;
+    flex: 0 0 350px;
     border-radius: 12px;
     opacity: 0.5;
-    transform: scale(0.9);
-    transition: 0.5s;
+    transform: scale(0.85);
+    transition: transform 0.5s, opacity 0.5s;
 }
 
 .img-slider img {
@@ -1188,20 +1209,8 @@ a {
     opacity: 1;
 }
 
-/* responzivita */
-@media (max-width: 768px) {
-    .img-slider {
-        max-width: 250px;
-    }
-}
 
-@media (max-width: 480px) {
-    .img-slider {
-        max-width: 180px;
-    }
-}
-
-/* Button pod carousel */
+/* Button '+Explore' pod carousel */
 .carousel-btn {
     width: 100%;
     display: flex;
@@ -1233,16 +1242,16 @@ a {
 /*--------------------------------------------------------------------*/
 /*---------------------------LANDING PAGE-----------------------------*/
 .landing-page-img {
-    width: 100%;
+    width: 95%;
+    margin: 0 auto;
     padding-top: 3vh;
 }
 
 #landing-page-img {
     width: 100%;
-    height: 75vh;
+    height: 70vh;
     object-fit: cover;
     display: block;
-    margin: 0 auto;
 }
 
 #product-info-landing {
@@ -1281,30 +1290,113 @@ a {
         width: 100%;
         object-fit: cover;
         display: block;
-        padding-bottom: 1rem;
+        padding-bottom: 1vh;
+        max-width: 100%;
     }
     h3 {
         font-size: 1.5rem;
         font-family: 'Julius Sans One', sans-serif;
-        margin: 0;
     }
     p {
         font-size: 1.1rem;
         font-family: 'Julius Sans One', sans-serif;
-        margin: 0.6rem 0;
     }
 }
 
-.product p, h3 {
-    margin: 0.5rem 0;
-}
-
 .product h3:hover {
-    color: #0a3622;
+    color: #0f5132;
 }
 
 .product img:hover {
     opacity: 0.85;
     transition: 0.3s;
     transform: translate3d(0, -5px, 0);
+    cursor: pointer;
+}
+
+.product-text {
+    padding: 0;
+    max-width: 700px;
+}
+
+/* responzivita - HOMEPAGE: CAROUSEL, LANDING PAGE */
+@media (max-width: 800px) {
+    .carousel, .slide-images-carousel {
+        height: 65vh;
+        padding-bottom: 0;
+    }
+    .img-slider {
+        aspect-ratio: 4 / 3;
+    }
+
+    #carousel-continue {
+        font-size: 1rem;
+    }
+
+    #landing-page-img {
+        height: 45vh;
+    }
+
+    #product-info-landing {
+        padding: 2vh 0 0 0;
+    }
+
+    #product-info-landing h1 {
+        font-size: 1.5rem;
+    }
+
+    #product-info-landing p {
+        font-size: 1rem;
+    }
+
+    .various-prod h1{
+        font-size: 1.5rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    .products {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product {
+        padding: 3vh;
+        img {
+            max-width: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+        h3 {
+            font-size: 1.2rem;
+        }
+        p{
+            font-size: 0.9rem;
+        }
+    }
+
+    .product-text {
+        text-align: center;
+        padding: 0;
+    }
+}
+
+
+
+/* ---------------------------------------------------------------------------*/
+/* ---------------------------RETURN CONFIRMATION PAGE-----------------------------*/
+
+.return-container {
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 200;
+    letter-spacing: 0.3em;
+    flex: 1;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
