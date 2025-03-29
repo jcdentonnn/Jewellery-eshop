@@ -22,12 +22,15 @@
     <div class="main-container">
         <!--Product showcase-->
         <div class="product-showcase">
-            <img id="product-image-big" src="/images/titleAccessories.png" alt="Accessories. AI generated.">
+            <img class="product-image-big" src="/images/titleAccessories.png" alt="Accessories. AI generated.">
             <div class="product-info">
                 <h2>Accessories</h2>
                 <p>Leather goods, scarves and sunglasses - perfect accessories</p>
             </div>
         </div>
+
+        <!--Tlacitko pre zobrazenie/skrytie filtra-->
+        <button id="turnFilterBtn" class="turn-filter-btn">Show Filter</button>
 
         <div class="products">
             <!--Filter-->
@@ -62,10 +65,11 @@
             <div class="product-container" id="productList"></div>
             <script>
                 const baseProducts = [
-                    { img: "img.png", name: "EARRINGS", info: "Info about the earrings" },
-                    { img: "img.png", name: "RING", info: "Info about the ring" },
-                    { img: "img.png", name: "NECKLACE", info: "Info about the necklace" },
-                    { img: "img.png", name: "CUFFLINKS", info: "Info about the necklace" }
+                    { img: "accessories1.png", name: "SUNGLASSES", info: "Stylish gold unisex sunglasses" },
+                    { img: "accessories2.png", name: "SILK SCARF", info: "Silk scarf that could be worn as a bandana or a bag accessory" },
+                    { img: "necklace1.png", name: "SILVER NECKLACE", info: "Necklace in 945 silver" },
+                    { img: "necklace2.png", name: "YELLOW GOLD NECKLACE", info: "Necklace in yellow 584 gold" },
+                    { img: "necklace3.png", name: "YELLOW GOLD NECKLACE", info: "Flower motif necklace in yellow 584 gold" }
                 ];
 
                 function prodListGenerate(maxProducts = 20) {
@@ -76,17 +80,31 @@
                         const product = baseProducts[i % baseProducts.length];
                         productHTML += `
                         <div class="product-card">
-                            <img src="/images/${product.img}" alt="${product.name}">
-                            <h4 class="prod-name-card">${product.name} ${i + 1}</h4>
-                            <p class="prod-info-card">${product.info}</p>
-                            <button class="prod-button" type="button">Add to Bag</button>
+                            <div class="product-img">
+                                <img src="/images/${product.img}" alt="${product.name}">
+                                <h4 class="prod-name-card">${product.name}</h4>
+                                <p class="prod-info-card">${product.info}</p>
+                            </div>
+                            <div class="purchase">
+                                <span class="prod-price-card">999.99€</span>
+                                <button class="prod-button" type="button">Add to Bag</button>
+                            </div>
                         </div>
                     `;
                     }
 
                     container.innerHTML = productHTML;
                 }
-                prodListGenerate(20);
+                prodListGenerate(5);
+
+                //schovanie a ukazanie filtru pri @media
+                const toggleBtn = document.getElementById('turnFilterBtn');
+                const filter = document.querySelector('.product-filter');
+
+                toggleBtn.addEventListener('click', () => {
+                    filter.classList.toggle('show');
+                    toggleBtn.textContent = filter.classList.contains('show') ? 'Hide Filter' : 'Show Filter';
+                });
             </script>
         </div>
     </div>

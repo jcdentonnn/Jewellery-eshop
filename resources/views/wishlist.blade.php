@@ -36,12 +36,12 @@
 
         <div class="purchase-card">
             <div class="elements-row">
-                <img class="purchase-img" src="/images/img.png" alt="purchase-img">
+                <img class="purchase-img" src="/images/earing3.png" alt="White Gold Earrings. AI generated.">
 
                 <div class="purchase-details">
                     <div class="purchase-title">
-                        <h3>White gold earrings</h3>
-                        <input type="checkbox" class="purchase-checkbox" />
+                        <h3>White gold diamond earrings</h3>
+                        <label><input type="checkbox" class="purchase-checkbox"/> Select this item</label>
                     </div>
                     <div class="purchase-meta-row">
                         <p class="purchase-number">Ref. XYZ12345</p>
@@ -49,12 +49,9 @@
                     </div>
                 </div>
             </div>
-
-            <hr>
-
-            <div class="purchase-actions">
-                <button class="more-button">Purchase</button>
-            </div>
+        </div>
+        <div class="purchase-actions">
+            <button class="more-button">Purchase</button>
         </div>
     </div>
 
