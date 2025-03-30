@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Maximilian Bumbera">
     <title>Jewellery Store | Shopping Cart </title>
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Ponomar&display=swap" rel="stylesheet">
@@ -25,15 +25,14 @@
         <div class="top-bar">
             <div class="left-links">
                 <span>EN</span>
-                <a href="#">Contact Us</a>
-                <span>Services</span>
+                <a href="contactpage.html">Contact Us</a>
             </div>
             <a class="store-name" href="home.html">Jewellery store</a>
             <div class="icons">
-                <a href="user.html"><img class="icons-img" src="/public/images/user.png" alt="User"></a>
-                <a href="wishlist.html"><img class="icons-img" src="/public/images/fav.png"  alt="favourites"></a>
-                <img class="icons-img" src="/public/images/pin.png"  alt="location">
-                <a href="shoppingcart.html"><img class="icons-img" src="/public/images/shopCart.png"  alt="shopping-cart"></a>
+                <a href="user.html"><img class="icons-img" src="images/user.png" alt="User"></a>
+                <a href="wishlist.html"><img class="icons-img" src="images/fav.png"  alt="favourites"></a>
+                <img class="icons-img" src="images/pin.png"  alt="location">
+                <a href="shoppingcart.html"><img class="icons-img" src="images/shopCart.png"  alt="shopping-cart"></a>
             </div>
         </div>
 
@@ -53,7 +52,7 @@
                 <!--Search icon-->
                 <input type="checkbox" id="search-turn" hidden>
                 <label for="search-turn" class="search-icon">
-                    <img class="icons-img" src="/public/images/search.png" alt="Search Icon">
+                    <img class="icons-img" src="images/search.png" alt="Search Icon">
                 </label>
 
                 <!-- Search Bar -->
@@ -102,10 +101,10 @@
 
         <div class="cart-item">
             <div class="cart-item-info">
-                <img src="/public/images/img.png" alt="Product Image">
+                <img src="images/img.png" alt="Product Image">
                 <div class="product-name">Item name</div>
             </div>
-            <div class="product-price">1100€</div>
+            <div class="product-prices">1100€</div>
             <div class="cart-item-quantity">
                 <button>-</button>
                 <input type="text" value="1">
@@ -116,10 +115,10 @@
 
         <div class="cart-item">
             <div class="cart-item-info">
-                <img src="/public/images/img.png" alt="Product Image">
+                <img src="images/img.png" alt="Product Image">
                 <div class="product-name">Item name</div>
             </div>
-            <div class="product-price">550€</div>
+            <div class="product-prices">550€</div>
             <div class="cart-item-quantity">
                 <button>-</button>
                 <input type="text" value="3">
@@ -132,17 +131,16 @@
             <strong>Total: 2750€</strong>
         </div>
 
-        <a href="shippingmethod.html"> <button class="checkout-btn">CHECK OUT</button> </a>
+        <a href="{{ url('/shippingmethod') }}"> <button class="checkout-btn">CHECK OUT</button> </a>
 
     </div>
 
-
+    <!-- Footer Bar -->
+    <footer class="footer-bar">
+        <div class="left-text">SHOP IN: SLOVAKIA</div>
+        <div class="right-text">© 2025 Jewellery Store | All rights reserved</div>
+    </footer>
 </div>
 
-<!-- Footer Bar -->
-<footer class="footer-bar">
-    <div class="left-text">SHOP IN: SLOVAKIA</div>
-    <div class="right-text">© 2025 Jewellery Store | All rights reserved</div>
-</footer>
 </body>
 </html>
