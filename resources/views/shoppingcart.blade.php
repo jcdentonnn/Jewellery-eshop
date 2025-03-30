@@ -30,7 +30,7 @@
                     <img src="images/img.png" alt="Product Image">
                     <div class="product-name">Item name</div>
                 </div>
-                <div class="product-price">1100€</div>
+                <div class="product-prices">1100€</div>
                 <div class="cart-item-quantity">
                     <button>-</button>
                     <input type="text" value="1">
@@ -44,7 +44,7 @@
                     <img src="images/img.png" alt="Product Image">
                     <div class="product-name">Item name</div>
                 </div>
-                <div class="product-price">550€</div>
+                <div class="product-prices">550€</div>
                 <div class="cart-item-quantity">
                     <button>-</button>
                     <input type="text" value="3">
