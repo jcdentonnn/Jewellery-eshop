@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Dariia Drobna">
+    <title>Jewellery Store | Wishlist </title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Ponomar&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+<!--Header-->
+<div class="nav-wrapper">
+    <div class="header-wr">
+        <!--Nadpis 'Free Delivery'-->
+        <div class="delivery-bar">
+            EXPRESS DELIVERY ON EVERY ORDER UNTIL MAY 1ST
+        </div>
+
+
+        <div class="top-bar">
+            <div class="left-links">
+                <span>EN</span>
+                <a href="#">Contact Us</a>
+                <span>Services</span>
+            </div>
+            <a class="store-name" href="home.html">Jewellery store</a>
+            <div class="icons">
+                <a href="user.html"><img class="icons-img" src="/public/images/user.png" alt="User"></a>
+                <a href="wishlist.html"><img class="icons-img" src="/public/images/fav.png"  alt="favourites"></a>
+                <img class="icons-img" src="/public/images/pin.png"  alt="location">
+                <a href="shoppingcart.html"><img class="icons-img" src="/public/images/shopCart.png"  alt="shopping-cart"></a>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="engagement.html">Engagement</a></li>
+                <li><a href="diamonds.html">Diamonds</a></li>
+                <li><a href="precious_stone.html">Precious Stone</a></li>
+                <li><a href="watches.html">Watches</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="art_of_gift.html">Art of Gift</a></li>
+            </ul>
+
+            <div class="search-container">
+
+                <!--Search icon-->
+                <input type="checkbox" id="search-turn" hidden>
+                <label for="search-turn" class="search-icon">
+                    <img class="icons-img" src="/public/images/search.png" alt="Search Icon">
+                </label>
+
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button type="button">Find</button>
+                </div>
+            </div>
+        </nav>
+        <div class="nav-underline"></div>
+    </div>
+
+    <!--Scrolling chovanie pre header. Scroll dole - schova sa, scroll hode - objavi sa-->
+    <script>
+        let lastScroll = 0;
+        const header = document.querySelector('.header-wr');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 0) {
+                header.classList.remove('hide');
+                return;
+            }
+            if (currentScroll > lastScroll) {
+                header.classList.add('hide');
+            } else {
+                header.classList.remove('hide');
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</div>
+
+<!--Main content-->
+<div class="wrapper">
+
+    <!-- Hlavny container -->
+    <div class="main-container">
+
+        <!-- User header s menom, emailom a 'Log Out' tlacidlom -->
+        <div class="user-header">
+            <div class="user-name">
+                <h1>Hello, XYZ</h1>
+                <p>xyz@zyx.com</p>
+            </div>
+            <div class="user-logout-div"><button id="logout">Log Out</button> </div>
+        </div>
+        <hr>
+
+        <!-- Wishlist itemy -->
+        <div class="purchase-card">
+            <h2>Wishlist</h2>
+        </div>
+
+        <div class="purchase-card">
+            <div class="elements-row">
+                <img class="purchase-img" src="/public/images/earing3.png" alt="White Gold Earrings. AI generated.">
+
+                <div class="purchase-details">
+                    <div class="purchase-title">
+                        <h3>White gold diamond earrings</h3>
+                        <label><input type="checkbox" class="purchase-checkbox"/> Select this item</label>
+                    </div>
+                    <div class="purchase-meta-row">
+                        <p class="purchase-number">Ref. XYZ12345</p>
+                        <span class="price">1024,76 €</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="purchase-actions">
+            <button class="more-button">Purchase</button>
+        </div>
+    </div>
+
+    <!-- Footer Bar -->
+    <div class="footer-bar">
+        <div class="left-text">SHOP IN: SLOVAKIA</div>
+        <div class="right-text">© 2025 Jewellery Store | All rights reserved</div>
+    </div>
+
+
+</div>
+</body>
+
+</html>

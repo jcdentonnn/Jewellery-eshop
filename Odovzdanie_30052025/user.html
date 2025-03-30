@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Dariia Drobna">
+    <title>Jewellery Store | User Profile </title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Ponomar&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!--Header-->
+<div class="nav-wrapper">
+    <div class="header-wr">
+        <!--Nadpis 'Free Delivery'-->
+        <div class="delivery-bar">
+            EXPRESS DELIVERY ON EVERY ORDER UNTIL MAY 1ST
+        </div>
+
+
+        <div class="top-bar">
+            <div class="left-links">
+                <span>EN</span>
+                <a href="#">Contact Us</a>
+                <span>Services</span>
+            </div>
+            <a class="store-name" href="home.html">Jewellery store</a>
+            <div class="icons">
+                <a href="user.html"><img class="icons-img" src="/public/images/user.png" alt="User"></a>
+                <a href="wishlist.html"><img class="icons-img" src="/public/images/fav.png"  alt="favourites"></a>
+                <img class="icons-img" src="/public/images/pin.png"  alt="location">
+                <a href="shoppingcart.html"><img class="icons-img" src="/public/images/shopCart.png"  alt="shopping-cart"></a>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="engagement.html">Engagement</a></li>
+                <li><a href="diamonds.html">Diamonds</a></li>
+                <li><a href="precious_stone.html">Precious Stone</a></li>
+                <li><a href="watches.html">Watches</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="art_of_gift.html">Art of Gift</a></li>
+            </ul>
+
+            <div class="search-container">
+
+                <!--Search icon-->
+                <input type="checkbox" id="search-turn" hidden>
+                <label for="search-turn" class="search-icon">
+                    <img class="icons-img" src="/public/images/search.png" alt="Search Icon">
+                </label>
+
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button type="button">Find</button>
+                </div>
+            </div>
+        </nav>
+        <div class="nav-underline"></div>
+    </div>
+
+    <!--Scrolling chovanie pre header. Scroll dole - schova sa, scroll hode - objavi sa-->
+    <script>
+        let lastScroll = 0;
+        const header = document.querySelector('.header-wr');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 0) {
+                header.classList.remove('hide');
+                return;
+            }
+            if (currentScroll > lastScroll) {
+                header.classList.add('hide');
+            } else {
+                header.classList.remove('hide');
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</div>
+
+<!--Main content-->
+<div class="wrapper">
+    <!--Hlavny container-->
+    <div class="main-container">
+        <!--User header s menom, emailom a 'Log Out' tlacidlom-->
+        <div class="user-header">
+            <div class="user-name">
+                <h1>Hello, XYZ</h1>
+                <p>xyz@zyx.com</p>
+            </div>
+            <div class="user-logout-div"><button id="logout">Log Out</button> </div>
+        </div>
+        <hr>
+
+        <!--Objednavky Usera-->
+        <div class="purchases-container">
+            <div class="purchase-card" id="purchase-card"><h2>Your purchases</h2></div>
+            <div class="purchase-card">
+                <div class="purchase-info">
+                    <div class="purchase-text">
+                        <h3>Purchase 21/02/2025</h3>
+                        <p class="purchase-number">NO. XYZ12345</p>
+                    </div>
+                    <hr>
+                    <div class="purchase-meta">
+                        <span class="price">950,56 €</span>
+                        <span class="status finished">FINISHED</span>
+                    </div>
+                </div>
+                <div class="return-confirm">
+                    <a href="more-purchase-info.html"> <button class="more-button">MORE</button> </a>
+                </div>
+            </div>
+            <div class="purchase-card">
+                <div class="purchase-info">
+                    <div class="purchase-text">
+                        <h3>Purchase 12/03/2025</h3>
+                        <p class="purchase-number">NO. ABC6789</p>
+                    </div>
+                    <hr>
+                    <div class="purchase-meta">
+                        <span class="price">550,99 €</span>
+                        <span class="status processed">PROCESSED</span>
+                    </div>
+                </div>
+                <div class="return-confirm">
+                    <a href="more-purchase-info.html"> <button class="more-button">MORE</button> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bar -->
+    <div class="footer-bar">
+        <div class="left-text">SHOP IN: SLOVAKIA</div>
+        <div class="right-text">© 2025 Jewellery Store | All rights reserved</div>
+    </div>
+
+</div>
+</body>
+</html>
