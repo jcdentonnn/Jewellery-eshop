@@ -18,7 +18,7 @@
 
         <div class="content-container">
             <div class="user-info">
-                <div class="user-avatar">A</div> <!-- Centered 'A' in circle -->
+                <div class="user-avatar">A</div>
                 <div class="user-text">
                     <p class="user-name">Hello, Admin</p>
                     <p class="user-email">admin@xyz.com</p>
@@ -31,14 +31,13 @@
             <div class="purchases">
                 <h3>Admin Panel</h3>
                 <div class="admin-buttons">
-                    <button class="admin-btn">Add Product</button>
-                    <button class="admin-btn">Edit Product</button>
-                    <button class="admin-btn">Remove Product</button>
+                    <button class="admin-btn" onclick="location.href='/a_addproduct'">Add Product</button>
+                    <button class="admin-btn" onclick="location.href='/a_editproduct'">Edit Product</button>
+                    <button class="admin-btn" onclick="location.href='/a_removeproduct'">Remove Product</button>
                 </div>
             </div>
         </div>
 
-        <!--Footer-->
         @include('includes.footer')
     </div>
 </body>
