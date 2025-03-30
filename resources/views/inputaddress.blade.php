@@ -13,6 +13,7 @@
 <body>
     <div class="wrapper">
 
+        <!--Header-->
         @include('includes.header')
 
         <div class="address-billing-container">
@@ -42,6 +43,7 @@
             </form>
         </div>
 
+        <!--Footer-->
         @include('includes.footer')
     </div>
 </body>
