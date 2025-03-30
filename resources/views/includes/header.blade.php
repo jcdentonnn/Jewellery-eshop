@@ -11,7 +11,6 @@
         <div class="left-links">
             <span>EN</span>
             <a href="{{ route('contactpage') }}">Contact Us</a>
-            <span>Services</span>
         </div>
         <a class="store-name" href="{{ route('home') }}">Jewellery store</a>
         <div class="icons">
@@ -21,19 +20,6 @@
             <a href="{{ route('shoppingcart') }}"><img class="icons-img" src="/images/shopCart.png"  alt="shopping-cart"></a>
         </div>
     </div>
-<div class="top-bar">
-    <div class="left-links">
-        <span>EN</span>
-        <a href="{{ route('contactpage') }}">Contact Us</a>
-    </div>
-    <a class="store-name" href="{{ route('home') }}">Jewellery store</a>
-    <div class="icons">
-        <a href="{{ route('user') }}"><img class="icons-img" src="/images/user.png" alt="User"></a>
-        <a href="{{ route('wishlist') }}"><img class="icons-img" src="/images/fav.png"  alt="favourites"></a>
-        <img class="icons-img" src="/images/pin.png"  alt="location">
-        <a href="{{ route('shoppingcart') }}"><img class="icons-img" src="/images/shopCart.png"  alt="shopping-cart"></a>
-    </div>
-</div>
 
         <!-- Navigation Bar -->
         <nav class="navbar">

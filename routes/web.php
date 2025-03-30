@@ -41,15 +41,16 @@ Route::get('/adminpage', function () {
 
 Route::get('/a_addproduct', function () {
     return view('a_addproduct');
-});
+})->name('a_addproduct');
 
 Route::get('/a_editproduct', function () {
     return view('a_editproduct');
-});
+})->name('a_editproduct');
 
 Route::get('/a_removeproduct', function () {
     return view('a_removeproduct');
-});
+})->name('a_removeproduct');
+
 
 Route::get('/productinfo', function () {
     return view('productinfo');

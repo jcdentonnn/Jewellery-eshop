@@ -12,8 +12,10 @@
 
 <body>
 
+    @include('includes.header')
     <div class="wrapper">
-        @include('includes.header')
+
+
         <div class="content-container">
             <div class="user-info">
                 <div class="user-avatar">A</div> <!-- Centered 'A' in circle -->
@@ -27,17 +29,14 @@
             <hr>
 
             <div class="purchases">
-                <h3>Admin Panel</h3>
+                <h3>Remove product</h3>
                 <div class="admin-buttons">
-                    <button class="admin-btn" onclick="location.href='/a_addproduct'">Add Product</button>
-                    <button class="admin-btn" onclick="location.href='/a_editproduct'">Edit Product</button>
-                    <button class="admin-btn" onclick="location.href='/a_removeproduct'">Remove Product</button>
                 </div>
             </div>
         </div>
-        @include('includes.footer')
-    </div>
 
+    </div>
+    @include('includes.footer')
 </body>
 
 </html>
