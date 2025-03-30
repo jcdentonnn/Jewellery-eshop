@@ -72,6 +72,7 @@
                     { img: "diamondring3.png", name: "DIAMOND RING", info: "3-carat diamond ring with in white gold" },
                     { img: "diamondring4.png", name: "DIAMOND RING", info: "3-carat diamond ring with in platinum" }
                 ];
+                const productInfoLink = "{{ route('productinfo') }}";
 
                 function prodListGenerate(maxProducts = 20) {
                     const container = document.getElementById("productList");
@@ -80,17 +81,19 @@
                     for (let i = 0; i < maxProducts; i++) {
                         const product = baseProducts[i % baseProducts.length];
                         productHTML += `
-                        <div class="product-card">
-                            <div class="product-img">
-                                <img src="/images/${product.img}" alt="${product.name}">
-                                <h4 class="prod-name-card">${product.name}</h4>
-                                <p class="prod-info-card">${product.info}</p>
+                        <a href="${productInfoLink}">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="/images/${product.img}" alt="${product.name}">
+                                    <h4 class="prod-name-card">${product.name}</h4>
+                                    <p class="prod-info-card">${product.info}</p>
+                                </div>
+                                <div class="purchase">
+                                    <span class="prod-price-card">999.99€</span>
+                                    <button class="prod-button" type="button">Add to Bag</button>
+                                </div>
                             </div>
-                            <div class="purchase">
-                                <span class="prod-price-card">999.99€</span>
-                                <button class="prod-button" type="button">Add to Bag</button>
-                            </div>
-                        </div>
+                        </a>
                     `;
                     }
 

@@ -69,6 +69,7 @@
                     { img: "ring10.png", name: "EMERALD ROSE GOLD RING", info: "3.5-carat emerald ring in 585 rose gold" },
                     { img: "ring12.png", name: "SAPPHIRE PLATINUM RING", info: "Sapphire ring in platinum with engraving" },
                 ];
+                const productInfoLink = "{{ route('productinfo') }}";
 
                 function prodListGenerate(maxProducts = 20) {
                     const container = document.getElementById("productList");
@@ -77,17 +78,19 @@
                     for (let i = 0; i < maxProducts; i++) {
                         const product = baseProducts[i % baseProducts.length];
                         productHTML += `
-                        <div class="product-card">
-                            <div class="product-img">
-                                <img src="/images/${product.img}" alt="${product.name}">
-                                <h4 class="prod-name-card">${product.name}</h4>
-                                <p class="prod-info-card">${product.info}</p>
+                        <a href="${productInfoLink}">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="/images/${product.img}" alt="${product.name}">
+                                    <h4 class="prod-name-card">${product.name}</h4>
+                                    <p class="prod-info-card">${product.info}</p>
+                                </div>
+                                <div class="purchase">
+                                    <span class="prod-price-card">999.99€</span>
+                                    <button class="prod-button" type="button">Add to Bag</button>
+                                </div>
                             </div>
-                            <div class="purchase">
-                                <span class="prod-price-card">999.99€</span>
-                                <button class="prod-button" type="button">Add to Bag</button>
-                            </div>
-                        </div>
+                        </a>
                     `;
                     }
                     container.innerHTML = productHTML;

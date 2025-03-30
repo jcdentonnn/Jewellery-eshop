@@ -71,6 +71,7 @@
                     { img: "gift4.png", name: "BASEBALL CAP", info: "For casual outfit lovers" },
                     { img: "gift5.png", name: "JEWELLERY STORE BOOK", info: "Book about out store and its traditions" },
                 ];
+                const productInfoLink = "{{ route('productinfo') }}";
 
                 function prodListGenerate(maxProducts = 20) {
                     const container = document.getElementById("productList");
@@ -79,17 +80,19 @@
                     for (let i = 0; i < maxProducts; i++) {
                         const product = baseProducts[i % baseProducts.length];
                         productHTML += `
-                        <div class="product-card">
-                            <div class="product-img">
-                                <img src="/images/${product.img}" alt="${product.name}">
-                                <h4 class="prod-name-card">${product.name}</h4>
-                                <p class="prod-info-card">${product.info}</p>
+                        <a href="${productInfoLink}">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="/images/${product.img}" alt="${product.name}">
+                                    <h4 class="prod-name-card">${product.name}</h4>
+                                    <p class="prod-info-card">${product.info}</p>
+                                </div>
+                                <div class="purchase">
+                                    <span class="prod-price-card">999.99€</span>
+                                    <button class="prod-button" type="button">Add to Bag</button>
+                                </div>
                             </div>
-                            <div class="purchase">
-                                <span class="prod-price-card">999.99€</span>
-                                <button class="prod-button" type="button">Add to Bag</button>
-                            </div>
-                        </div>
+                        </a>
                     `;
                     }
 
