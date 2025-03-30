@@ -136,8 +136,73 @@ html, body {
     text-overflow: ellipsis;
 }
 
+/* Search bar */
+.nav-wrapper{
+    position: relative;
+}
 
+#search-turn {
+    display: none;
+}
 
+.search-icon {
+    cursor: pointer;
+}
+
+.search-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.search-bar {
+    display: none;
+    text-align: left;
+    transition: all 0.3s ease;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    width: 20vw;
+    margin-left: 2rem;
+    position: absolute;
+    top: 100%;
+    left: 85%;
+    transform: translateX(-50%);
+}
+
+#search-turn:checked ~ .search-bar { /*ukazanie search bar po kliknuti na search icon*/
+    display: block;
+}
+
+/*#search-turn:checked + .search-icon { !*schovanie search icon *!*/
+/*    display: none;*/
+/*}*/
+
+.search-bar input[type="text"] {
+    padding: 1vh;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    margin-bottom: 0.5rem;
+}
+
+.search-bar button {
+    padding: 1vh 1.5vh;
+    border: none;
+    background: #8FA293;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    margin-bottom: 0.5rem;
+}
+
+.search-bar button:hover {
+    background: #6d7a6f;
+}
+
+/* Navbar */
 .header ul {
     list-style: none;
     padding: 0;
@@ -151,12 +216,15 @@ html, body {
     font-size: 14px;
 }
 
-/* Navbar */
 .navbar {
     font-family: 'Julius Sans One', sans-serif;
     background-color: white;
-    padding: 1% 0;
+    padding: 1.5% 0 0 0;
+    margin: 0 auto;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .navbar ul {
