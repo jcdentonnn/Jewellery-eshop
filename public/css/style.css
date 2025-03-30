@@ -424,26 +424,25 @@ html, body {
     font-family: 'Julius Sans One', sans-serif;
     text-align: center;
     margin: 5% auto;
+    padding: 0 5%;
 }
-
 .contact-columns {
     display: flex;
-    justify-content: space-between;
-    gap: 2%;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
     margin-top: 25px;
 }
 
 .contact-column {
-    background-color: #E6F0E6;  /* Light Green */
-    padding: 30px;
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 20%;
-    height: 350px;
+    background-color: #E6F0E6;
+    padding: 30px 20px;
+    width: 280px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 4px;
 }
 
 .contact-column h3 {
@@ -467,6 +466,30 @@ html, body {
 .contact-column img {
     display: block;
     margin: 0 auto 15px auto;
+}
+
+@media (max-width: 768px) {
+    .contact-columns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-column {
+        width: 70%;
+        margin-bottom: 20px;
+    }
+
+    .contact-container h2 {
+        font-size: 18px;
+    }
+
+    .contact-column h3 {
+        font-size: 16px;
+    }
+
+    .contact-column p {
+        font-size: 13px;
+    }
 }
 
 /*----------------------------------------------------------------------------------*/
@@ -533,7 +556,7 @@ html, body {
     white-space: nowrap;
 }
 
-.product-price, .product-total {
+.product-prices, .product-total {
     font-size: 1.4rem;
     text-align: center;
 }
@@ -586,7 +609,7 @@ html, body {
 }
 
 .cart-item-info,
-.product-price,
+.product-prices,
 .cart-item-quantity,
 .product-total {
     display: flex;

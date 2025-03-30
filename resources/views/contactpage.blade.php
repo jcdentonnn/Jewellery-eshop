@@ -20,7 +20,7 @@
 
     <div class="contact-columns">
         <div class="contact-column">
-            <img src="path-to-placeholder-image.jpg" alt="Live Chat Icon" class="contact-icon">
+            <img src="/images/questionicon.png" alt="Live Chat Icon" class="contact-icon">
             <h3>Live Chat</h3>
             <p>Want a quick answer?</p>
             <p></p>
@@ -32,7 +32,7 @@
         </div>
 
         <div class="contact-column">
-            <img src="path-to-placeholder-image.jpg" alt="Call Us Icon" class="contact-icon">
+            <img src="/images/phoneicon.png" alt="Phone Icon" class="contact-icon">
             <h3>Call Us</h3>
             <p><strong>0907-000-000</strong></p>
             <p></p>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="contact-column">
-            <img src="path-to-placeholder-image.jpg" alt="Email Us Icon" class="contact-icon">
+            <img src="/images/emailicon.png" alt="Email Icon" class="contact-icon">
             <h3>Email Us</h3>
             <p>Submit an email and we will get back to you soon.</p>
             <p></p>
