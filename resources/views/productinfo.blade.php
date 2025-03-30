@@ -14,14 +14,16 @@
 
     @include('includes.header')
 
-    <div class="product-container">
+    <div class="product-containeros">
         <div class="product-gallery">
-            <div class="main-image"></div>
+            <div class="main-image">
+                <img src="/images/watch1.png" alt="Main Watch" id="mainImage">
+            </div>
             <div class="thumbnail-container">
-                <div class="thumbnail"></div>
-                <div class="thumbnail"></div>
-                <div class="thumbnail"></div>
-                <div class="thumbnail"></div>
+                <div class="thumbnail"><img src="/images/watch2.png" alt="Watch 2"></div>
+                <div class="thumbnail"><img src="/images/watch3.png" alt="Watch 3"></div>
+                <div class="thumbnail"><img src="/images/watch4.png" alt="Watch 4"></div>
+                <div class="thumbnail"><img src="/images/watch5.png" alt="Watch 5"></div>
             </div>
         </div>
         <div class="product-details">
@@ -51,8 +53,8 @@
         </div>
     </div>
 </div>
+@include('includes.footer')
 
 </body>
 
-@include('includes.footer')
 

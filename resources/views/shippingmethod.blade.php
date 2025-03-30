@@ -13,7 +13,6 @@
 <body>
 <div class="wrapper">
 
-    <!--Header-->
     @include('includes.header')
 
     <div class="checkout-container">
