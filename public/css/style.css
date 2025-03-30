@@ -141,6 +141,11 @@ html, body {
     position: relative;
 }
 
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
 #search-turn {
     display: none;
 }
@@ -161,20 +166,16 @@ html, body {
     font-family: "Poppins", sans-serif;
     font-weight: 200;
     width: 20vw;
-    margin-left: 2rem;
+    /*margin-left: 2rem;*/
     position: absolute;
     top: 100%;
-    left: 85%;
-    transform: translateX(-50%);
+    /*left: 0;*/
+    z-index: 9999;
 }
 
 #search-turn:checked ~ .search-bar { /*ukazanie search bar po kliknuti na search icon*/
     display: block;
 }
-
-/*#search-turn:checked + .search-icon { !*schovanie search icon *!*/
-/*    display: none;*/
-/*}*/
 
 .search-bar input[type="text"] {
     padding: 1vh;
@@ -254,7 +255,51 @@ html, body {
     margin: 0 auto;
 }
 
-@media (max-width: 800px) {
+/* responzivita */
+@media (max-width: 1600px) {
+    #search-turn:checked ~ .search-bar { /*ukazanie search bar po kliknuti na search icon*/
+        display: flex;
+        gap: 1rem;
+        left: auto;
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    .search-bar {
+        display: none;
+        width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .search-bar button {
+        margin-left: 0;
+        width: 25%;
+    }
+
+    .search-bar input[type="text"] {
+        box-sizing: border-box;
+    }
+
+}
+
+@media (max-width: 1000px) {
+    #search-turn:checked ~ .search-bar { /*ukazanie search bar po kliknuti na search icon*/
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        left: auto;
+        right: 2vw;
+    }
+
+    .search-bar {
+        display: none;
+        width: 100%;
+    }
+    .search-bar button {
+        margin-left: 0;
+        width: 100%;
+    }
+
     .left-links {
         display: flex;
         flex-direction: column;
@@ -279,6 +324,25 @@ html, body {
         width: 13px;
         height: 13px;
         margin-left: 6px;
+    }
+}
+
+@media (max-width: 800px) {
+    #search-turn:checked ~ .search-bar { /*ukazanie search bar po kliknuti na search icon*/
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        right: 1vw;
+        gap: 0.1rem;
+    }
+
+    .search-bar {
+        display: none;
+        width: 100%;
+    }
+    .search-bar button {
+        margin-left: 0;
+        width: 100%;
     }
 }
 

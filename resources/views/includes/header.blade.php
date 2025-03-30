@@ -48,13 +48,6 @@
                 </div>
             </div>
         </nav>
-
-        <!-- Search Bar -->
-{{--        <div class="search-bar">--}}
-{{--            <input type="text" placeholder="Search...">--}}
-{{--            <button type="button">Find</button>--}}
-{{--        </div>--}}
-
         <div class="nav-underline"></div>
     </div>
 
