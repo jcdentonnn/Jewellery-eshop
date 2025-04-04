@@ -22,10 +22,10 @@
             <!--User header s menom, emailom a 'Log Out' tlacidlom-->
             <div class="user-header">
                 <div class="user-name">
-                    <h1>Hello, XYZ</h1>
-                    <p>xyz@zyx.com</p>
+                    <h1>Hello, {{ $user->first_name }}</h1>
+                    <p>{{ $user->email }}</p>
                 </div>
-                <div class="user-logout-div"><button id="logout">Log Out</button> </div>
+                <a href="{{ route('logout') }}" class="logout-button">Log Out</a>
             </div>
             <hr>
 
