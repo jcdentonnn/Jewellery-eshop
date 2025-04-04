@@ -11,23 +11,40 @@
 </head>
 <body>
 
+<div class="wrapper">
+
 @include('includes.header')
 
 <div class="register-container">
     <h2>Register</h2>
-    <form>
+
+    @if (session('error'))
+        <p style="color: red">{{ session('error') }}</p>
+    @endif
+
+    @if ($errors->any())
+        <div style="color: red">
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+
+    <form method="POST" action="{{ url('/register') }}">
+        @csrf
         <p>Already have an account? <a href="{{ url('/loginpage') }}">Create account</a></p>
 
-        <input type="text" placeholder="First name" required>
-        <input type="text" placeholder="Last name" required>
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
+        <input type="text" name="first_name" placeholder="First name" required>
+        <input type="text" name="last_name" placeholder="Last name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
         <button type="submit">CREATE ACCOUNT</button>
     </form>
 </div>
 
-</body>
+</div>
 
 @include('includes.footer')
+</body>
 
 </html>

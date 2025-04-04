@@ -10,23 +10,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Ponomar&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="wrapper">
 
 @include('includes.header')
 
 <div class="register-container">
     <h2>Login</h2>
-    <form>
+    <form method="POST" action="{{ url('/login') }}">
+        @csrf
         <p>Don't have an account yet? <a href="{{ url('/registerpage') }}">Create account</a></p>
 
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
 
         <button type="submit">SIGN IN</button>
     </form>
 </div>
 
-</body>
 
 @include('includes.footer')
+</div>
+</body>
 
 </html>
