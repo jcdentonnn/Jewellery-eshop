@@ -16,6 +16,15 @@
 
 <div class="register-container">
     <h2>Login</h2>
+
+    @if ($errors->any())
+        <div style="color: red">
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+
     <form method="POST" action="{{ url('/login') }}">
         @csrf
         <p>Don't have an account yet? <a href="{{ url('/registerpage') }}">Create account</a></p>

@@ -60,56 +60,23 @@
             </div>
 
             <!--Zoznam produktov-->
-            <div class="product-container" id="productList"></div>
-            <script>
-                const baseProducts = [
-                    { img: "diamondring1.png", name: "DIAMOND RING", info: "2-carat diamond ring with 10 0.5-carat diamonds in white gold" },
-                    { img: "diamondring2.png", name: "DIAMOND RING", info: "2.5-carat diamond ring in platinum" },
-                    { img: "earing3.png", name: "DIAMOND EARRINGS", info: "Diamond earrings in white gold" },
-                    { img: "ring7.png", name: "SAPPHIRE WHITE GOLD RING WITH DIAMONDS", info: "4-carat sapphire ring with 20 0.5-carat diamonds in white gold with engraving" },
-                    { img: "earringsG-w1.png", name: "SAPPHIRE WHITE GOLD EARRINGS WITH DIAMONDS", info: "5-carat sapphite earrings with 15 0.5-carat diamonds in white gold" },
-                    { img: "ring8.png", name: "DIAMOND RING", info: "1-carat diamond ring in platinum" },
-                    { img: "diamondring3.png", name: "DIAMOND RING", info: "3-carat diamond ring with in white gold" },
-                    { img: "diamondring4.png", name: "DIAMOND RING", info: "3-carat diamond ring with in platinum" }
-                ];
-                const productInfoLink = "{{ route('productinfo') }}";
-
-                function prodListGenerate(maxProducts = 20) {
-                    const container = document.getElementById("productList");
-                    let productHTML = "";
-
-                    for (let i = 0; i < maxProducts; i++) {
-                        const product = baseProducts[i % baseProducts.length];
-                        productHTML += `
-                        <a href="${productInfoLink}">
-                            <div class="product-card">
-                                <div class="product-img">
-                                    <img src="/images/${product.img}" alt="${product.name}">
-                                    <h4 class="prod-name-card">${product.name}</h4>
-                                    <p class="prod-info-card">${product.info}</p>
-                                </div>
-                                <div class="purchase">
-                                    <span class="prod-price-card">999.99€</span>
-                                    <button class="prod-button" type="button">Add to Bag</button>
-                                </div>
+            <div class="product-container" id="productList">
+                @foreach ($products as $product)
+                    <a href="{{ route('productinfo', $product->id) }}">
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="/images/{{ $product->imagename }}" alt="{{ $product->productname }}">
+                                <h4 class="prod-name-card">{{ $product->productname }}</h4>
+                                <p class="prod-info-card">{{ $product->productdesc }}</p>
                             </div>
-                        </a>
-                    `;
-                    }
-
-                    container.innerHTML = productHTML;
-                }
-                prodListGenerate(20);
-
-                //schovanie a ukazanie filtru pri @media
-                const toggleBtn = document.getElementById('turnFilterBtn');
-                const filter = document.querySelector('.product-filter');
-
-                toggleBtn.addEventListener('click', () => {
-                    filter.classList.toggle('show');
-                    toggleBtn.textContent = filter.classList.contains('show') ? 'Hide Filter' : 'Show Filter';
-                });
-            </script>
+                            <div class="purchase">
+                                <span class="prod-price-card">{{ number_format($product->price, 2) }}€</span>
+                                <button class="prod-button" type="button">Add to Bag</button>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         </div>
     </div>
 

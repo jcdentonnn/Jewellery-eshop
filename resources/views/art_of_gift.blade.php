@@ -62,53 +62,23 @@
             </div>
 
             <!--Zoznam produktov-->
-            <div class="product-container" id="productList"></div>
-
-            <script>
-                const baseProducts = [
-                    { img: "gift1.png", name: "COFFEE MUG IN GREY LOGO COLOUR", info: "Coffee mug with our logo. Simple" },
-                    { img: "gift3.png", name: "COFFEE MUG IN ICONIC LOGO COLOUR", info: "Coffee mug with our logo. Simple" },
-                    { img: "gift4.png", name: "BASEBALL CAP", info: "For casual outfit lovers" },
-                    { img: "gift5.png", name: "JEWELLERY STORE BOOK", info: "Book about out store and its traditions" },
-                ];
-                const productInfoLink = "{{ route('productinfo') }}";
-
-                function prodListGenerate(maxProducts = 20) {
-                    const container = document.getElementById("productList");
-                    let productHTML = "";
-
-                    for (let i = 0; i < maxProducts; i++) {
-                        const product = baseProducts[i % baseProducts.length];
-                        productHTML += `
-                        <a href="${productInfoLink}">
-                            <div class="product-card">
-                                <div class="product-img">
-                                    <img src="/images/${product.img}" alt="${product.name}">
-                                    <h4 class="prod-name-card">${product.name}</h4>
-                                    <p class="prod-info-card">${product.info}</p>
-                                </div>
-                                <div class="purchase">
-                                    <span class="prod-price-card">999.99€</span>
-                                    <button class="prod-button" type="button">Add to Bag</button>
-                                </div>
+            <div class="product-container" id="productList">
+                @foreach ($products as $product)
+                    <a href="{{ route('productinfo', $product->id) }}">
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="/images/{{ $product->imagename }}" alt="{{ $product->productname }}">
+                                <h4 class="prod-name-card">{{ $product->productname }}</h4>
+                                <p class="prod-info-card">{{ $product->productdesc }}</p>
                             </div>
-                        </a>
-                    `;
-                    }
-
-                    container.innerHTML = productHTML;
-                }
-                prodListGenerate(4);
-
-                //schovanie a ukazanie filtru pri @media
-                const toggleBtn = document.getElementById('turnFilterBtn');
-                const filter = document.querySelector('.product-filter');
-
-                toggleBtn.addEventListener('click', () => {
-                    filter.classList.toggle('show');
-                    toggleBtn.textContent = filter.classList.contains('show') ? 'Hide Filter' : 'Show Filter';
-                });
-            </script>
+                            <div class="purchase">
+                                <span class="prod-price-card">{{ number_format($product->price, 2) }}€</span>
+                                <button class="prod-button" type="button">Add to Bag</button>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         </div>
     </div>
 

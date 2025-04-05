@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ProductController;
+
+
+//---------------------------------------------------------
 
 Route::get('/', function () {
     return view('home');
@@ -27,7 +31,6 @@ Route::get('/shoppingcart', function () {
 Route::get('/purchasedetails', function () {
     return view('purchasedetails');
 });
-
 
 Route::get('/shippingmethod', function () {
     return view('shippingmethod');
@@ -62,30 +65,51 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
+
+
+//---------------------------------------------------------
+// PRODUCTS
 Route::get('/engagement', function () {
     return view('engagement');
 })->name('engagement');
+Route::get('/engagement', [ProductController::class, 'engagement'])->name('engagement');
 
 Route::get('/watches', function () {
     return view('watches');
 })->name('watches');
+Route::get('/watches', [ProductController::class, 'watches'])->name('watches');
 
 Route::get('/diamonds', function () {
     return view('diamonds');
 })->name('diamonds');
+Route::get('/diamonds', [ProductController::class, 'diamonds'])->name('diamonds');
 
 Route::get('/precious_stone', function () {
     return view('precious_stone');
 })->name('precious_stone');
+Route::get('/precious_stone', [ProductController::class, 'precious_stone'])->name('precious_stone');
 
 Route::get('/accessories', function () {
     return view('accessories');
 })->name('accessories');
+Route::get('/accessories', [ProductController::class, 'accessories'])->name('accessories');
 
 Route::get('/art_of_gift', function () {
     return view('art_of_gift');
 })->name('art_of_gift');
+Route::get('/art_of_gift', [ProductController::class, 'art_of_gift'])->name('art_of_gift');
 
+
+// ProductList
+Route::get('/products', function () {
+    $products = DB::table('products')->get();
+    return view('products', compact('products'));
+})->name('productinfo');
+
+
+
+//---------------------------------------------------------
+// USER
 Route::get('/user', function () {
     if (session('user_id')) {
         $user = DB::table('users')->find(session('user_id'));
@@ -127,7 +151,7 @@ Route::post('/register', function (Request $request) {
 
     $exists = DB::table('users')->where('email', $email)->exists();
     if ($exists) {
-        return back()->withErrors(['email' => 'Tento email sa už používa!']);
+        return back()->withErrors(['email' => 'This email is already in use!']);
     }
 
     $userId = DB::table('users')->insertGetId([
@@ -156,6 +180,8 @@ Route::post('/register', function (Request $request) {
     return redirect('/user');
 });
 
+
+// Login
 Route::post('/login', function (Request $request) {
     $username = $request->input('email');
     $password = $request->input('password');
@@ -165,16 +191,25 @@ Route::post('/login', function (Request $request) {
         ->where('password', $password)
         ->first();
 
+    // prihlasenie admina - redirect na adminpage
+    //inak - na userpage
     if ($record) {
         session(['user_id' => $record->userid]);
+        if ($username === 'admin@jstore.com') {
+            return redirect('/adminpage');
+        }
         return redirect('/user');
     }
 
-    return redirect('/loginpage');
+    return redirect('/loginpage') ->withErrors(['login' => 'Invalid username or password.']);
 });
 
 
+// Logout
 Route::get('/logout', function () {
     session()->forget('user_id');
     return redirect('/loginpage');
 })->name('logout');
+
+
+

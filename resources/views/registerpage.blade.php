@@ -32,7 +32,7 @@
 
     <form method="POST" action="{{ url('/register') }}">
         @csrf
-        <p>Already have an account? <a href="{{ url('/loginpage') }}">Create account</a></p>
+        <p>Already have an account? <a href="{{ url('/loginpage') }}">Log in</a></p>
 
         <input type="text" name="first_name" placeholder="First name" required>
         <input type="text" name="last_name" placeholder="Last name" required>
