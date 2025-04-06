@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 
 //---------------------------------------------------------
@@ -57,9 +58,6 @@ Route::get('/a_removeproduct', function () {
 })->name('a_removeproduct');
 
 
-Route::get('/productinfo', function () {
-    return view('productinfo');
-})->name('productinfo');
 
 Route::get('/home', function () {
     return view('home');
@@ -100,11 +98,17 @@ Route::get('/art_of_gift', function () {
 Route::get('/art_of_gift', [ProductController::class, 'art_of_gift'])->name('art_of_gift');
 
 
+//Toto som zakomentoval, lebo mi to s tym nešlo, dal som rovno link na productinfo
+/*
 // ProductList
 Route::get('/products', function () {
     $products = DB::table('products')->get();
     return view('products', compact('products'));
 })->name('productinfo');
+*/
+//tato ju nahradila
+Route::get('/productinfo/{id}', [ProductController::class, 'show'])->name('productinfo');
+
 
 
 
@@ -136,80 +140,7 @@ Route::get('/return-confirmation', function () {
 })->name('return-confirmation');
 
 
-
-/*---------------------------------------------------------*/
-
-/*tato cast spravi ze ked da uzivatel register,
-(skontroluje či nie je  duplicitny email),
-prida riadok do users, logindata, shoppingcarts (vytvori prenho kosik)*/
-
-Route::post('/register', function (Request $request) {
-    $first_name = $request->input('first_name');
-    $last_name = $request->input('last_name');
-    $email = $request->input('email');
-    $password = $request->input('password');
-
-    $exists = DB::table('users')->where('email', $email)->exists();
-    if ($exists) {
-        return back()->withErrors(['email' => 'This email is already in use!']);
-    }
-
-    $userId = DB::table('users')->insertGetId([
-        'first_name' => $first_name,
-        'last_name' => $last_name,
-        'email' => $email,
-        'shoppingcartid' => null,
-        'isadmin' => false
-    ]);
-
-    $cartId = DB::table('shoppingcarts')->insertGetId([
-        'userid' => $userId
-    ]);
-
-    DB::table('users')->where('id', $userId)->update([
-        'shoppingcartid' => $cartId
-    ]);
-
-    DB::table('logindata')->insert([
-        'userid' => $userId,
-        'username' => $email,
-        'password' => $password
-    ]);
-
-    session(['user_id' => $userId]);
-    return redirect('/user');
-});
-
-
-// Login
-Route::post('/login', function (Request $request) {
-    $username = $request->input('email');
-    $password = $request->input('password');
-
-    $record = DB::table('logindata')
-        ->where('username', $username)
-        ->where('password', $password)
-        ->first();
-
-    // prihlasenie admina - redirect na adminpage
-    //inak - na userpage
-    if ($record) {
-        session(['user_id' => $record->userid]);
-        if ($username === 'admin@jstore.com') {
-            return redirect('/adminpage');
-        }
-        return redirect('/user');
-    }
-
-    return redirect('/loginpage') ->withErrors(['login' => 'Invalid username or password.']);
-});
-
-
-// Logout
-Route::get('/logout', function () {
-    session()->forget('user_id');
-    return redirect('/loginpage');
-})->name('logout');
-
-
-
+//LOGOUT, REGISTER, LOGIN
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');

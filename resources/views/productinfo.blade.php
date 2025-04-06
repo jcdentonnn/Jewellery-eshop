@@ -17,18 +17,18 @@
     <div class="product-containeros">
         <div class="product-gallery">
             <div class="main-image">
-                <img src="/images/watch1.png" alt="Main Watch" id="mainImage">
+                <img src="/images/{{ $product->imagename }}" alt="Main Watch" id="mainImage">
             </div>
             <div class="thumbnail-container">
-                <div class="thumbnail"><img src="/images/watch2.png" alt="Watch 2"></div>
-                <div class="thumbnail"><img src="/images/watch3.png" alt="Watch 3"></div>
-                <div class="thumbnail"><img src="/images/watch4.png" alt="Watch 4"></div>
-                <div class="thumbnail"><img src="/images/watch5.png" alt="Watch 5"></div>
+                <div class="thumbnail"><img src="/images/{{ $product->imagename }}" alt="Thumbnail 1"></div>
+                <div class="thumbnail"><img src="/images/{{ $product->imagename }}" alt="Thumbnail 2"></div>
+                <div class="thumbnail"><img src="/images/{{ $product->imagename }}" alt="Thumbnail 3"></div>
+                <div class="thumbnail"><img src="/images/{{ $product->imagename }}" alt="Thumbnail 4"></div>
             </div>
         </div>
         <div class="product-details">
-            <h1 class="product-title">Title of the product</h1>
-            <p class="product-description">Description of the product. I tried to make it longer for better visualisation of how it would look with longer text.</p>
+            <h1 class="product-title">{{ $product->productname }}</h1>
+            <p class="product-description">{{ $product->productdesc }}</p>
 
             <div class="product-options">
                 <select class="product-select">
@@ -42,7 +42,7 @@
                 </label>
             </div>
 
-            <div class="product-price">1500 EUR <span>incl. VAT</span></div>
+            <div class="product-price">{{ number_format($product->price, 2) }} EUR <span>incl. VAT</span></div>
             <button class="addtocartbutton">ADD TO BAG</button>
 
             <div class="product-links">

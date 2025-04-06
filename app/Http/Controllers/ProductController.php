@@ -2,9 +2,18 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+
+    public function show($id)
+    {
+        $product = DB::table('products')->find($id);
+
+        return view('productinfo', compact('product'));
+    }
+
     public function engagement()
     {
         $products = Product::whereIn('id', function($query) {
