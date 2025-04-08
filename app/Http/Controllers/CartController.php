@@ -48,11 +48,26 @@ class CartController extends Controller
     {
         $cartid = DB::table('shoppingcarts')->where('userid', $request->userid)->value('id');
 
-        DB::table('cartitems')
+        $currentAmount = DB::table('cartitems')
             ->where('cartid', $cartid)
             ->where('productid', $request->productid)
-            ->where('amount', '>', 1)
-            ->decrement('amount');
+            ->value('amount');
+
+        if ($currentAmount > 1)
+        {
+            DB::table('cartitems')
+                ->where('cartid', $cartid)
+                ->where('productid', $request->productid)
+                ->where('amount', '>', 1)
+                ->decrement('amount');
+        }
+        else
+        {
+            DB::table('cartitems')
+                ->where('cartid', $cartid)
+                ->where('productid', $request->productid)
+                ->delete();
+        }
 
         return redirect('/shoppingcart');
     }

@@ -51,17 +51,23 @@
             <div class="payment-options">
                 <label class="payment-option">
                     <input type="radio" name="payment" value="credit-card">
-                    <span class="option-title">Credit Card</span>
+                    <span class="option-content">
+                        <span class="option-title">Credit Card</span>
+                    </span>
                     <span class="option-price">0.00€</span>
                 </label>
                 <label class="payment-option">
                     <input type="radio" name="payment" value="paypal">
-                    <span class="option-title">PayPal</span>
+                    <span class="option-content">
+                        <span class="option-title">PayPal</span>
+                    </span>
                     <span class="option-price">0.99€</span>
                 </label>
                 <label class="payment-option">
                     <input type="radio" name="payment" value="cash-on-delivery">
-                    <span class="option-title">Cash on delivery</span>
+                    <span class="option-content">
+                        <span class="option-title">Cash on delivery</span>
+                    </span>
                     <span class="option-price">2.99€</span>
                 </label>
             </div>
