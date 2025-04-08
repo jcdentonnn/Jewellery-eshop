@@ -636,6 +636,20 @@ html, body {
     height: 100%;
 }
 
+
+.amountbox {
+    display: inline-block;
+    padding: 0;
+}
+
+/*toto pravidlo sluzi len pre kozmeticku upravu, aby neboli sipky navyse*/
+.amountbox input[type=number]::-webkit-inner-spin-button,
+.amountbox input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
 @media (max-width: 768px) {
     .cart-header-row {
         display: none;

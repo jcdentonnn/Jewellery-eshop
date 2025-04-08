@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 
 
 //---------------------------------------------------------
@@ -25,9 +26,10 @@ Route::get('/contactpage', function () {
     return view('contactpage');
 })->name('contactpage');
 
+/*
 Route::get('/shoppingcart', function () {
     return view('shoppingcart');
-});
+});*/
 
 Route::get('/purchasedetails', function () {
     return view('purchasedetails');
@@ -144,3 +146,13 @@ Route::get('/return-confirmation', function () {
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+
+
+//košik
+Route::get('/shoppingcart', [CartController::class, 'showCart'])->name('shoppingcart');
+Route::post('/shoppingcart/increase', [CartController::class, 'increment_product_amount']);
+Route::post('/shoppingcart/decrease', [CartController::class, 'decrement_product_amount']);
+
+//experimentacne zatial
+Route::post('/shoppingcart/update', [CartController::class, 'update_amount']);

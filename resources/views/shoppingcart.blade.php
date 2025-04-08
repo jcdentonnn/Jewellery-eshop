@@ -25,36 +25,61 @@
                 <div>Total</div>
             </div>
 
-            <div class="cart-item">
-                <div class="cart-item-info">
-                    <img src="images/img.png" alt="Product Image">
-                    <div class="product-name">Item name</div>
-                </div>
-                <div class="product-prices">1100€</div>
-                <div class="cart-item-quantity">
-                    <button>-</button>
-                    <input type="text" value="1">
-                    <button>+</button>
-                </div>
-                <div class="product-total">1100€</div>
-            </div>
+            @foreach ($items as $item)
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <img src="/images/{{ $item->imagename }}" alt="Product Image">
+                        <div class="product-name">{{ $item->productname }}</div>
+                    </div>
+                    <div class="product-prices">{{ number_format($item->price, 2) }}€</div>
+                    <div class="cart-item-quantity">
+                        <form method="POST" action="{{ url('/shoppingcart/decrease') }}">
+                            @csrf
+                            <input type="hidden" name="userid" value="{{ session('user_id') }}">
+                            <input type="hidden" name="productid" value="{{ $item->productid }}">
+                            <button type="submit">-</button>
+                        </form>
 
-            <div class="cart-item">
-                <div class="cart-item-info">
-                    <img src="images/img.png" alt="Product Image">
-                    <div class="product-name">Item name</div>
+                        <div class="amountbox">
+                            <form method="POST" action="{{ url('/shoppingcart/update') }}">
+                                @csrf
+                                <input type="hidden" name="userid" value="{{ session('user_id') }}">
+                                <input type="hidden" name="productid" value="{{ $item->productid }}">
+                                <input
+                                        type="number"
+                                        name="amount"
+                                        value="{{ $item->amount }}"
+                                        onchange="this.form.submit()"
+                                >
+                            </form>
+                        </div>
+
+                        <form method="POST" action="{{ url('/shoppingcart/increase') }}">
+                            @csrf
+                            <input type="hidden" name="userid" value="{{ session('user_id') }}">
+                            <input type="hidden" name="productid" value="{{ $item->productid }}">
+                            <button type="submit">+</button>
+                        </form>
+                    </div>
+                    <div class="product-total">
+                        {{ number_format($item->price * $item->amount, 2) }}€
+                    </div>
                 </div>
-                <div class="product-prices">550€</div>
-                <div class="cart-item-quantity">
-                    <button>-</button>
-                    <input type="text" value="3">
-                    <button>+</button>
-                </div>
-                <div class="product-total">1270€</div>
-            </div>
+            @endforeach
+
+            @if ($items->isEmpty())
+                <p style="text-align: center; margin-top: 30px;">Your cart is empty.</p>
+            @endif
+
+            @php
+                $total = 0;
+                foreach ($items as $item) {
+                    $total += $item->price * $item->amount;
+                }
+            @endphp
 
             <div class="total">
-                <strong>Total: 2750€</strong>
+                <strong>Total: {{ number_format($total, 2) }}€</strong>
             </div>
 
             <a href="{{ url('/shippingmethod') }}"> <button class="checkout-btn">CHECK OUT</button> </a>
