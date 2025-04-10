@@ -25,15 +25,15 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ url('/login') }}">
-        @csrf
-        <p>Don't have an account yet? <a href="{{ url('/registerpage') }}">Create account</a></p>
+        <form method="POST" action="{{ url('/login') }}">
+            @csrf
+            <p>Don't have an account yet? <a href="{{ url('/registerpage') }}">Create account</a></p>
 
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
+            <input type="email" name="email" class="login-input" placeholder="Email" required>
+            <input type="password" name="password" class="login-input" placeholder="Password" required>
 
-        <button type="submit">SIGN IN</button>
-    </form>
+            <button type="submit" class="signinbutton">SIGN IN</button>
+        </form>
 </div>
 
 
