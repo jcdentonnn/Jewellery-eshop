@@ -30,7 +30,7 @@ html, body {
 .wrapper{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 85vh;
     padding-top: 130px;
 }
 
@@ -913,8 +913,9 @@ input[type="radio"] {
 }
 
 .main-image {
-    width: 80%;
-    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -924,23 +925,28 @@ input[type="radio"] {
 .main-image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover; 
     display: block;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .thumbnail-container {
     display: flex;
     justify-content: center;
-    gap: 3%;
-    width: 80%;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .thumbnail {
-    width: 20%;
-    aspect-ratio: 1 / 1;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .thumbnail img {
@@ -948,10 +954,15 @@ input[type="radio"] {
     height: 100%;
     object-fit: cover;
     display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
+
 .product-details {
-    flex: 1;
+    flex: 0 0 40%;
+    max-width: 50%;
+    min-width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -963,7 +974,6 @@ input[type="radio"] {
     font-size: 28px;
     margin-top: 20px;
     margin-bottom: 20px;
-    white-space: nowrap;
 }
 
 .product-description {
@@ -1003,28 +1013,31 @@ input[type="radio"] {
     font-size: 14px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 850px) {
     .product-containeros {
         flex-direction: column;
-        max-width: 90%;
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 20px;
+        box-sizing: border-box;
     }
 
     .product-details {
         order: 1;
-        display: flex;
-        flex-direction: column;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
         align-items: center;
+        text-align: center;
     }
 
     .product-title,
     .product-description,
-    .product-price {
-        width: 80%;
-        text-align: center;
-    }
-
-    .addtocartbutton, .product-links {
-        width: 50%;
+    .product-price,
+    .addtocartbutton,
+    .product-select {
+        width: 100%;
         text-align: center;
     }
 
@@ -1035,24 +1048,20 @@ input[type="radio"] {
         width: 100%;
     }
 
-    .product-select {
-        width: 60%;
-        text-align: center;
-    }
-
     .product-options label {
         margin-top: 7px;
         text-align: center;
     }
 
     .product-links {
-        display: flex;
         font-size: 14px;
         flex-direction: row;
         justify-content: space-between;
-        gap: 10%;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         margin-top: 10px;
+        gap: 10px;
+        width: 100%;
+        max-width: 600px;
     }
 
     .product-gallery {
@@ -1065,26 +1074,28 @@ input[type="radio"] {
     }
 
     .main-image {
-        width: 60%;
-        max-width: 300px;
+        width: 100%;
+        max-width: 70%;
         aspect-ratio: 1 / 1;
         margin-bottom: 10px;
     }
 
     .thumbnail-container {
-        width: 80%;
+        width: 70%;
         display: flex;
         justify-content: space-between;
         margin-top: 10px;
+        gap: 2%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .thumbnail {
-        width: 18%;
-        max-width: 100px;
+        width: 23%;
         aspect-ratio: 1 / 1;
-        background: none;
     }
 }
+
 /*----------------------------------------------------------------------------------*/
 
 
@@ -1173,6 +1184,28 @@ input[type="radio"] {
 /*------------------------------------------------------------------------------------*/
 
 
+.order-confirmation {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 100px;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.order-confirmation h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.order-confirmation p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.order-confirmation .proceed-btn {
+    margin: 0 auto;
+    display: block;
+}
 
 
 /*--------------------------------ADMIN ACCOUNT--------------------------------------*/

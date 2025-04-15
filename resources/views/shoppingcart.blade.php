@@ -82,7 +82,11 @@
                 <strong>Total: {{ number_format($total, 2) }}€</strong>
             </div>
 
-            <a href="{{ url('/shippingmethod') }}"> <button class="checkout-btn">CHECK OUT</button> </a>
+            @if (!$items->isEmpty())
+                <a href="{{ url('/shippingmethod') }}">
+                    <button class="checkout-btn">CHECK OUT</button>
+                </a>
+            @endif
 
         </div>
 

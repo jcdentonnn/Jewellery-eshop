@@ -35,6 +35,7 @@ Route::get('/purchasedetails', function () {
     return view('purchasedetails');
 });
 
+
 Route::get('/shippingmethod', function () {
     return view('shippingmethod');
 });
@@ -153,6 +154,12 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/shoppingcart', [CartController::class, 'showCart'])->name('shoppingcart');
 Route::post('/shoppingcart/increase', [CartController::class, 'increment_product_amount']);
 Route::post('/shoppingcart/decrease', [CartController::class, 'decrement_product_amount']);
-
-//experimentacne zatial
 Route::post('/shoppingcart/update', [CartController::class, 'update_amount']);
+
+//košik:ulozenie info o objednavke (platba, adresa, dorucenie)
+Route::post('/save-address', [CartController::class, 'saveAddress']);
+Route::post('/save-shipping-payment', [CartController::class, 'saveMethod']);
+
+Route::get('/purchasecompleted', function () {
+    return view('/purchasecompleted');
+})->name('/purchasecompleted');

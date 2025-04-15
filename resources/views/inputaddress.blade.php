@@ -17,26 +17,27 @@
 
         <div class="address-billing-container">
             <h2>Billing Address</h2>
-            <form>
-                <input type="email" placeholder="Email Address *" required>
+            <form method="POST" action="{{ url('/save-address') }}">
+                @csrf
+                <input type="email" name="emailadress" placeholder="Email Address *" required>
 
                 <div class="form-row">
-                    <input type="text" placeholder="First name *" required>
-                    <input type="text" placeholder="Last name *" required>
+                    <input type="text" name="firstname" placeholder="First name *" required>
+                    <input type="text" name="lastname" placeholder="Last name *" required>
                 </div>
 
                 <div class="form-row">
-                    <input type="text" placeholder="Address Line 1 *" required>
-                    <input type="text" placeholder="Address Line 2">
+                    <input type="text" name="address1" placeholder="Address Line 1 *" required>
+                    <input type="text" name="address2" placeholder="Address Line 2">
                 </div>
 
                 <div class="form-row">
-                    <input type="text" placeholder="City *" required>
-                    <input type="text" placeholder="Zip code *" required>
+                    <input type="text" name="city" placeholder="City *" required>
+                    <input type="text" name="zipcode" placeholder="Zip code *" required>
                 </div>
 
-                <input type="text" placeholder="State *" required>
-                <input type="text" placeholder="Mobile Phone *" required>
+                <input type="text" name="state" placeholder="State *" required>
+                <input type="text" name="phonenumber" placeholder="Mobile Phone *" required>
 
                 <button type="submit">COMPLETE ORDER</button>
             </form>

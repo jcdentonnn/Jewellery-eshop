@@ -92,4 +92,73 @@ class CartController extends Controller
         }
         return redirect('/shoppingcart');
     }
+
+    public function saveMethod(Request $request)
+    {
+        $userId = session('user_id');
+
+        $cartId = DB::table('shoppingcarts')->where('userid', $userId)->value('id');
+
+        DB::table('shoppingcarts')
+            ->where('id', $cartId)
+            ->update([
+                'delivery' => $request->input('delivery'),
+                'payment' => $request->input('payment')
+            ]);
+
+        return redirect('/inputaddress');
+    }
+
+    public function saveAddress(Request $request)
+    {
+        $userId = session('user_id');
+
+        $cartId = DB::table('shoppingcarts')->where('userid', $userId)->value('id');
+
+        DB::table('shoppingcarts')->where('id', $cartId)->update([
+            'emailadress'  => $request->emailadress,
+            'firstname'    => $request->firstname,
+            'lastname'     => $request->lastname,
+            'address1'     => $request->address1,
+            'address2'     => $request->address2,
+            'city'         => $request->city,
+            'zipcode'      => $request->zipcode,
+            'state'        => $request->state,
+            'phonenumber'  => $request->phonenumber,
+        ]);
+
+        $cart = DB::table('shoppingcarts')->where('id', $cartId)->first();
+
+        $orderId = DB::table('orders')->insertGetId([
+            'userid'       => $cart->userid,
+            'payment'      => $cart->payment,
+            'delivery'     => $cart->delivery,
+            'emailadress'  => $request->emailadress,
+            'firstname'    => $request->firstname,
+            'lastname'     => $request->lastname,
+            'address1'     => $request->address1,
+            'address2'     => $request->address2,
+            'city'         => $request->city,
+            'zipcode'      => $request->zipcode,
+            'state'        => $request->state,
+            'phonenumber'  => $request->phonenumber,
+        ]);
+
+        $cartItems = DB::table('cartitems')->where('cartid', $cartId)->get();
+
+        foreach ($cartItems as $item) {
+            DB::table('orderitems')->insert([
+                'orderid'  => $orderId,
+                'productid'=> $item->productid,
+                'amount'   => $item->amount,
+                'type'     => $item->type
+            ]);
+        }
+
+        //objednavka sa skopirovala do orders, ale kosik je teraz teda prazdny
+        DB::table('cartitems')->where('cartid', $cartId)->delete();
+        DB::table('shoppingcarts')->where('id', $cartId)->delete();
+
+        return redirect('/purchasecompleted');
+    }
 }
