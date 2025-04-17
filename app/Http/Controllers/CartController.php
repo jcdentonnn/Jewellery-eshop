@@ -154,10 +154,23 @@ class CartController extends Controller
                 'type'     => $item->type
             ]);
         }
-
-        //objednavka sa skopirovala do orders, ale kosik je teraz teda prazdny
+        
+        //vyresetovanie kosika (zaznam je teraz v orders) uzivatel je pripraveny na novy nakup
         DB::table('cartitems')->where('cartid', $cartId)->delete();
-        DB::table('shoppingcarts')->where('id', $cartId)->delete();
+
+        DB::table('shoppingcarts')->where('id', $cartId)->update([
+            'payment'      => null,
+            'delivery'     => null,
+            'emailadress'  => null,
+            'firstname'    => null,
+            'lastname'     => null,
+            'address1'     => null,
+            'address2'     => null,
+            'city'         => null,
+            'zipcode'      => null,
+            'state'        => null,
+            'phonenumber'  => null,
+        ]);
 
         return redirect('/purchasecompleted');
     }
