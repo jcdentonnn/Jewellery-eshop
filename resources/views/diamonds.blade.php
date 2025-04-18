@@ -69,10 +69,15 @@
                                 <h4 class="prod-name-card">{{ $product->productname }}</h4>
                                 <p class="prod-info-card">{{ $product->productdesc }}</p>
                             </div>
-                            <div class="purchase">
-                                <span class="prod-price-card">{{ number_format($product->price, 2) }}€</span>
-                                <button class="prod-button" type="button">Add to Bag</button>
-                            </div>
+
+                            <!-- Tlacidlo na pridanie produktu do kosika -->
+                            <form action="{{ route('cart.add') }}" method="POST" style="display:inline">
+                                @csrf
+                                <input type="hidden" name="productid" value="{{ $product->id }}">
+                                <input type="hidden" name="type" value="{{ $product->type }}">
+                                <input type="hidden" name="amount"    value="1">
+                                <button class="prod-button" type="submit">Add to Bag</button>
+                            </form>
                         </div>
                     </a>
                 @endforeach

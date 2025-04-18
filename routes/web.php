@@ -143,21 +143,33 @@ Route::get('/return-confirmation', function () {
 })->name('return-confirmation');
 
 
-//LOGOUT, REGISTER, LOGIN
-Route::post('/register', [UserController::class, 'register']);
+//** REGISTER, LOGIN, LOGOUT **
+Route::post('/register', [UserController::class, 'register'])->name('register');
+
+Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
+
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 
-//košik
+//** košik **
 Route::get('/shoppingcart', [CartController::class, 'showCart'])->name('shoppingcart');
+
+//košik:pridanie produktu do kosika
+Route::post('/productinfo/add', [CartController::class, 'addProdToCart'])
+    ->name('cart.add');
+
 Route::post('/shoppingcart/increase', [CartController::class, 'increment_product_amount']);
+
 Route::post('/shoppingcart/decrease', [CartController::class, 'decrement_product_amount']);
+
 Route::post('/shoppingcart/update', [CartController::class, 'update_amount']);
+
 
 //košik:ulozenie info o objednavke (platba, adresa, dorucenie)
 Route::post('/save-address', [CartController::class, 'saveAddress']);
+
 Route::post('/save-shipping-payment', [CartController::class, 'saveMethod']);
 
 Route::get('/purchasecompleted', function () {

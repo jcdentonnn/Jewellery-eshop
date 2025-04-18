@@ -43,7 +43,15 @@
             </div>
 
             <div class="product-price">{{ number_format($product->price, 2) }} EUR <span>incl. VAT</span></div>
-            <button class="addtocartbutton">ADD TO BAG</button>
+
+            <!-- Tlacidlo na pridanie produktu do kosika -->
+            <form action="{{ route('cart.add') }}" method="POST" style="display:inline">
+                @csrf
+                <input type="hidden" name="productid" value="{{ $product->id }}">
+                <input type="hidden" name="type" value="{{ $product->type }}">
+                <input type="hidden" name="amount"    value="1">
+                <button class="addtocartbutton" type="submit">Add to Bag</button>
+            </form>
 
             <div class="product-links">
                 <a href="#">Find in stores</a>
