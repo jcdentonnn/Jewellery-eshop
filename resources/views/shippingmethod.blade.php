@@ -22,7 +22,7 @@
             <h2>Shipping method</h2>
             <div class="shipping-options">
                 <label class="shipping-option">
-                    <input type="radio" name="delivery" value="standard" required>
+                    <input type="radio" name="delivery" value="standard">
                     <div class="option-content">
                         <span class="option-title">Standard</span>
                         <span class="option-subtitle">6 to 8 business days</span>
@@ -52,7 +52,7 @@
             <h2>Payment method</h2>
             <div class="payment-options">
                 <label class="payment-option">
-                    <input type="radio" name="payment" value="credit-card" required>
+                    <input type="radio" name="payment" value="credit-card">
                     <span class="option-content">
                         <span class="option-title">Credit Card</span>
                     </span>
@@ -75,7 +75,6 @@
             </div>
         </div>
     </div>
-        <input type="hidden" name="itemsprice" value="{{ request('itemsprice') }}">
         <button type="submit" class="proceed-btn">PROCEED</button>
     </form>
 
