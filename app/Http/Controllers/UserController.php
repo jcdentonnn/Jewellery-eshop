@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
-{
+class UserController extends Controller {
+
+    /**
+     * Register funkcia pre registrovanie pouzivetelov
+     *
+     * @return \Illuminate\View\View
+     */
     public function register(Request $request)
     {
         /*tato cast spravi ze ked da uzivatel register,
@@ -49,6 +56,11 @@ class UserController extends Controller
         return redirect('/user');
     }
 
+    /**
+     * Login funkcia pre login pouzivetelov
+     *
+     * @return \Illuminate\View\View
+     */
     public function login(Request $request)
     {
         $username = $request->input('email');
@@ -70,9 +82,23 @@ class UserController extends Controller
         return redirect('/loginpage')->withErrors(['login' => 'Invalid username or password.']);
     }
 
+    /**
+     * Funkcia pre zobrazenie prihlasovacieho formulara
+     *
+     * @return \Illuminate\View\View
+     */
     public function logout()
     {
         session()->forget('user_id');
         return redirect('/loginpage');
+    }
+
+    /**
+     * Funkcia pre zobrazenie prihlasovacieho formulara
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showLoginForm(){
+        return view('loginpage');
     }
 }
