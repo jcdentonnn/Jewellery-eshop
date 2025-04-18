@@ -1164,6 +1164,19 @@ input[type="radio"] {
     background-color: #002815;
 }
 
+.totalprice {
+    margin-top: 20px;
+    padding: 1px;
+    border-top: 1px solid #ccc;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.totalprice p {
+    font-size: 17px;
+    margin-bottom: -10px;
+}
+
+
 @media (max-width: 800px) {
     .address-billing-container {
         width: 80%;

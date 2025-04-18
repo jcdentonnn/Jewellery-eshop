@@ -83,9 +83,10 @@
             </div>
 
             @if (!$items->isEmpty())
-                <a href="{{ url('/shippingmethod') }}">
-                    <button class="checkout-btn">CHECK OUT</button>
-                </a>
+                <form method="GET" action="{{ url('/shippingmethod') }}">
+                    <input type="hidden" name="itemsprice" value="{{ $total }}">
+                    <button type="submit" class="checkout-btn">CHECK OUT</button>
+                </form>
             @endif
 
         </div>
