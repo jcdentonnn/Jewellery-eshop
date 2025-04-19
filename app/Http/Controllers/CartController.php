@@ -10,19 +10,38 @@ class CartController extends Controller
 {
 
     /**
+     * Funkcia ziskava cartId pre prihlaseneho alebo neprihlaseneho uzivatela
+     * @return int|null
+     */
+    private function getCartId()
+    {
+        $userId = session('user_id');
+        $sessionId = session()->getId();
+
+        if ($userId == true) //ak je používateľ prihlásený
+        {
+            $cartId = DB::table('shoppingcarts')->where('userid', $userId)->value('id');
+            return $cartId;
+        }
+        else //ak nie je prihlásený, použijem sessionid
+        {
+           $session_cartId = DB::table('shoppingcarts')->where('sessionid', $sessionId)->value('id');
+           return $session_cartId;
+        }
+    }
+
+
+    /**
      * Ukazanie kosika (ulozene produkty) na zaklade user_id.
      *
      * @return \Illuminate\View\View
      */
     public function showCart()
     {
-        $user_id = session('user_id');
+        $cartId = $this->getCartId(); //zavola funkciu pre ziskanie správneho košíka (cez cartId)
 
-        if (!$user_id) {
-            return redirect('/loginpage');
-        }
-
-        $cartId = DB::table('shoppingcarts')->where('userid', $user_id)->value('id');
+        //collect je akoby $items = []
+        $items = collect();
 
         $items = DB::table('cartitems')
             ->where('cartid', $cartId)
@@ -36,7 +55,7 @@ class CartController extends Controller
             )
             ->get();
 
-        return view('shoppingcart', compact('items'));
+        return view('shoppingcart', ['items' => $items]);
     }
 
 
@@ -55,18 +74,17 @@ class CartController extends Controller
             'amount'=>'required|integer|min:1'
         ]);
 
-        //zistenie id usera a na zaklade neho najst shopping cart. Ak neexist - pridat novy riadok
-        $userid = session('user_id');
-        if (!$userid) {
-            return redirect('/loginpage');
-        }
+        $userId = session('user_id');
+        $sessionId = session()->getId();
 
-        $cartid= DB::table('shoppingcarts')->where('userid', $userid)->value('id');
+        $cartId = $this->getCartId(); //zavola funkciu pre ziskanie správneho košíka (cez cartId)
+
         //ak user nema shopping cart (napr. vymazava sa po zadani orderu), tak sa vytvori nova
-        if (! $cartid) {
-            $cartid = DB::table('shoppingcarts')
+        if (!$cartId) {
+            $cartId = DB::table('shoppingcarts')
                 ->insertGetId([
-                    'userid'    => $userid,
+                    'userid'    => $userId,
+                    'sessionid'  => $userId ? null : $sessionId,
                     'payment'    => '',
                     'delivery'   => '',
                     'emailadress'=> '',
@@ -83,20 +101,20 @@ class CartController extends Controller
 
         //aktualizacia produktov v tabulke 'shopping cart' (zvysenie alebo insertovanie)
         $isCart =DB::table('cartitems')
-            ->where('cartid', $cartid)
+            ->where('cartid', $cartId)
             ->where('productid', $prodData['productid'])
             ->where('type', $prodData['type'])
-            ->increment('amount', $prodData['amount']);
+            ->value('amount');
 
         if ($isCart){
             DB::table('cartitems')
-                ->where('cartid', $cartid)
+                ->where('cartid', $cartId)
                 ->where('productid', $prodData['productid'])
                 ->where('type', $prodData['type'])
                 ->increment('amount', $prodData['amount']);
         } else {
             DB::table('cartitems')->insert([
-                'cartid' => $cartid,
+                'cartid' => $cartId,
                 'productid' => $prodData['productid'],
                 'type' => $prodData['type'],
                 'amount' => $prodData['amount']
@@ -115,10 +133,10 @@ class CartController extends Controller
      */
     public function increment_product_amount(Request $request)
     {
-        $cartid = DB::table('shoppingcarts')->where('userid', $request->userid)->value('id');
+        $cartId = $this->getCartId(); //zavola funkciu pre ziskanie správneho košíka (cez cartId)
 
         DB::table('cartitems')
-            ->where('cartid', $cartid)
+            ->where('cartid', $cartId)
             ->where('productid', $request->productid)
             ->increment('amount');
 
@@ -134,17 +152,17 @@ class CartController extends Controller
      */
     public function decrement_product_amount(Request $request)
     {
-        $cartid = DB::table('shoppingcarts')->where('userid', $request->userid)->value('id');
+        $cartId = $this->getCartId(); //zavola funkciu pre ziskanie správneho košíka (cez cartId)
 
         $currentAmount = DB::table('cartitems')
-            ->where('cartid', $cartid)
+            ->where('cartid', $cartId)
             ->where('productid', $request->productid)
             ->value('amount');
 
         if ($currentAmount > 1)
         {
             DB::table('cartitems')
-                ->where('cartid', $cartid)
+                ->where('cartid', $cartId)
                 ->where('productid', $request->productid)
                 ->where('amount', '>', 1)
                 ->decrement('amount');
@@ -152,7 +170,7 @@ class CartController extends Controller
         else
         {
             DB::table('cartitems')
-                ->where('cartid', $cartid)
+                ->where('cartid', $cartId)
                 ->where('productid', $request->productid)
                 ->delete();
         }
@@ -169,24 +187,26 @@ class CartController extends Controller
      */
     public function update_amount(Request $request)
     {
-        $cartid = DB::table('shoppingcarts')->where('userid', $request->userid)->value('id');
+        $cartId = $this->getCartId(); //zavola funkciu pre ziskanie správneho košíka (cez cartId)
 
         if ($request->amount <= 0)
         {
             DB::table('cartitems')
-                ->where('cartid', $cartid)
+                ->where('cartid', $cartId)
                 ->where('productid', $request->productid)
                 ->delete();
         }
         else
         {
             DB::table('cartitems')
-                ->where('cartid', $cartid)
+                ->where('cartid', $cartId)
                 ->where('productid', $request->productid)
                 ->update(['amount' => $request->amount]);
         }
         return redirect('/shoppingcart');
     }
+
+
 
 
     /**
@@ -197,19 +217,20 @@ class CartController extends Controller
      */
     public function saveMethod(Request $request)
     {
-        $userId = session('user_id');
-
-        $cartId = DB::table('shoppingcarts')->where('userid', $userId)->value('id');
+        $cartId = $this->getCartId(); //zavola funkciu pre ziskanie správneho košíka (cez cartId)
 
         DB::table('shoppingcarts')
             ->where('id', $cartId)
             ->update([
                 'delivery' => $request->input('delivery'),
-                'payment' => $request->input('payment')
+                'payment' => $request->input('payment'),
+                'itemsprice' => $request->input('itemsprice'),
             ]);
 
         return redirect('/inputaddress');
     }
+
+
 
 
     /**
@@ -221,9 +242,7 @@ class CartController extends Controller
      */
     public function saveAddress(Request $request)
     {
-        $userId = session('user_id');
-
-        $cartId = DB::table('shoppingcarts')->where('userid', $userId)->value('id');
+        $cartId = $this->getCartId(); //zavola funkciu pre ziskanie správneho košíka (cez cartId)
 
         DB::table('shoppingcarts')->where('id', $cartId)->update([
             'emailadress'  => $request->emailadress,
@@ -240,7 +259,8 @@ class CartController extends Controller
         $cart = DB::table('shoppingcarts')->where('id', $cartId)->first();
 
         $orderId = DB::table('orders')->insertGetId([
-            'userid'       => $cart->userid,
+            'userid' => $cart->userid ?? null, //ak je prihlaseny
+            'sessionid' => $cart->sessionid ?? null, //ak nie je prihlaseny, uloži sa sessionid
             'payment'      => $cart->payment,
             'delivery'     => $cart->delivery,
             'emailadress'  => $request->emailadress,

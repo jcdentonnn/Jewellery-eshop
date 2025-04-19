@@ -102,15 +102,6 @@ Route::get('/art_of_gift', function () {
 Route::get('/art_of_gift', [ProductController::class, 'art_of_gift'])->name('art_of_gift');
 
 
-//Toto som zakomentoval, lebo mi to s tym nešlo, dal som rovno link na productinfo
-/*
-// ProductList
-Route::get('/products', function () {
-    $products = DB::table('products')->get();
-    return view('products', compact('products'));
-})->name('productinfo');
-*/
-//tato ju nahradila
 Route::get('/productinfo/{id}', [ProductController::class, 'show'])->name('productinfo');
 
 
