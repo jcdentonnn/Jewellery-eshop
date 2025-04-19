@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Dariia Drobna">
-    <title>Jewellery Store | Precious Stone</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Ponomar&display=swap" rel="stylesheet">
-</head>
-<body>
-<div class="wrapper">
-    @include('includes.header')
+@extends('layouts.app')
+
+@section('title','Precious Stone – Jewellery Store')
+
+@section('content')
 
     <!--Hlavny container pre ukazku produktov-->
     <div class="main-container">
@@ -81,7 +72,4 @@
             </div>
         </div>
     </div>
-    @include('includes.footer')
-</div>
-</body>
-</html>
+@endsection

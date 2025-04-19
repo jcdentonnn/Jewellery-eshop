@@ -68,6 +68,7 @@ Route::get('/home', function () {
 
 
 
+
 //---------------------------------------------------------
 // PRODUCTS
 Route::get('/engagement', function () {
@@ -153,6 +154,15 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 
+
+//---------------------------------------------------------
+// ** SEARCH **
+Route::get('/search', [ProductController::class, 'search'])->name('search');
+
+
+
+
+//---------------------------------------------------------
 //** košik **
 Route::get('/shoppingcart', [CartController::class, 'showCart'])->name('shoppingcart');
 

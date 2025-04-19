@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Dariia Drobna">
-    <title>Jewellery Store | Diamonds</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Ponomar&display=swap" rel="stylesheet">
-</head>
-<body>
+@extends('layouts.app')
 
-<div class="wrapper">
+@section('title','Diamonds – Jewellery Store')
 
-    <!--Header-->
-    @include('includes.header')
+@section('content')
 
     <!--Hlavny container pre ukazku produktov-->
     <div class="main-container">
@@ -60,34 +48,7 @@
             </div>
 
             <!--Zoznam produktov-->
-            <div class="product-container" id="productList">
-                @foreach ($products as $product)
-                    <a href="{{ route('productinfo', $product->id) }}">
-                        <div class="product-card">
-                            <div class="product-img">
-                                <img src="/images/{{ $product->imagename }}" alt="{{ $product->productname }}">
-                                <h4 class="prod-name-card">{{ $product->productname }}</h4>
-                                <p class="prod-info-card">{{ $product->productdesc }}</p>
-                            </div>
-
-                            <!-- Tlacidlo na pridanie produktu do kosika -->
-                            <form action="{{ route('cart.add') }}" method="POST" style="display:inline">
-                                @csrf
-                                <input type="hidden" name="productid" value="{{ $product->id }}">
-                                <input type="hidden" name="type" value="{{ $product->type }}">
-                                <input type="hidden" name="amount"    value="1">
-                                <button class="prod-button" type="submit">Add to Bag</button>
-                            </form>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
+            @include('includes.product-container')
         </div>
     </div>
-
-    <!--Footer-->
-    @include('includes.footer')
-</div>
-</body>
-
-</html>
+@endsection

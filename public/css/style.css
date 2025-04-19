@@ -2132,3 +2132,25 @@ a {
         }
     }
 }
+
+
+/* SEARCH RESULTS */
+.prod-res-txt {
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.prod-res {
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.products-res{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3vh;
+}

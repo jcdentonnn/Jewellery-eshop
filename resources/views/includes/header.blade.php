@@ -41,9 +41,15 @@
                 </label>
 
                 <!-- Search Bar -->
+{{--                <div class="search-bar">--}}
+{{--                    <input type="text" placeholder="Search...">--}}
+{{--                    <button type="button">Find</button>--}}
+{{--                </div>--}}
                 <div class="search-bar">
-                    <input type="text" placeholder="Search...">
-                    <button type="button">Find</button>
+                    <form action="{{ route('search') }}" method="GET">
+                        <input type="text" name="q" value="{{ request('q') }}" placeholder="Search...">
+                        <button type="submit">Find</button>
+                    </form>
                 </div>
             </div>
         </nav>

@@ -73,6 +73,27 @@ class ProductController extends Controller
         })->get();
         return view('art_of_gift', compact('products'));
     }
+
+
+    /**
+     * Vyhladavanie produktu podla stringu z inputu do formy v header.blade.php
+     * pouzite ILIKE - insensitive LIKE search v nazvoch a popisoch
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function search(Request $request){
+
+        $q= $request->input('q', '');
+
+        //todo otestovat prazdny search a rozhodnut spravanie pri danom uc
+
+        $products= Product::where('productname', 'ILIKE', "%{$q}%")
+            ->orWhere('productdesc', 'ILIKE', "%{$q}%")
+            ->paginate(10); //10ks pre stranku
+
+        return view('search_res', compact('products', 'q'));
+    }
 }
 
 
