@@ -38,9 +38,20 @@ class UserController extends Controller {
             'isadmin' => false
         ]);
 
-        $cartId = DB::table('shoppingcarts')->insertGetId([
-            'userid' => $userId
-        ]);
+        $sessionId = session()->getId();
+        //skontroluje, či user mal pocas registracie nejake veci v košiku
+        $sessionCart = DB::table('shoppingcarts')->where('sessionid', $sessionId)->first();
+
+        if ($sessionCart == true) {
+            DB::table('shoppingcarts')->where('id', $sessionCart->id)->update([
+                'userid' => $userId,
+                'sessionid' => null
+            ]);
+            $cartId = $sessionCart->id;
+        }
+        else {
+            $cartId = DB::table('shoppingcarts')->insertGetId(['userid' => $userId]);
+        }
 
         DB::table('users')->where('id', $userId)->update([
             'shoppingcartid' => $cartId
@@ -71,8 +82,10 @@ class UserController extends Controller {
             ->where('password', $password)
             ->first();
 
-        if ($record) {
+        if ($record == true) {
             session(['user_id' => $record->userid]);
+            $this->mergeSessionCartWithUser($record->userid);
+
             if ($username === 'admin@jstore.com') {
                 return redirect('/adminpage');
             }
@@ -100,5 +113,46 @@ class UserController extends Controller {
      */
     public function showLoginForm(){
         return view('loginpage');
+    }
+
+    /**
+     * neprihlaseny použivateľ ma itemy v košíku - prihlasuje sa do učtu,
+     * ktorý má veci v košíku, tieto itemy sa sčítajú
+     */
+    private function mergeSessionCartWithUser($userId)
+    {
+        $sessionId = session()->getId();
+
+        $sessionCart = DB::table('shoppingcarts')->where('sessionid', $sessionId)->first();
+        $userCart = DB::table('shoppingcarts')->where('userid', $userId)->first();
+
+        if ($sessionCart && $userCart)
+        {
+            $sessionItems = DB::table('cartitems')->where('cartid', $sessionCart->id)->get();
+
+            foreach ($sessionItems as $item) {
+                $existing = DB::table('cartitems')
+                    ->where('cartid', $userCart->id)
+                    ->where('productid', $item->productid)
+                    ->where('type', $item->type)
+                    ->first();
+
+                if ($existing) {
+                    DB::table('cartitems')
+                        ->where('id', $existing->id)
+                        ->increment('amount', $item->amount);
+                } else {
+                    DB::table('cartitems')->insert([
+                        'cartid' => $userCart->id,
+                        'productid' => $item->productid,
+                        'type' => $item->type,
+                        'amount' => $item->amount
+                    ]);
+                }
+            }
+
+            DB::table('cartitems')->where('cartid', $sessionCart->id)->delete();
+            DB::table('shoppingcarts')->where('id', $sessionCart->id)->delete();
+        }
     }
 }

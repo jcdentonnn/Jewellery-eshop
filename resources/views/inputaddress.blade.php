@@ -42,8 +42,15 @@
             @php
                 /* Tato cast vyhodnoti vyslednu cenu podla typu dopravy a platby.
                 Scita ju s cenou za nakup. */
+
                     $userId = session('user_id');
-                    $cart = DB::table('shoppingcarts')->where('userid', $userId)->first();
+                    $sessionId = session()->getId();
+
+                    if ($userId) { //podla toho či je prihlaseny, alebo nie
+                        $cart = DB::table('shoppingcarts')->where('userid', $userId)->first();
+                    } else {
+                        $cart = DB::table('shoppingcarts')->where('sessionid', $sessionId)->first();
+                    }
 
                     $itemsPrice = $cart->itemsprice ?? 0;
                     $deliveryType = $cart->delivery;
