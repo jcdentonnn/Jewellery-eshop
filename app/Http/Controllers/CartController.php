@@ -271,6 +271,8 @@ class CartController extends Controller
             'zipcode'      => $request->zipcode,
             'state'        => $request->state,
             'phonenumber'  => $request->phonenumber,
+            'itemsprice'   => $cart->itemsprice,
+            'timestamp'     => now(),
         ]);
 
         $cartItems = DB::table('cartitems')->where('cartid', $cartId)->get();
@@ -299,6 +301,7 @@ class CartController extends Controller
             'zipcode'      => null,
             'state'        => null,
             'phonenumber'  => null,
+            'itemsprice'   => null,
         ]);
 
         return redirect('/purchasecompleted');

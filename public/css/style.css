@@ -1348,7 +1348,7 @@ hr {
 .main-container {
     display: block;
     max-width: 100%;
-    margin: 3vh 5vh 5vh 5vh;
+    margin: 3vh;
     font-family: "Poppins", sans-serif;
 }
 
@@ -1404,7 +1404,7 @@ hr {
 }
 
 .product-container {
-    width: 85%;
+    width: 100%;
     flex-grow: 1;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /*responzivita*/

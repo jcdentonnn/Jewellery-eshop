@@ -32,38 +32,28 @@
             <!--Objednavky Usera-->
             <div class="purchases-container">
                 <div class="purchase-card" id="purchase-card"><h2>Your purchases</h2></div>
-                <div class="purchase-card">
-                    <div class="purchase-info">
-                        <div class="purchase-text">
-                            <h3>Purchase 21/02/2025</h3>
-                            <p class="purchase-number">NO. XYZ12345</p>
+
+                @forelse($orders as $order)
+                    <div class="purchase-card">
+                        <div class="purchase-info">
+                            <div class="purchase-text">
+                                <h3>Purchase {{ \Carbon\Carbon::parse($order->timestamp)->format('F j, Y H:i') }}</h3>
+                            </div>
+                            <hr>
+                            <div class="purchase-meta">
+                                <span class="price">{{ number_format($order->totalprice,2) }}€</span>
+                                <span class="status processed">PROCESSED</span>
+                            </div>
                         </div>
-                        <hr>
-                        <div class="purchase-meta">
-                            <span class="price">950,56 €</span>
-                            <span class="status finished">FINISHED</span>
-                        </div>
-                    </div>
-                    <div class="return-confirm">
-                        <a href="{{ route('more-purchase-info') }}"> <button class="more-button">MORE</button> </a>
-                    </div>
-                </div>
-                <div class="purchase-card">
-                    <div class="purchase-info">
-                        <div class="purchase-text">
-                            <h3>Purchase 12/03/2025</h3>
-                            <p class="purchase-number">NO. ABC6789</p>
-                        </div>
-                        <hr>
-                        <div class="purchase-meta">
-                            <span class="price">550,99 €</span>
-                            <span class="status processed">PROCESSED</span>
+                        <div class="return-confirm">
+                            <a href="{{ route('more-purchase-info', ['id'=>$order->id]) }}"> <button class="more-button">MORE</button> </a>
                         </div>
                     </div>
-                    <div class="return-confirm">
-                        <a href="{{ route('more-purchase-info') }}"> <button class="more-button">MORE</button> </a>
+                @empty
+                    <div class="purchase-card">
+                        <h3>You have no purchases yet.</h3>
                     </div>
-                </div>
+                @endforelse
             </div>
         </div>
 

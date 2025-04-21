@@ -155,4 +155,24 @@ class UserController extends Controller {
             DB::table('shoppingcarts')->where('id', $sessionCart->id)->delete();
         }
     }
+
+
+    /** Funkcia na najdenie objednavok registrovaneho pouzivatela
+     *  pouzite na stranke user.blade.php
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function findPurchases() {
+        $userid = session('user_id');
+
+        $completedPurchases = DB::table('orders')
+            ->where('userid', $userid)
+            ->orderBy('timestamp', 'desc')
+            ->get();
+
+        if ($completedPurchases->isEmpty()) {
+            return redirect('/user')->with('message', 'No purchases were made.');
+        }
+
+        return view('user', compact('completedPurchases'));
+    }
 }

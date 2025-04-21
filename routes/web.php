@@ -111,7 +111,10 @@ Route::get('/productinfo/{id}', [ProductController::class, 'show'])->name('produ
 Route::get('/user', function () {
     if (session('user_id')) {
         $user = DB::table('users')->find(session('user_id'));
-        return view('user', ['user' => $user]);
+        $orders = DB::table('orders')
+            ->where('userid', session('user_id'))
+            ->get();
+        return view('user', ['user' => $user, 'orders' => $orders]);
     } else {
         return redirect('/loginpage');
     }
@@ -134,6 +137,8 @@ Route::get('/return-confirmation', function () {
 })->name('return-confirmation');
 
 
+
+//---------------------------------------------------------
 //** REGISTER, LOGIN, LOGOUT **
 Route::post('/register', [UserController::class, 'register'])->name('register');
 

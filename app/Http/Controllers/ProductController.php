@@ -125,7 +125,7 @@ class ProductController extends Controller
     /**
      * Filtrovanie produktov podla parametrov vo filtri
      * @param Request $request
-     * @return void
+     * @return $q - vysledky query
      */
     protected function filterProducts(Request $request) {
 
@@ -150,14 +150,17 @@ class ProductController extends Controller
                 $q->orderByDesc('pop');
         }
 
+        // filtrovanie na zaklade kategorie vyrobku (ring, earring, ...)
         if($categories = $request->input('category')){
             $q->whereIn('products.category', $categories);
         }
 
+        //filtrovanie na zaklade metalu (yellow / role / white gold, ...)
         if($metals = $request->input('metal')){
             $q->whereIn('products.type', $metals);
         }
 
+        // filtrovanie na zaklade pave - true/false
         if($paving = $request->input('paving')){
             $q->whereIn('products.paving', $paving);
         }
