@@ -15,15 +15,6 @@ class ProductController extends Controller
         return view('productinfo', compact('product'));
     }
 
-//    public function engagement(Request $request)
-//    {
-//        $products = Product::whereIn('id', function($query) {
-//            $query->select('productid')
-//                ->from('categories')
-//                ->where('category', 'engagement');
-//        })->get();
-//        return view('engagement', compact('products'));
-//    }
     public function engagement(Request $request)
     {
         $products = $this->filterProducts($request)
@@ -32,7 +23,7 @@ class ProductController extends Controller
                     ->from('categories')
                     ->where('category','engagement');
             })
-            ->paginate(8)
+            ->paginate(9)
             ->withQueryString();
 
         return view('engagement', compact('products'));
@@ -46,7 +37,7 @@ class ProductController extends Controller
                     ->from('categories')
                     ->where('category','diamonds');
             })
-            ->paginate(8)
+            ->paginate(9)
             ->withQueryString();
         return view('diamonds', compact('products'));
     }
@@ -59,7 +50,7 @@ class ProductController extends Controller
                 ->from('categories')
                 ->where('category', 'precious_stone');
         })
-            ->paginate(8)
+            ->paginate(9)
             ->withQueryString();
         return view('precious_stone', compact('products'));
     }
@@ -72,7 +63,7 @@ class ProductController extends Controller
                 ->from('categories')
                 ->where('category', 'watches');
         })
-            ->paginate(8)
+            ->paginate(9)
             ->withQueryString();
         return view('watches', compact('products'));
     }
@@ -85,7 +76,7 @@ class ProductController extends Controller
                 ->from('categories')
                 ->where('category', 'accessories');
         })
-            ->paginate(8)
+            ->paginate(9)
             ->withQueryString();
         return view('accessories', compact('products'));
     }
@@ -98,7 +89,7 @@ class ProductController extends Controller
                 ->from('categories')
                 ->where('category', 'art_of_gift');
         })
-            ->paginate(8)
+            ->paginate(9)
             ->withQueryString();
         return view('art_of_gift', compact('products'));
     }
@@ -118,6 +109,10 @@ class ProductController extends Controller
         $products= Product::where('productname', 'ILIKE', "%{$q}%")
             ->orWhere('productdesc', 'ILIKE', "%{$q}%")
             ->paginate(12); //12ks pre stranku
+
+        if(!$q){
+            $q='Empty search';
+        }
 
         return view('search-res', compact('products', 'q'));
     }

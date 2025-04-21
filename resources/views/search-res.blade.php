@@ -15,7 +15,6 @@ Sekcia search results - ukazka najdenych produktov po vyhladavani
 
         <div class="prod-res">
             @include('includes.product-container')
-            {{ $products->links() }}
         </div>
     </div>
 

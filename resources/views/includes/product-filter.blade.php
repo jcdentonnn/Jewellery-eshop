@@ -7,30 +7,30 @@ Dany content je pouzity v blade.php suboroch {accessories, diamonds, engagement,
 <div class="product-filter">
     <form id="filter" method="GET">
 
+        {{--Sortovanie--}}
         <h3>Sort By</h3>
-            <p><input type="radio" name="sort" value="popular"
-                      {{ request('sort','popular') === 'popular' ? 'checked' : '' }} onchange="this.form.submit()"> Most Popular</p>
+        @php $current = request('sort', 'popular'); @endphp
 
-            <p><input type="radio" name="sort" value="pricedesc" {{ request('sort','pricedesc') === 'pricedesc' ? 'checked' : '' }}
-                onchange="this.form.submit()"> Price: High to Low</p>
+        <p><label><input type="radio" name="sort" value="popular" {{ $current === 'popular'   ? 'checked' : '' }}
+                        onchange="this.form.submit()">Most Popular</label></p>
 
-            <p><input type="radio" name="sort" value="priceasc" {{ request('sort','priceasc') === 'priceasc' ? 'checked' : '' }}
-                onchange="this.form.submit()"> Price: Low to High</p>
+        <p><label><input type="radio" name="sort" value="pricedesc" {{ $current === 'pricedesc' ? 'checked' : '' }}
+                onchange="this.form.submit()">Price: High to Low</label></p>
 
+        <p><label><input type="radio" name="sort" value="priceasc" {{ $current === 'priceasc'  ? 'checked' : '' }}
+                        onchange="this.form.submit()">Price: Low to High</label></p>
+
+
+
+
+        {{--Filtrovanie--}}
         <h3>Filter By</h3>
         <h3>Category</h3>
         @php $categories = request('category', []); @endphp
         @foreach(['ring'=>'Rings','earring'=>'Earrings','necklace'=>'Necklaces','gift'=>'Gifts','accessory'=>'Accessories'] as $val=>$label)
-            <p><label>
-                    <input
-                            type="checkbox"
-                            name="category[]"
-                            value="{{ $val }}"
+            <p><label><input type="checkbox" name="category[]" value="{{ $val }}"
                             {{ in_array($val, $categories) ? 'checked' : '' }}
-                            onchange="this.form.submit()"
-                    >
-                    {{ $label }}
-                </label></p>
+                            onchange="this.form.submit()">{{ $label }}</label></p>
         @endforeach
 
         <h3>Metal</h3>
@@ -38,16 +38,8 @@ Dany content je pouzity v blade.php suboroch {accessories, diamonds, engagement,
         @foreach([
           'Yellow Gold','White gold','Rose Gold','Platinum','Silver','Stainless steel'
         ] as $m)
-            <p><label>
-                    <input
-                            type="checkbox"
-                            name="metal[]"
-                            value="{{ $m }}"
-                            {{ in_array($m, $metals) ? 'checked' : '' }}
-                            onchange="this.form.submit()"
-                    >
-                    {{ $m }}
-                </label></p>
+            <p><label><input type="checkbox" name="metal[]" value="{{ $m }}" {{ in_array($m, $metals) ? 'checked' : '' }}
+                            onchange="this.form.submit()">{{ $m }}</label></p>
         @endforeach
 
         <h3>Paving</h3>

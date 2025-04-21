@@ -8,4 +8,3 @@ toggleBtn.addEventListener('click', () => {
     toggleBtn.textContent = filter.classList.contains('show') ? 'Hide Filter' : 'Show Filter';
 });
 
-

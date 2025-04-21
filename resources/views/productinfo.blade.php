@@ -32,7 +32,7 @@
 
             <div class="product-options">
                 <select class="product-select">
-                    <option disabled selected>Select color</option>
+                    <option disabled selected>Select metal (will be processed by our manager)</option>
                     <option>White Gold</option>
                     <option>Yellow Gold</option>
                     <option>Pink Gold</option>
