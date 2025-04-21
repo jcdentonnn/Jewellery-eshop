@@ -25,6 +25,6 @@ Dany content je pouzity v blade.php suboroch {accessories, diamonds, engagement,
             </div>
         </a>
     @empty
-        <p>No products were found</p>
+        <p>Sorry, no products were found</p>
     @endforelse
 </div>

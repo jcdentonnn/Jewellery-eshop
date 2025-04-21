@@ -160,14 +160,15 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 
-
-
 //---------------------------------------------------------
-//** košik **
+//** KOSIK **
 Route::get('/shoppingcart', [CartController::class, 'showCart'])->name('shoppingcart');
 
 //košik:pridanie produktu do kosika
 Route::post('/productinfo/add', [CartController::class, 'addProdToCart'])
+    ->name('cart.add');
+
+Route::post('/cart/add', [CartController::class,'addProdToCart'])
     ->name('cart.add');
 
 Route::post('/shoppingcart/increase', [CartController::class, 'increment_product_amount']);

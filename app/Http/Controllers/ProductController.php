@@ -92,7 +92,7 @@ class ProductController extends Controller
             ->orWhere('productdesc', 'ILIKE', "%{$q}%")
             ->paginate(10); //10ks pre stranku
 
-        return view('search_res', compact('products', 'q'));
+        return view('search-res', compact('products', 'q'));
     }
 }
 
