@@ -253,6 +253,7 @@ class CartController extends Controller
             'zipcode'      => $request->zipcode,
             'state'        => $request->state,
             'phonenumber'  => $request->phonenumber,
+            'totalprice'      => $request->totalprice,
         ]);
 
         $cart = DB::table('shoppingcarts')->where('id', $cartId)->first();
@@ -270,6 +271,8 @@ class CartController extends Controller
             'city'         => $request->city,
             'zipcode'      => $request->zipcode,
             'state'        => $request->state,
+            'itemsprice'   => $cart->itemsprice,
+            'totalprice'   => $cart->totalprice,
             'phonenumber'  => $request->phonenumber,
             'itemsprice'   => $cart->itemsprice,
             'timestamp'     => now(),
