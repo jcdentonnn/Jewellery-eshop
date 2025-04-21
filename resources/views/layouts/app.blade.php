@@ -9,7 +9,7 @@ Autor: Dariia Drobna
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="Dariia Drobna">
+    <meta name="author" content="width=device-width, initial-scale=1.0">
     <title>Jewellery Store | Accessories</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
