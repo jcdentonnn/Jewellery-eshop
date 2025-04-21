@@ -31,5 +31,8 @@ Autor: Dariia Drobna
     <!--Footer-->
     @include('includes.footer')
 </div>
+
+<script src="/js/script.js" defer></script>
+
 </body>
 </html>

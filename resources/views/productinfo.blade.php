@@ -20,10 +20,10 @@
                 <img src="/images/{{ $product->imagename }}" alt="Main Watch" id="mainImage">
             </div>
             <div class="thumbnail-container">
-                <div class="thumbnail"><img src="/images/{{ $product->imagename }}" alt="Thumbnail 1"></div>
-                <div class="thumbnail"><img src="/images/{{ $product->imagename }}" alt="Thumbnail 2"></div>
-                <div class="thumbnail"><img src="/images/{{ $product->imagename }}" alt="Thumbnail 3"></div>
-                <div class="thumbnail"><img src="/images/{{ $product->imagename }}" alt="Thumbnail 4"></div>
+                <div class="thumbnail"><img class="thumbnail_img" src="/images/{{ $product->imagename }}" alt="Thumbnail 1"></div>
+                <div class="thumbnail"><img class="thumbnail_img" src="/images/{{ $product->imagename2 }}" alt="Thumbnail 2"></div>
+                <div class="thumbnail"><img class="thumbnail_img" src="/images/{{ $product->imagename3 }}" alt="Thumbnail 3"></div>
+                <div class="thumbnail"><img class="thumbnail_img" src="/images/{{ $product->imagename4 }}" alt="Thumbnail 4"></div>
             </div>
         </div>
         <div class="product-details">
@@ -64,5 +64,18 @@
 @include('includes.footer')
 
 </body>
+</html>
+
+{{-- JavaScript - thumbnail click event --}}
+<script>
+    const mainImage = document.getElementById('mainImage');
+
+    document.querySelectorAll('.thumbnail_img').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            mainImage.src = thumb.src;
+            mainImage.alt = thumb.alt;
+        });
+    });
+</script>
 
 

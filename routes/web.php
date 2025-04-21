@@ -106,7 +106,6 @@ Route::get('/productinfo/{id}', [ProductController::class, 'show'])->name('produ
 
 
 
-
 //---------------------------------------------------------
 // USER
 Route::get('/user', function () {
@@ -142,8 +141,6 @@ Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-
-
 
 
 //---------------------------------------------------------
