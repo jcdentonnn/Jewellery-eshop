@@ -40,14 +40,10 @@
                     <img class="icons-img" src="/images/search.png" alt="Search Icon">
                 </label>
 
-                <!-- Search Bar -->
-{{--                <div class="search-bar">--}}
-{{--                    <input type="text" placeholder="Search...">--}}
-{{--                    <button type="button">Find</button>--}}
-{{--                </div>--}}
+
                 <div class="search-bar">
                     <form action="{{ route('search') }}" method="GET">
-                        <input type="text" name="q" value="{{ request('q') }}" placeholder="Search...">
+                        <input type="text" name="q" value="{{ old('q', request('q','')) }}" placeholder="Search...">
                         <button type="submit">Find</button>
                     </form>
                 </div>
