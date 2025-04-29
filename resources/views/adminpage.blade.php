@@ -16,12 +16,12 @@
         @include('includes.header')
         <div class="content-container">
             <div class="user-info">
-                <div class="user-avatar">A</div> <!-- Centered 'A' in circle -->
+                <div class="user-avatar">A</div>
                 <div class="user-text">
                     <p class="user-name">Hello, Admin</p>
                     <p class="user-email">admin@xyz.com</p>
                 </div>
-                <a href="{{ url('/loginpage') }}" class="logout">LOG OUT</a>
+                <a href="{{ route('logout') }}" class="logout-buttonA">Log Out</a>
             </div>
 
             <hr>

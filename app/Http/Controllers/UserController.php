@@ -82,11 +82,15 @@ class UserController extends Controller {
             ->where('password', $password)
             ->first();
 
+        $userdata = DB::table('users')
+            ->where('email', $username)
+            ->first();
+
         if ($record == true) {
             session(['user_id' => $record->userid]);
             $this->mergeSessionCartWithUser($record->userid);
 
-            if ($username === 'admin@jstore.com') {
+            if ($userdata->isadmin) {
                 return redirect('/adminpage');
             }
             return redirect('/user');

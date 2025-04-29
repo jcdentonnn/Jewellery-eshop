@@ -1234,7 +1234,7 @@ input[type="radio"] {
 /*----------------------------------------------------------------------------------*/
 
 .content-container {
-    width: 70%;
+    width: 85%;
     max-width: 1200px;
     margin: 50px auto;
     font-family: 'Julius Sans One', sans-serif;
@@ -1279,6 +1279,14 @@ input[type="radio"] {
     margin: 0;
     font-size: 15px;
     color: #555;
+}
+
+.logout-buttonA {
+    font-size: 16px;
+    margin-left: 60%;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
 }
 
 .logout-button {
@@ -1335,6 +1343,57 @@ hr {
 
 .admin-btn:hover {
     background-color: #007bff;
+}
+
+@media (max-width: 950px) {
+    .content-container {
+        width: 90%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .user-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .user-name {
+        font-size: 20px;
+    }
+
+    .user-email {
+        font-size: 14px;
+    }
+
+    .logout-buttonA {
+        margin-left: 0;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .admin-buttons {
+        gap: 10px;
+    }
+
+    .admin-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-btn {
+        font-size: 13px;
+        padding: 8px;
+    }
 }
 
 /*-------------------------------------------------------------------------*/

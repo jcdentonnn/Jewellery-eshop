@@ -111,6 +111,11 @@ Route::get('/productinfo/{id}', [ProductController::class, 'show'])->name('produ
 Route::get('/user', function () {
     if (session('user_id')) {
         $user = DB::table('users')->find(session('user_id'));
+
+        if ($user && $user->isadmin) {
+            return redirect('/adminpage');
+        }
+
         $orders = DB::table('orders')
             ->where('userid', session('user_id'))
             ->get();
