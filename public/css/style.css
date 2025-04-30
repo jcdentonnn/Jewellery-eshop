@@ -1480,6 +1480,7 @@ hr {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 
 .product-card img {
@@ -1503,8 +1504,6 @@ hr {
     font-size: 1.3rem;
     font-weight: bold;
 }
-
-
 
 /* Responsive - Zoznam produktov */
 .product-card {
@@ -1538,6 +1537,50 @@ hr {
     visibility: hidden;
 }
 
+
+.admin-buttons-prod {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+}
+
+.admin-btn-single, .delete-btn {
+    width: 45%;
+    background-color: black;
+    color: white;
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    padding: 12px 0;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-btn-single:hover, .delete-btn:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+.product-card:hover .prod-button,
+.product-card:hover .admin-buttons-prod {
+    opacity: 1;
+    visibility: visible;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -1546,11 +1589,6 @@ a {
 .prod-button:hover {
     background-color: #333;
     transform: translateX(-50%) scale(1.05);
-}
-
-.product-card:hover .prod-button {
-    opacity: 1;
-    visibility: visible;
 }
 
 .turn-filter-btn {
