@@ -1537,12 +1537,10 @@ hr {
     visibility: hidden;
 }
 
-
 .admin-buttons-prod {
     display: flex;
-    flex-direction: row;
-    gap: 5px;
-    width: 100%;
+    gap: 20px;
+    width: 80%;
     justify-content: center;
     position: absolute;
     bottom: 10px;
@@ -1552,7 +1550,6 @@ hr {
 }
 
 .admin-btn-single, .delete-btn {
-    width: 45%;
     background-color: black;
     color: white;
     font-family: 'Julius Sans One', sans-serif;
@@ -1560,14 +1557,25 @@ hr {
     font-weight: bold;
     text-transform: uppercase;
     border: none;
-    padding: 12px 0;
-    text-align: center;
+    padding: 12px 16px;
+    width: 120%; /* Ensure buttons are the same width */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.admin-btn-single:hover, .delete-btn:hover {
+    background-color: #333;
+    transform: scale(1.05); /* Add hover effect */
+}
+
+.product-card:hover .prod-button,
+.product-card:hover .admin-buttons-prod {
+    opacity: 1;
+    visibility: visible;
 }
 
 .admin-btn-single:hover, .delete-btn:hover {
@@ -2309,3 +2317,4 @@ nav[aria-label="Pagination Navigation"] svg {
 .wr {
     width: 100%;
 }
+

@@ -180,6 +180,33 @@ class ProductController extends Controller
 
         return $q;
     }
+
+
+    /**
+     * Odstránenie produktu z databázy
+     *
+     * Vymaže: záznamy v tabuľkách categories,products, cartitems
+     * @param int $id - ID produktu
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete_product($id)
+    {
+
+        DB::table('categories')
+            ->where('productid', $id)
+            ->delete();
+
+        DB::table('products')
+            ->where('id', $id)
+            ->delete();
+
+        //ak by mal nejaký zákazník daný produkt v košíku
+        DB::table('cartitems')
+            ->where('productid', $id)
+            ->delete();
+
+        return back()->with('success', 'Product deleted successfully');
+    }
 }
 
 

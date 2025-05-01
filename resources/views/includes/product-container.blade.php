@@ -27,8 +27,16 @@ Dany content je pouzity v blade.php suboroch {accessories, diamonds, engagement,
 
                     @if($user && $user->isadmin)
                         <div class="admin-buttons-prod">
-                            <button class="admin-btn-single edit">Edit</button>
-                            <button class="delete-btn">Delete</button> <!-- Remove the form here -->
+                            <form action="#" method="GET" style="display:inline;">
+                                <button type="submit" class="admin-btn-single edit">Edit</button>
+                            </form>
+
+                            <form action="{{ route('delete_product', $product->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+
                         </div>
                     @else
                         <form action="{{ route('cart.add') }}" method="POST" style="display:inline">
@@ -54,3 +62,5 @@ Dany content je pouzity v blade.php suboroch {accessories, diamonds, engagement,
         @endif
     </div>
 </div>
+
+
