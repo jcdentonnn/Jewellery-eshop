@@ -15,12 +15,13 @@
     <div class="wrapper">
         @include('includes.header')
         <div class="content-container">
-            <div class="user-header">
-                <div class="user-name">
-                    <h1>Hello, Admin</h1>
-                    <p>admin@jstore.com</p>
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <div class="user-text">
+                    <p class="user-name">Hello, Admin</p>
+                    <p class="user-email">admin@xyz.com</p>
                 </div>
-                <a href="{{ route('logout') }}" class="logout-button">Log Out</a>
+                <a href="{{ route('logout') }}" class="logout-buttonA">Log Out</a>
             </div>
 
             <hr>

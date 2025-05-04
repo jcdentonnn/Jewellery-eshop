@@ -111,6 +111,11 @@ Route::get('/productinfo/{id}', [ProductController::class, 'show'])->name('produ
 Route::get('/user', function () {
     if (session('user_id')) {
         $user = DB::table('users')->find(session('user_id'));
+
+        if ($user && $user->isadmin) {
+            return redirect('/adminpage');
+        }
+
         $orders = DB::table('orders')
             ->where('userid', session('user_id'))
             ->get();
@@ -179,6 +184,10 @@ Route::post('/save-shipping-payment', [CartController::class, 'saveMethod']);
 Route::get('/purchasecompleted', function () {
     return view('/purchasecompleted');
 })->name('/purchasecompleted');
+
+
+//ADMIN FUNKCIONALITA
+Route::delete('/delete-product/{id}', [ProductController::class, 'delete_product'])->name('delete_product');
 
 
 //---------------------------------------------------------
