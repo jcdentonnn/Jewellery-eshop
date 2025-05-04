@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Controllers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use function Laravel\Prompts\table;
 
 class ProductController extends Controller
@@ -108,12 +110,12 @@ class ProductController extends Controller
      */
     public function search(Request $request){
 
-        //$q= trim($request->input('q', ''));
+        $q = trim($request->input('q', '')); //vstupna hodnota z request-u
 
-//        $products= Product::where('productname', 'ILIKE', "%{$q}%")
-//            ->orWhere('productdesc', 'ILIKE', "%{$q}%")
-//            ->paginate(12); //12ks pre stranku
-        $q = trim($request->input('q','')); //vstupna hodnota z request-u
+        if(!$q) {
+            return redirect()->back()->withInput()
+                ->with('error', 'Please enter a search term.');
+        }
 
         //tokenizacia request-u $q, zachytenie podobnych (korenovo) slov a ch spojenie
         $query = collect(explode(' ', $q))
@@ -127,12 +129,6 @@ class ProductController extends Controller
             ->withQueryString();
 
         return view('search-res', compact('products','q'));
-//
-//        if(!$q){
-//            $q='Empty search';
-//        }
-
-        //return view('search-res', compact('products', 'q'));
     }
 
     /**
@@ -145,6 +141,7 @@ class ProductController extends Controller
         //popularita na zaklade objednavok z tabulky 'orderitems'
         $q = Product::query()
             ->leftJoin('orderitems', 'products.id', '=', 'orderitems.productid')
+            ->leftJoin('categories', 'products.id', '=', 'categories.productid')
             ->select([
                 'products.*',
                 DB::raw('COALESCE(SUM(orderitems.amount), 0) as pop')
@@ -165,7 +162,7 @@ class ProductController extends Controller
 
         // filtrovanie na zaklade kategorie vyrobku (ring, earring, ...)
         if($categories = $request->input('category')){
-            $q->whereIn('products.category', $categories);
+            $q->whereIn('categories.category', $categories);
         }
 
         //filtrovanie na zaklade metalu (yellow / role / white gold, ...)
@@ -179,6 +176,76 @@ class ProductController extends Controller
         }
 
         return $q;
+    }
+
+
+    /***
+     * Funkcia na pridanie produktu do DB zo stranky /a_addproduct
+     * Pristup ma len admin
+     *
+     * @return redirect
+     */
+    public function a_addProduct(Request $request): RedirectResponse {
+        //dd('route a_addProduct - ok', $request->all());
+
+        //data su validovane
+        $valid_data = $request->validate([
+            'prod-name' => 'required|string|max:50',
+            'prod-desc' => 'required|string|max:250',
+            'prod-price' => 'required|numeric|min:0',
+
+            'prod-image' => 'required|array|size:4',
+            'prod-image.*' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
+
+            'category' => 'required|array|min:1',
+            'category.*' => 'in:engagement,diamonds,precious_stone,watches,accessories,art_of_gift',
+
+            'type' => 'required|in:ring,earrings,necklace,gift,accessory',
+            'material' => 'required|in:Yellow Gold,White Gold,Rose Gold,Silver,Platinum,Stainless steel,Other',
+            'paving' => 'required|in:true,false'
+        ]);
+        //dd('validation - ok', $valid_data);
+
+        //spracovanie obrazkov - vytvorenie unikatneho mena pre kazdy
+        $f_names= [];
+
+        foreach ($request->file('prod-image') as $file){
+            $f_name = Str::slug($valid_data['prod-name']) . '_' . Str::random(5)
+                . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $f_name);
+            $f_names[] = $f_name;
+        }
+
+        //nova instancia produktu
+        $prod = Product::create([
+            'productname' => $valid_data['prod-name'],
+            'productdesc' => $valid_data['prod-desc'],
+            'price' => $valid_data['prod-price'],
+            'type' => $valid_data['material'],
+            'paving' => $valid_data['paving'],
+            'imagename' => $f_names[0],
+            'imagename2' => $f_names[1],
+            'imagename3' => $f_names[2],
+            'imagename4' => $f_names[3],
+        ]);
+
+        //array pre category, kedze ich moze byt viacero + append type,
+        // kedze sa ukladaju do jedneho stlpca 'category' tabulky 'category'
+        $cat_arr = $valid_data['category'];
+        $cat_arr[] = $valid_data['type'];
+
+        $insert_rows = array_map(fn($cat) => ['productid'=>$prod->id, 'category'=>$cat,], $cat_arr);
+//        \Log::debug('product id = '.$prod->id);
+//        \Log::debug('cats & types: '.print_r($insert_rows, true));
+//        dd($prod->id, $insert_rows);
+
+        DB::table('categories')->insert($insert_rows); //vlozenie do 'categories'
+
+
+
+        return redirect()
+            ->route('adminpage')
+            ->with('success', 'The product # was successfully added.'.$prod->id);
     }
 }
 

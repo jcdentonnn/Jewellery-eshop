@@ -36,7 +36,7 @@ Dany content je pouzity v blade.php suboroch {accessories, diamonds, engagement,
         <h3>Metal</h3>
         @php $metals = request('metal', []); @endphp
         @foreach([
-          'Yellow Gold','White gold','Rose Gold','Platinum','Silver','Stainless steel'
+          'Yellow Gold','White gold','Rose Gold','Platinum','Silver','Stainless steel', 'Other'
         ] as $m)
             <p><label><input type="checkbox" name="metal[]" value="{{ $m }}" {{ in_array($m, $metals) ? 'checked' : '' }}
                             onchange="this.form.submit()">{{ $m }}</label></p>

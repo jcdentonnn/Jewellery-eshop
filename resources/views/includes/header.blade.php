@@ -15,7 +15,6 @@
         <a class="store-name" href="{{ route('home') }}">Jewellery store</a>
         <div class="icons">
             <a href="{{ route('user') }}"><img class="icons-img" src="/images/user.png" alt="User"></a>
-{{--            <a href="{{ route('wishlist') }}"><img class="icons-img" src="/images/fav.png"  alt="favourites"></a>--}}
             <img class="icons-img" src="/images/pin.png"  alt="location">
             <a href="{{ route('shoppingcart') }}"><img class="icons-img" src="/images/shopCart.png"  alt="shopping-cart"></a>
         </div>
@@ -40,12 +39,18 @@
                     <img class="icons-img" src="/images/search.png" alt="Search Icon">
                 </label>
 
-
+                <!--Search bar-->
                 <div class="search-bar">
                     <form action="{{ route('search') }}" method="GET">
                         <input type="text" name="q" value="{{ old('q', request('q','')) }}" placeholder="Search...">
                         <button type="submit">Find</button>
                     </form>
+                    @if(session('error'))
+                        <div class="error-box">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </nav>

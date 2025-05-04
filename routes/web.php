@@ -46,7 +46,7 @@ Route::get('/inputaddress', function () {
 
 Route::get('/adminpage', function () {
     return view('adminpage');
-});
+})->name('adminpage');
 
 Route::get('/a_addproduct', function () {
     return view('a_addproduct');
@@ -179,3 +179,8 @@ Route::post('/save-shipping-payment', [CartController::class, 'saveMethod']);
 Route::get('/purchasecompleted', function () {
     return view('/purchasecompleted');
 })->name('/purchasecompleted');
+
+
+//---------------------------------------------------------
+//** PRIDANIE PRODUKTU - ADMIN **
+Route::post('/a_addproduct', [ProductController::class, 'a_addProduct'])->name('prod.add');
