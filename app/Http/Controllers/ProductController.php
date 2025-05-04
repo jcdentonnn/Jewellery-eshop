@@ -245,7 +245,7 @@ class ProductController extends Controller
 
         return redirect()
             ->route('adminpage')
-            ->with('success', 'The product # was successfully added.'.$prod->id);
+            ->with('success', 'The product with ID '.$prod->id .' was successfully added');
     }
 
 
