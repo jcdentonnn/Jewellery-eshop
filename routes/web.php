@@ -133,9 +133,8 @@ Route::get('/shoppingcart', function () {
     return view('shoppingcart');
 })->name('shoppingcart');
 
-Route::get('/wishlist', function () {
-    return view('wishlist');
-})->name('wishlist');
+Route::get('/prod_list', [ProductController::class, 'prod_list'])
+    ->name('prod.list');
 
 Route::get('/return-confirmation', function () {
     return view('return-confirmation');
@@ -186,10 +185,9 @@ Route::get('/purchasecompleted', function () {
 })->name('/purchasecompleted');
 
 
+//---------------------------------------------------------
 //ADMIN FUNKCIONALITA
 Route::delete('/delete-product/{id}', [ProductController::class, 'delete_product'])->name('delete_product');
 
-
-//---------------------------------------------------------
 //** PRIDANIE PRODUKTU - ADMIN **
 Route::post('/a_addproduct', [ProductController::class, 'a_addProduct'])->name('prod.add');

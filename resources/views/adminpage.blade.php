@@ -37,8 +37,8 @@
                 @endif
                 <div class="admin-buttons">
                     <button class="admin-btn" onclick="location.href='/a_addproduct'">Add Product</button>
-                    <button class="admin-btn" onclick="location.href='/a_editproduct'">Edit Product</button>
-                    <button class="admin-btn" onclick="location.href='/a_removeproduct'">Remove Product</button>
+                    <button class="admin-btn" type="button"
+                            onclick="window.location='{{ route('prod.list') }}'">Edit \ Delete Product</button>
                 </div>
             </div>
         </div>

@@ -96,6 +96,19 @@ class ProductController extends Controller
         return view('art_of_gift', compact('products'));
     }
 
+    /***
+     * Funkcia pre zobrazenie zoznamu vsetkych produktov pre Administratora
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|object
+     */
+    public function prod_list(Request $request)
+    {
+        $products = $this->filterProducts($request)
+            ->paginate(20)
+            ->withQueryString();
+        return view('prod-list', compact('products'));
+    }
+
 
     /**
      * Vyhladavanie produktu podla request-u z inputu do formy v header.blade.php

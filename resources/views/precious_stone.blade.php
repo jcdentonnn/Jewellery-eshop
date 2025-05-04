@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <!--Hlavny container pre ukazku produktov-->
+    {{--Hlavny container pre ukazku produktov--}}
     <div class="main-container">
         <!--Product showcase-->
         <div class="product-showcase">
@@ -15,14 +15,14 @@
             </div>
         </div>
 
-        <!--Tlacitko pre zobrazenie/skrytie filtra-->
+        {{--Tlacitko pre zobrazenie/skrytie filtra--}}
         <button id="turnFilterBtn" class="turn-filter-btn">Show Filter</button>
 
         <div class="products">
-            <!--Filter-->
+            {{--Filter--}}
             @include('includes.product-filter')
 
-            <!--Zoznam produktov-->
+            {{--Zoznam produktov--}}
             @include('includes.product-container')
         </div>
     </div>
