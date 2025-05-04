@@ -16,13 +16,12 @@
 
 <div class="wrapper">
     <div class="content-container">
-        <div class="user-info">
-            <div class="user-avatar">A</div>
-            <div class="user-text">
-                <p class="user-name">Hello, Admin</p>
-                <p class="user-email">admin@jstore.com</p>
+        <div class="user-header">
+            <div class="user-name">
+                <h1>Hello, Admin</h1>
+                <p>admin@jstore.com</p>
             </div>
-            <a href="{{ url('/loginpage') }}" class="logout">LOG OUT</a>
+            <a href="{{ route('logout') }}" class="logout-button">Log Out</a>
         </div>
 
         <hr>
@@ -30,6 +29,8 @@
         <div class="purchases">
             <h3>Add product</h3>
             <div class="admin-buttons">
+
+                {{-- Errory pri pridani produktu --}}
                 @if($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -40,10 +41,11 @@
                     </div>
                 @endif
 
+                {{-- Forma pre odoslanie vyplnenych dat --}}
                 <form action="{{ route('prod.add') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <!--Nazov, popis, cena, obrazok (4ks)-->
+                    {{--Nazov, popis, cena, obrazok (4ks)--}}
                     <label for="prod-name">Product name:</label><br>
                     <input type="text" id="prod-name" name="prod-name" placeholder="Product name"
                            value="{{ old('prod-name', $product->productname ?? '') }}"
@@ -56,14 +58,14 @@
                            required>
                     <br><br>
 
-                    {{--cena: min 0, 0.01 - number format --}}
+                    {{--cena: min 0.01, 0.01 - number format --}}
                     <label for="prod-price">Product price (EUR):</label><br>
                     <input type="number" id="prod-price" name="prod-price" placeholder="Product price"
-                           value="{{ old('prod-price', $product->productprice ?? '') }}" step="0.01" min="0"
+                           value="{{ old('prod-price', $product->productprice ?? '') }}" step="0.01" min="0.01"
                            required>
                     <br><br>
 
-                    {{--Obrazky--}}
+                    {{--Obrazky - 4ks--}}
                     <label for="prod-image">Product image (4 pcs required):</label><br>
                     <input type="file" name="prod-image[]" accept="image/jpeg,image/png,image/svg+xml" multiple required
                             onchange="if(this.files.length!==4){ alert('Please select exactly 4 images.'); this.value = null; }"/>
@@ -89,7 +91,7 @@
                     @endforeach
                     <br><br>
 
-                    <!-- Combobox - typ -->
+                    {{--Combobox - typ--}}
                     <label for="type">Product type:</label>
                     <select name="type" id="type" required>
                         <option value="ring">Ring</option>
@@ -100,7 +102,7 @@
                     </select>
                     <br><br>
 
-                    <!-- Combobox - material -->
+                    {{--Combobox - material--}}
                     <label for="material">Material type:</label>
                     <select name="material" id="material" required>
                         <option value="Yellow Gold">Yellow Gold</option>
@@ -113,7 +115,7 @@
                     </select>
                     <br><br>
 
-                    <!-- Combobox - stone -->
+                    {{--Combobox - paving --}}
                     <label for="paving">Paving:</label>
                     <select name="paving" id="paving" required>
                         <option value="true">Yes</option>
@@ -122,7 +124,7 @@
 
                     <br><br><br>
 
-                    <!--Button pre pridanie produktu-->
+                    {{--Button pre pridanie produktu--}}
                     <button class="add-button" type="submit">ADD PRODUCT</button>
                 </form>
             </div>

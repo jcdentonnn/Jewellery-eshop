@@ -1590,7 +1590,7 @@ a {
 
 .user-header {
     max-width: 90%;
-    margin: 3rem 5rem 0 5rem;
+    margin: 3rem 5rem 0 0rem;
     font-family: 'Julius Sans One', sans-serif;
 }
 
