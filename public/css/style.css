@@ -1724,6 +1724,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 6.5%;
 }
 
 .section-title {
@@ -1852,6 +1853,13 @@ a {
     flex-shrink: 0;
 }
 
+.main-containerP {
+    display: block;
+    max-width: 100%;
+    margin: 10vh;
+    font-family: "Poppins", sans-serif;
+}
+
 .purchase-details {
     flex-grow: 1;
     display: flex;
@@ -1942,8 +1950,8 @@ a {
     .more-button {
         width: 70%;
         margin: 1rem 0 0 1rem;
-
     }
+
 
     #logout {
         font-size: 0.8rem;

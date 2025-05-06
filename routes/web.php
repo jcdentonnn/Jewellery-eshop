@@ -125,9 +125,11 @@ Route::get('/user', function () {
     }
 })->name('user');
 
+/*
 Route::get('/more-purchase-info', function () {
     return view('more-purchase-info');
-})->name('more-purchase-info');
+})->name('more-purchase-info');*/
+Route::get('/more-purchase-info/{id}', [UserController::class, 'showOrderDetails'])->name('more-purchase-info');
 
 Route::get('/shoppingcart', function () {
     return view('shoppingcart');
