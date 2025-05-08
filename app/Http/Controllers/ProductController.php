@@ -287,6 +287,117 @@ class ProductController extends Controller
 
         return back()->with('success', 'Product deleted successfully');
     }
+
+
+    public function edit_product(Request $request, $id)
+    {
+        $product = Product::find($id);
+
+        if ($product)
+        {
+            // Zistí sa aktuálny typ produktu z množiny (rings,earrings,necklace,gift,accessory)
+            $productType = DB::table('categories')
+                ->where('productid', $product->id)
+                ->whereIn('category', ['ring', 'earrings', 'necklace', 'gift', 'accessory']) //je potrebné to rozlíšiť lebo sú pomiešané s kategóriami
+                ->pluck('category')
+                ->first();
+
+            //existujúci list kategórií
+            $existingCategories = DB::table('categories')
+                ->where('productid', $product->id)
+                ->pluck('category')
+                ->toArray();
+
+            if ($request->isMethod('put'))
+            {
+                $valid_data = $request->validate([
+                    'prod-name' => 'required|string|max:50',
+                    'prod-desc' => 'required|string|max:250',
+                    'prod-price' => 'required|numeric|min:0',
+                    'category' => 'required|array|min:1',
+                    'category.*' => 'in:engagement,diamonds,precious_stone,watches,accessories,art_of_gift',
+                    'material' => 'required|in:Yellow Gold,White Gold,Rose Gold,Silver,Platinum,Stainless steel,Other',
+                    'type' => 'required|in:ring,earrings,necklace,gift,accessory',
+                    'paving' => 'required|in:true,false',
+                    'prod-image' => 'nullable|array|size:4',
+                    'prod-image.*' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
+                ]);
+
+                //fotky
+                $f_names = [];
+                if ($request->hasFile('prod-image')) {
+                    foreach ($request->file('prod-image') as $file) {
+                        $f_name = Str::slug($valid_data['prod-name']) . '_' . Str::random(5)
+                            . '.' . $file->getClientOriginalExtension();
+                        $file->move(public_path('images'), $f_name);
+                        $f_names[] = $f_name;
+                    }
+                }
+
+                // Aktualizujú sa informácie o produkte
+                $product->productname = $valid_data['prod-name'];
+                $product->productdesc = $valid_data['prod-desc'];
+                $product->price = $valid_data['prod-price'];
+                $product->type = $valid_data['material']; //materiál
+                $product->paving = $valid_data['paving'];
+
+                if ($f_names) {
+                    $product->imagename = $f_names[0];
+                    $product->imagename2 = $f_names[1] ?? null;
+                    $product->imagename3 = $f_names[2] ?? null;
+                    $product->imagename4 = $f_names[3] ?? null;
+                }
+
+                $product->save();
+
+
+
+                //odstránia sa akékoľvek predošlé záznamy z množiny (rings,earrings,necklace,gift,accessory)
+                DB::table('categories')
+                    ->where('productid', $product->id)
+                    ->whereIn('category', ['ring', 'earrings', 'necklace', 'gift', 'accessory'])
+                    ->whereNotIn('category', [$valid_data['type']])
+                    ->delete();
+
+                //pridá sa nový záznam (daný typ z rings,earrings,necklace,gift,accessory)
+                DB::table('categories')->insert([
+                    'productid' => $product->id,
+                    'category' => $valid_data['type'],
+                ]);
+
+
+
+                //nový list kategórií (ktoré admin vyklikal, že sú platné)
+                $newCategories = $valid_data['category'];
+
+                //porovná sa zmena checklistu, zistí sa, ktoré k. sa majú pridať a ktoré odobrať
+                $categoriesToAdd = array_diff($newCategories, $existingCategories);
+                $categoriesToRemove = array_diff($existingCategories, $newCategories);
+
+                //odoberú sa už neplatné kategórie
+                DB::table('categories')
+                    ->where('productid', $product->id)
+                    ->whereIn('category', $categoriesToRemove)
+                    ->delete();
+
+                //pridajú sa nové platné kategórie
+                foreach ($categoriesToAdd as $category) {
+                    DB::table('categories')->insert([
+                        'productid' => $product->id,
+                        'category' => $category,
+                    ]);
+                }
+
+                return redirect()
+                    ->route('adminpage')
+                    ->with('success', 'Product updated successfully');
+            }
+
+            return view('a_editproduct', compact('product', 'existingCategories', 'productType'));
+        }
+
+        return back()->with('error', 'Product not found');
+    }
 }
 
 

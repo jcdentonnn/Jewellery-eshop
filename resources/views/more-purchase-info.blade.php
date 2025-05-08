@@ -19,47 +19,32 @@
 
 
     <!--Hlavny container-->
-    <div class="main-container">
-
-        <!--User header s menom, emailom a 'Log Out' tlacidlom-->
-        <div class="user-header">
-            <div class="user-name">
-                <h1>Hello, XYZ</h1>
-                <p>xyz@zyx.com</p>
-            </div>
-            <div class="user-logout-div"><button id="logout">Log Out</button> </div>
-        </div>
-        <hr>
-
+    <div class="main-containerP">
         <div class="purchase-card">
-            <h2>Your purchases > Purchase No. XYZ12345</h2>
+            <h2>Order Details > Order No. {{ $order->id }}</h2>
         </div>
 
-        <div class="purchase-card">
-            <div class="elements-row">
-                <img class="purchase-img" src="/images/ring12.png" alt="White Gold Topaz Ring.AI generated.">
+        @foreach ($orderItems as $item)
+            <div class="purchase-card">
+                <div class="elements-row">
 
-                <div class="purchase-details">
-                    <div class="purchase-title">
-                        <h3>White gold topaz ring</h3>
-                        <input type="checkbox" class="purchase-checkbox" />
-                    </div>
-                    <div class="purchase-meta-row">
-                        <p class="purchase-number">Ref. XYZ12345</p>
-                        <span class="price">950,56 €</span>
+                    <img class="purchase-img" src="/images/{{ $item->imagename }}" alt="{{ $item->productname }}">
+
+                    <div class="purchase-details">
+                        <div class="purchase-title">
+                            <h3>{{ $item->productname }}</h3>
+                            <p>Quantity: {{ $item->amount }}</p>
+                        </div>
                     </div>
                 </div>
+                <hr>
             </div>
-
-            <hr>
-
-            <div class="purchase-actions">
-                <button class="more-button">CONTACT SUPPORT</button>
-            </div>
-        </div>
+        @endforeach
 
         <div class="return-confirm">
-            <a href="{{route('return-confirmation')}}"><button class="more-button">CONFIRM RETURNING</button></a>
+            <a href="{{ route('user') }}">
+                <button class="more-button">BACK</button>
+            </a>
         </div>
 
     </div>

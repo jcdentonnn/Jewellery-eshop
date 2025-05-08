@@ -125,9 +125,11 @@ Route::get('/user', function () {
     }
 })->name('user');
 
+/*
 Route::get('/more-purchase-info', function () {
     return view('more-purchase-info');
-})->name('more-purchase-info');
+})->name('more-purchase-info');*/
+Route::get('/more-purchase-info/{id}', [UserController::class, 'showOrderDetails'])->name('more-purchase-info');
 
 Route::get('/shoppingcart', function () {
     return view('shoppingcart');
@@ -191,3 +193,8 @@ Route::delete('/delete-product/{id}', [ProductController::class, 'delete_product
 
 //** PRIDANIE PRODUKTU - ADMIN **
 Route::post('/a_addproduct', [ProductController::class, 'a_addProduct'])->name('prod.add');
+
+//** EDIT PRODUKTU - ADMIN */ - test zatial
+
+Route::get('/edit-product/{id}', [ProductController::class, 'edit_product'])->name('edit_product');
+Route::put('/edit-product/{id}', [ProductController::class, 'edit_product']);

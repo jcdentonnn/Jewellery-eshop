@@ -120,6 +120,26 @@ class UserController extends Controller {
     }
 
     /**
+     * Funkcia pre zobrazenie podrobností predošlých objednávok
+     *
+     * @param int $orderid
+     * @return \Illuminate\View\View
+     */
+    public function showOrderDetails($orderid)
+    {
+        $order = DB::table('orders')->where('id', $orderid)->first();
+
+        //načíta všetky položky v orderitems podľa id daného orderu, z tabuľky products získa info o produktoch
+        $orderItems = DB::table('orderitems')
+            ->where('orderid', $orderid)
+            ->join('products', 'orderitems.productid', '=', 'products.id')
+            ->select('orderitems.amount', 'products.productname', 'products.imagename')
+            ->get();
+
+        return view('more-purchase-info', compact('order', 'orderItems'));
+    }
+
+    /**
      * neprihlaseny použivateľ ma itemy v košíku - prihlasuje sa do učtu,
      * ktorý má veci v košíku, tieto itemy sa sčítajú
      */
