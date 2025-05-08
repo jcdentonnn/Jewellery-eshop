@@ -25,7 +25,7 @@ class ProductController extends Controller
                     ->from('categories')
                     ->where('category','engagement');
             })
-            ->paginate(9)
+            ->paginate(8)
             ->withQueryString();
 
         return view('engagement', compact('products'));
@@ -39,7 +39,7 @@ class ProductController extends Controller
                     ->from('categories')
                     ->where('category','diamonds');
             })
-            ->paginate(9)
+            ->paginate(8)
             ->withQueryString();
         return view('diamonds', compact('products'));
     }
@@ -52,7 +52,7 @@ class ProductController extends Controller
                 ->from('categories')
                 ->where('category', 'precious_stone');
         })
-            ->paginate(9)
+            ->paginate(8)
             ->withQueryString();
         return view('precious_stone', compact('products'));
     }
@@ -65,7 +65,7 @@ class ProductController extends Controller
                 ->from('categories')
                 ->where('category', 'watches');
         })
-            ->paginate(9)
+            ->paginate(8)
             ->withQueryString();
         return view('watches', compact('products'));
     }
@@ -78,7 +78,7 @@ class ProductController extends Controller
                 ->from('categories')
                 ->where('category', 'accessories');
         })
-            ->paginate(9)
+            ->paginate(8)
             ->withQueryString();
         return view('accessories', compact('products'));
     }
@@ -91,7 +91,7 @@ class ProductController extends Controller
                 ->from('categories')
                 ->where('category', 'art_of_gift');
         })
-            ->paginate(9)
+            ->paginate(8)
             ->withQueryString();
         return view('art_of_gift', compact('products'));
     }
