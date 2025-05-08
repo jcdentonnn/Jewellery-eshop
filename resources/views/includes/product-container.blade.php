@@ -14,13 +14,13 @@ Dany content je pouzity v blade.php suboroch {accessories, diamonds, engagement,
 
         @forelse($products as $product)
             <div class="product-card">
-                <div class="product-img">
-                    <a href="{{ route('productinfo',$product->id) }}">
+                <a href="{{ route('productinfo',$product->id) }}">
+                    <div class="product-img">
                         <img src="/images/{{ $product->imagename }}" alt="{{ $product->productname }}">
+                    </div>
                         <h4 class="prod-name-card">{{ $product->productname }}</h4>
                         <p class="prod-info-card">{{ $product->productdesc }}</p>
-                    </a>
-                </div>
+                </a>
 
                 <div class="purchase">
                     <span class="prod-price-card">{{ number_format($product->price,2) }}€</span>

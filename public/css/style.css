@@ -1464,14 +1464,16 @@ hr {
 
 .product-container {
     width: 100%;
-    flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /*responzivita*/
+    grid-template-columns: repeat(auto-fit, minmax(250px, auto)); /*responzivita*/
+    justify-content: start;
     gap: 1rem;
     padding-left: 1rem;
 }
 
 .product-card {
+    width: 100%;
+    max-width: 250px;
     background: white;
     padding: 15px;
     text-align: center;
@@ -1485,19 +1487,23 @@ hr {
 
 .product-card img {
     max-width: 100%;
-    height: auto;
     border-radius: 5px;
 }
 
+/* rescaling obrazka */
 .product-img {
-    flex-grow: 1;
-    p {
-        min-height: 4rem;
-        margin:0;
-    }
-    h4 {
-        min-height: 2rem;
-    }
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #8FA293;
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .purchase span {
@@ -1558,7 +1564,7 @@ hr {
     text-transform: uppercase;
     border: none;
     padding: 12px 16px;
-    width: 120%; /* Ensure buttons are the same width */
+    width: 120%;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-sizing: border-box;
@@ -1569,7 +1575,7 @@ hr {
 
 .admin-btn-single:hover, .delete-btn:hover {
     background-color: #333;
-    transform: scale(1.05); /* Add hover effect */
+    transform: scale(1.05);
 }
 
 .product-card:hover .prod-button,
@@ -1657,23 +1663,6 @@ a {
 
     .product-card {
         padding: 4vh 0 9vh 0;
-        img {
-            width: 50vw;
-        }
-    }
-
-    .product-img {
-        flex-grow: 1;
-        p {
-            min-height: 1.5rem;
-            margin:5vh;
-            font-size: 0.9rem;
-        }
-        h4 {
-            min-height: 1.5rem;
-            margin:5vh;
-            font-size: 1.1rem;
-        }
     }
 
     .prod-button {
@@ -2272,6 +2261,7 @@ a {
 
 .prod-res {
     font-family: 'Julius Sans One', sans-serif;
+    width: 90%;
 }
 
 .products-res{
