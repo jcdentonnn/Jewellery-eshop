@@ -27,7 +27,8 @@ Dany content je pouzity v blade.php suboroch {accessories, diamonds, engagement,
 
                     @if($user && $user->isadmin)
                         <div class="admin-buttons-prod">
-                            <form action="#" method="GET" style="display:inline;">
+                            <form action="{{ route('edit_product', $product->id) }}" method="GET" style="display:inline;">
+                                @csrf
                                 <button type="submit" class="admin-btn-single edit">Edit</button>
                             </form>
 
