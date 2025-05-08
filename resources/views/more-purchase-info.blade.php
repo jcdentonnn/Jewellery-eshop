@@ -14,11 +14,11 @@
 
 <div class="wrapper">
 
-    <!--Header-->
+    {{--Header--}}
     @include('includes.header')
 
 
-    <!--Hlavny container-->
+    {{--Hlavny container--}}
     <div class="main-containerP">
         <div class="purchase-card">
             <h2>Order Details > Order No. {{ $order->id }}</h2>
@@ -49,7 +49,7 @@
 
     </div>
 
-    <!--Footer-->
+    {{--Footer--}}
     @include('includes.footer')
 </div>
 </body>

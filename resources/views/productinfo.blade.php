@@ -44,7 +44,7 @@
 
             <div class="product-price">{{ number_format($product->price, 2) }} EUR <span>incl. VAT</span></div>
 
-            <!-- Tlacidlo na pridanie produktu do kosika -->
+            {{-- Tlacidlo na pridanie produktu do kosika --}}
             <form action="{{ route('cart.add') }}" method="POST" style="display:inline">
                 @csrf
                 <input type="hidden" name="productid" value="{{ $product->id }}">

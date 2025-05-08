@@ -13,10 +13,10 @@
 
 <body>
 <div class="wrapper">
-    <!--Header-->
+    {{--Header--}}
     @include('includes.header')
 
-    <!--Carousel-->
+    {{--Carousel--}}
     <div class="carousel">
         <div class="slide-images-carousel">
             <div class="img-slider"><img src="images/people1.png" alt="People wearing jewellery. AI generated"></div>
@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <!-- Button '+ Explore' - scroll na nizsiu cast stranky -->
+    {{--Button '+ Explore' - scroll na nizsiu cast stranky--}}
     <div class="carousel-btn">
         <button id="carousel-continue" onClick="document.getElementById('landing-page-2').scrollIntoView();">
         + Explore
@@ -35,7 +35,7 @@
     </div>
 
 
-    <!--Landing page #2-->
+    {{--Landing page #2--}}
     <div id="landing-page-2" class="main-container">
         <!--Product showcase-->
         <div class="landing-page-img">
@@ -49,7 +49,7 @@
 
     <hr>
 
-    <!--Ukazka produktov 3ks-->
+    {{--Ukazka produktov 3ks--}}
     <div class="various-prod">
         <h1>Choose from our iconic pieces</h1>
         <div class="products">
@@ -79,7 +79,7 @@
         </div>
     </div>
 
-    <!--Carousel, animacia-->
+    {{--Carousel, animacia--}}
     <script>
         const carouselContainer = document.querySelector('.carousel');
         const carouselImages = document.querySelector('.slide-images-carousel');
@@ -171,7 +171,7 @@
         setInterval(autoSlide, 3000);
     </script>
 
-    <!--Footer-->
+    {{--Footer--}}
     @include('includes.footer')
 </div>
 

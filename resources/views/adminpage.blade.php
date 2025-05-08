@@ -35,6 +35,8 @@
                         {{ session('success') }}
                     </div>
                 @endif
+
+                {{--Tlacidla 'Add' a 'Edit/Delete'--}}
                 <div class="admin-buttons">
                     <button class="admin-btn" onclick="location.href='/a_addproduct'">Add Product</button>
                     <button class="admin-btn" type="button"

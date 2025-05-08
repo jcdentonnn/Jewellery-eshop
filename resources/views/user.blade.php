@@ -13,13 +13,13 @@
 
     <div class="wrapper">
 
-        <!--Header-->
+        {{--Header--}}
         @include('includes.header')
 
 
-        <!--Hlavny container-->
+        {{--Hlavny container--}}
         <div class="main-container">
-            <!--User header s menom, emailom a 'Log Out' tlacidlom-->
+            {{--User header s menom, emailom a 'Log Out' tlacidlom--}}
             <div class="user-header">
                 <div class="user-name">
                     <h1>Hello, {{ $user->first_name }}</h1>
@@ -29,7 +29,7 @@
             </div>
             <hr>
 
-            <!--Objednavky Usera-->
+            {{--Objednavky Usera--}}
             <div class="purchases-container">
                 <div class="purchase-card" id="purchase-card"><h2>Your purchases</h2></div>
 
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <!--Footer-->
+        {{--Footer--}}
         @include('includes.footer')
 
     </div>

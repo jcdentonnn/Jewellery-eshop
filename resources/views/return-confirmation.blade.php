@@ -13,16 +13,16 @@
 <body>
     <div class="wrapper">
 
-        <!--Header-->
+        {{--Header--}}
         @include('includes.header')
 
-        <!--Text potvrdenia vratenia vybraneho tovaru-->
+        {{--Text potvrdenia vratenia vybraneho tovaru--}}
         <div class="return-container">
             <h2>Returning of the purchase <b>No. XYZ12345</b><br> was successfully registered as <b>DFG678</b></h2>
             <p>We will be contacting you via email.</p>
         </div>
 
-        <!--Footer-->
+        {{--Footer--}}
         @include('includes.footer')
     </div>
 </body>

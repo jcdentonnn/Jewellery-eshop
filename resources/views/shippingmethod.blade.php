@@ -79,7 +79,7 @@
         <button type="submit" class="proceed-btn">PROCEED</button>
     </form>
 
-    <!--Footer-->
+    {{--Footer--}}
     @include('includes.footer')
 </div>
 </body>

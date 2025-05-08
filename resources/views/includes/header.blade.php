@@ -64,7 +64,7 @@
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
-            if (currentScroll <= 0) {
+            if (currentScroll <= 100) {
                 header.classList.remove('hide');
                 return;
             }

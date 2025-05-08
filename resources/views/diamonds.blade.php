@@ -1,12 +1,14 @@
+{{--Kategoria 'Diamonds'--}}
+
 @extends('layouts.app')
 
 @section('title','Diamonds – Jewellery Store')
 
 @section('content')
 
-    <!--Hlavny container pre ukazku produktov-->
+    {{--Hlavny container pre ukazku produktov--}}
     <div class="main-container">
-        <!--Product showcase-->
+        {{--Product showcase--}}
         <div class="product-showcase">
             <img class="product-image-big" src="/images/titleDiamond.png" alt="Diamonds">
             <div class="product-info">
@@ -15,14 +17,14 @@
             </div>
         </div>
 
-        <!--Tlacitko pre zobrazenie/skrytie filtra-->
+        {{--Tlacitko pre zobrazenie/skrytie filtra--}}
         <button id="turnFilterBtn" class="turn-filter-btn">Show Filter</button>
 
         <div class="products">
-            <!--Filter-->
+            {{--Filter--}}
             @include('includes.product-filter')
 
-            <!--Zoznam produktov-->
+            {{--Zoznam produktov--}}
             @include('includes.product-container')
         </div>
     </div>
