@@ -230,6 +230,45 @@ class CartController extends Controller
     }
 
 
+    public function showTotalPrice()
+    {
+        $cartId = $this->getCartId();
+
+        $cart = DB::table('shoppingcarts')->where('id', $cartId)->first();
+
+        $itemsPrice = $cart->itemsprice ?? 0;
+        $deliveryType = $cart->delivery;
+        $paymentType = $cart->payment;
+
+        $deliveryPrice = 0;
+        if ($deliveryType == 'standard') {
+            $deliveryPrice = 4.99;
+        } elseif ($deliveryType == 'priority') {
+            $deliveryPrice = 9.99;
+        } elseif ($deliveryType == 'priority-express') {
+            $deliveryPrice = 14.99;
+        }
+
+        $paymentPrice = 0;
+        if ($paymentType == 'credit-card') {
+            $paymentPrice = 0.00;
+        } elseif ($paymentType == 'paypal') {
+            $paymentPrice = 0.99;
+        } elseif ($paymentType == 'cash-on-delivery') {
+            $paymentPrice = 2.99;
+        }
+
+        $total = $itemsPrice + $deliveryPrice + $paymentPrice;
+
+        return view('inputaddress', [
+            'itemsPrice' => $itemsPrice,
+            'deliveryType' => ucfirst(str_replace('-', ' ', $deliveryType)),
+            'paymentType' => ucfirst(str_replace('-', ' ', $paymentType)),
+            'deliveryPrice' => $deliveryPrice,
+            'paymentPrice' => $paymentPrice,
+            'total' => $total
+        ]);
+    }
 
 
     /**
