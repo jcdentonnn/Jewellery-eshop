@@ -230,12 +230,18 @@ class CartController extends Controller
     }
 
 
+    /**
+     * Vypočíta a zobrazí výslednú cenu objednávky (vrátane platby a dopravy) na stránke /inputaddress
+     *
+     * @return \Illuminate\View\View
+     */
     public function showTotalPrice()
     {
         $cartId = $this->getCartId();
 
         $cart = DB::table('shoppingcarts')->where('id', $cartId)->first();
 
+        //načítam vybrané možnosti dopravy a platby
         $itemsPrice = $cart->itemsprice ?? 0;
         $deliveryType = $cart->delivery;
         $paymentType = $cart->payment;
@@ -258,8 +264,10 @@ class CartController extends Controller
             $paymentPrice = 2.99;
         }
 
+        //pripočítam k cene za predmety a získam výslednú sumu
         $total = $itemsPrice + $deliveryPrice + $paymentPrice;
 
+        //táto funkcia slúži na zobrazenie výslednej celkovej sumy vrátane všetkých doplatkov
         return view('inputaddress', [
             'itemsPrice' => $itemsPrice,
             'deliveryType' => ucfirst(str_replace('-', ' ', $deliveryType)),
