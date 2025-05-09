@@ -22,22 +22,22 @@
             <input type="email" name="emailadress" placeholder="Email Address *" required>
 
             <div class="form-row">
-                <input type="text" name="firstname" placeholder="First name *" required>
-                <input type="text" name="lastname" placeholder="Last name *" required>
+                <input type="text" name="firstname" placeholder="First name *" required maxlength="30">
+                <input type="text" name="lastname" placeholder="Last name *" required maxlength="30">
             </div>
 
             <div class="form-row">
-                <input type="text" name="address1" placeholder="Address Line 1 *" required>
-                <input type="text" name="address2" placeholder="Address Line 2">
+                <input type="text" name="address1" placeholder="Address Line 1 *" required maxlength="50">
+                <input type="text" name="address2" placeholder="Address Line 2" maxlength="50">
             </div>
 
             <div class="form-row">
                 <input type="text" name="city" placeholder="City *" required>
-                <input type="text" name="zipcode" placeholder="Zip code *" required>
+                <input type="text" name="zipcode" placeholder="Zip code *" required pattern="^\d{5}$">
             </div>
 
             <input type="text" name="state" placeholder="State *" required>
-            <input type="text" name="phonenumber" placeholder="Mobile Phone *" required>
+            <input type="text" name="phonenumber" placeholder="Mobile Phone (e.g. 421907436888) *" required pattern="^\d{9}$" title="Please enter the phone number in format: 42100000000 (without spaces)">
 
             <input type="hidden" name="totalprice" value="{{ $total }}">
 
