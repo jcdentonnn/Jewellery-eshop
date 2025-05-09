@@ -40,9 +40,8 @@ Route::get('/shippingmethod', function () {
     return view('shippingmethod');
 });
 
-Route::get('/inputaddress', function () {
-    return view('inputaddress');
-});
+/*Zobrazí výslednú cenu (vrátane dopravy, platby) na stránke /inputaddress*/
+Route::get('/inputaddress', [CartController::class, 'showTotalPrice'])->name('inputaddress');
 
 Route::get('/adminpage', function () {
     return view('adminpage');
@@ -179,6 +178,7 @@ Route::post('/shoppingcart/update', [CartController::class, 'update_amount']);
 
 //košik:ulozenie info o objednavke (platba, adresa, dorucenie)
 Route::post('/save-address', [CartController::class, 'saveAddress']);
+
 
 Route::post('/save-shipping-payment', [CartController::class, 'saveMethod']);
 
