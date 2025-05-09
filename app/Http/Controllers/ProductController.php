@@ -319,7 +319,7 @@ class ProductController extends Controller
                     'material' => 'required|in:Yellow Gold,White Gold,Rose Gold,Silver,Platinum,Stainless steel,Other',
                     'type' => 'required|in:ring,earrings,necklace,gift,accessory',
                     'paving' => 'required|in:true,false',
-                    'prod-image' => 'nullable|array|size:4',
+                    'prod-image' => 'required|array|size:4',
                     'prod-image.*' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
                 ]);
 
